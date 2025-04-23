@@ -252,6 +252,35 @@
 .anime-type {
   color: rgba(255, 255, 255, 0.8);
 }
+.infosaran-container {
+  width: 100%;
+  background-color: #111111;
+  padding: 0;
+  gap: 5px;
+  box-sizing: border-box;
+}
+.infosaran-menu-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  margin-bottom: 5px;
+  transition: background 0.2s ease-in-out;
+  background-color: #FFF;
+}
+.infosaran-menu-title {
+  font-size: 14px;
+  font-weight: 500;
+  color: #000;
+}
+.infosaran-menu-icon {
+  color: #000;
+  font-size: 18px;
+}
+a {
+  text-decoration: none;
+  cursor: none;
+}
   </style>
 </head>
 <body>
@@ -289,6 +318,16 @@
   <div class="home-anime-item"><img src="https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx179955-e4UPTow92B1O.jpg" alt=""></div>
   </div><div class="title-section">
     <h2>Finished musim ini</h2>
+    <div class="title-line"></div>
+    <i class="fas fa-fire"></i>
+  </div>
+  <div class="home-anime-list"><div class="home-anime-item"><img src="https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx179955-e4UPTow92B1O.jpg" alt=""></div>
+  <div class="home-anime-item"><img src="https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx179955-e4UPTow92B1O.jpg" alt=""></div>
+  <div class="home-anime-item"><img src="https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx179955-e4UPTow92B1O.jpg" alt=""></div>
+  <div class="home-anime-item"><img src="https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx179955-e4UPTow92B1O.jpg" alt=""></div>
+  <div class="home-anime-item"><img src="https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx179955-e4UPTow92B1O.jpg" alt=""></div>
+  </div><div class="title-section">
+    <h2>Popular musim ini</h2>
     <div class="title-line"></div>
     <i class="fas fa-fire"></i>
   </div>
@@ -364,6 +403,39 @@
   </template>
 
   <template id="tpl-infosaran">
+   <div class="card-hero">
+    <i class="fas fa-thumbtack icon-pin"></i>
+    <div>
+      <h3>INFORMASI</h3>
+      <p>Support gabung komunitas untuk saran diskusi dan request anime mu! ayo kembangkan plixnime bersama.</p>
+    </div>
+  </div>
+  <div class="infosaran-container">
+  <a href="/tentang/privacy.html">
+    <div class="infosaran-menu-item">
+      <div class="infosaran-menu-title">Kebijakan Privasi</div>
+      <div class="infosaran-menu-icon"><i class="fas fa-chevron-right"></i></div>
+    </div>
+  </a>
+  <a href="https://wa.me/message/4HEISZIHC7FSI1">
+    <div class="infosaran-menu-item">
+      <div class="infosaran-menu-title">Request Anime</div>
+      <div class="infosaran-menu-icon"><i class="fas fa-chevron-right"></i></div>
+    </div>
+  </a>
+  <a href="https://chat.whatsapp.com/IdwUXRtxlUwH0vZgEnezCE">
+    <div class="infosaran-menu-item">
+      <div class="infosaran-menu-title">Komunitas kami</div>
+      <div class="infosaran-menu-icon"><i class="fas fa-chevron-right"></i></div>
+    </div>
+  </a>
+  <a href="/tentang">
+    <div class="infosaran-menu-item">
+      <div class="infosaran-menu-title">Tentang Kami</div>
+      <div class="infosaran-menu-icon"><i class="fas fa-chevron-right"></i></div>
+    </div>
+  </a>
+</div>
   </template>
 
   <div class="bottom-navbar">
