@@ -254,31 +254,33 @@
 }
 .infosaran-container {
   width: 100%;
-  background-color: #111111;
+  background-color: #FFF;
   padding: 0;
   gap: 5px;
   box-sizing: border-box;
+  overflow: hidden;
 }
 .infosaran-menu-item {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px;
-  margin-bottom: 5px;
-  transition: background 0.2s ease-in-out;
-  background-color: #FFF;
+  padding: 10px 15px;
+  border-bottom: 1px solid #eee;
 }
 .infosaran-menu-title {
+  display: flex;
+  align-items: center;
   font-size: 14px;
-  font-weight: 500;
   color: #000;
+  gap: 8px;
 }
 .infosaran-menu-icon {
   color: #000;
-  font-size: 18px;
+  font-size: 16px;
 }
 a {
   text-decoration: none;
+  display: block;
   cursor: none;
 }
   </style>
@@ -413,26 +415,34 @@ a {
   <div class="infosaran-container">
   <a href="/tentang/privacy.html">
     <div class="infosaran-menu-item">
-      <div class="infosaran-menu-title">Kebijakan Privasi</div>
-      <div class="infosaran-menu-icon"><i class="fas fa-chevron-right"></i></div>
+      <div class="infosaran-menu-title">
+        <i class="fas fa-circle"></i> Kebijakan Privasi
+      </div>
+      <div class="infosaran-menu-icon"><i class="fas fa-angle-right"></i></div>
     </div>
   </a>
   <a href="https://wa.me/message/4HEISZIHC7FSI1">
     <div class="infosaran-menu-item">
-      <div class="infosaran-menu-title">Request Anime</div>
-      <div class="infosaran-menu-icon"><i class="fas fa-chevron-right"></i></div>
+      <div class="infosaran-menu-title">
+        <i class="fas fa-circle"></i> Request Anime
+      </div>
+      <div class="infosaran-menu-icon"><i class="fas fa-angle-right"></i></div>
     </div>
   </a>
   <a href="https://chat.whatsapp.com/IdwUXRtxlUwH0vZgEnezCE">
     <div class="infosaran-menu-item">
-      <div class="infosaran-menu-title">Komunitas kami</div>
-      <div class="infosaran-menu-icon"><i class="fas fa-chevron-right"></i></div>
+      <div class="infosaran-menu-title">
+        <i class="fas fa-circle"></i> Komunitas kami
+      </div>
+      <div class="infosaran-menu-icon"><i class="fas fa-angle-right"></i></div>
     </div>
   </a>
   <a href="/tentang">
     <div class="infosaran-menu-item">
-      <div class="infosaran-menu-title">Tentang Kami</div>
-      <div class="infosaran-menu-icon"><i class="fas fa-chevron-right"></i></div>
+      <div class="infosaran-menu-title">
+        <i class="fas fa-circle"></i> Tentang Kami
+      </div>
+      <div class="infosaran-menu-icon"><i class="fas fa-angle-right"></i></div>
     </div>
   </a>
 </div>
