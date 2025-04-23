@@ -164,6 +164,45 @@
       height: 145px;
       object-fit: cover;
     }
+    
+.control-bar {
+  display: flex;
+  flex-wrap: wrap;
+  flex: 1;
+  gap: 8px;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 10px;
+  background-color: #FFCC80;
+  margin: 10px 0;
+}
+
+.control-bar input {
+  flex: 1;
+  min: 100%;
+  padding: 10px;
+  border: none;
+  font-size: 12px;
+  outline: none;
+}
+
+.control-bar select {
+ padding: 9px;
+}
+
+.control-bar button {
+ padding: 10px;
+}
+
+.control-bar select,
+.control-bar button {
+  flex: 1;
+  background-color: #2c2c2c;
+  color: #fff;
+  border: none;
+  font-size: 12px;
+  outline: none;
+}
 .anime-list {
   display: flex;
   flex-wrap: wrap;
@@ -175,6 +214,9 @@
   width: 110px;
   color: #fff;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .anime-item img {
@@ -190,12 +232,25 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  margin-top: 5px;
+  width: 100%;
+}
+
+.anime-meta {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  font-size: 10px;
+  margin-top: 2px;
+  padding: 0 2px;
 }
 
 .anime-date {
-  font-size: 10px;
   color: rgba(255, 255, 255, 0.6);
-  margin-top: 2px;
+}
+
+.anime-type {
+  color: rgba(255, 255, 255, 0.8);
 }
   </style>
 </head>
@@ -236,38 +291,65 @@
   </template>
 
   <template id="tpl-pencarian">
+  <div class="control-bar">
+  <input type="text" id="searchInput" placeholder="Cari anime...">
+  <select id="sortBy">
+    <option value="title">Alfabet (A-Z)</option>
+    <option value="date">Tanggal (Terbaru)</option>
+    <option value="type">Jenis (movie-eps)</option>
+  </select>
+  <button id="resetBtn">Reset</button>
+  <button id="refreshBtn">Cek Update</button>
+</div>
    <div class="anime-list">
   <div class="anime-item">
-    <img src="https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx179955-e4UPTow92B1O.jpg" alt="eps">
-    <div class="anime-title">Anime Title hgressse hhrsxc</div>
-    <div class="anime-date">2025-04-01</div>
+    <img src="https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx16498-8a99NfZfKrSo.jpg" alt="eps">
+    <div class="anime-title">Attack on Titan</div>
+    <div class="anime-meta">
+      <div class="anime-date">2023-12-18</div>
+      <div class="anime-type">TV</div>
+    </div>
   </div>
   <div class="anime-item">
-    <img src="https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx179955-e4UPTow92B1O.jpg" alt="eps">
-    <div class="anime-title">Anime Title</div>
-    <div class="anime-date">2025-04-01</div>
+    <img src="https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx13125-9POZ4vIY5F7T.jpg" alt="eps">
+    <div class="anime-title">Your Name</div>
+    <div class="anime-meta">
+      <div class="anime-date">2016-08-26</div>
+      <div class="anime-type">Movie</div>
+    </div>
   </div>
   <div class="anime-item">
-    <img src="https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx179955-e4UPTow92B1O.jpg" alt="eps">
-    <div class="anime-title">Anime Title</div>
-    <div class="anime-date">2025-04-01</div>
+    <img src="https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx20815-KuXtv0JWqTVq.jpg" alt="eps">
+    <div class="anime-title">Mob Psycho 100</div>
+    <div class="anime-meta">
+      <div class="anime-date">2018-10-05</div>
+      <div class="anime-type">TV</div>
+    </div>
   </div>
   <div class="anime-item">
-    <img src="https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx179955-e4UPTow92B1O.jpg" alt="eps">
-    <div class="anime-title">Anime Title</div>
-    <div class="anime-date">2025-04-01</div>
+    <img src="https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx106286-3OtSmHo6Qz7D.jpg" alt="eps">
+    <div class="anime-title">Jujutsu Kaisen</div>
+    <div class="anime-meta">
+      <div class="anime-date">2020-10-03</div>
+      <div class="anime-type">TV</div>
+    </div>
   </div>
   <div class="anime-item">
-    <img src="https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx179955-e4UPTow92B1O.jpg" alt="eps">
-    <div class="anime-title">Anime Title</div>
-    <div class="anime-date">2025-04-01</div>
+    <img src="https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx21087-Quq3IbpFaJ6T.jpg" alt="eps">
+    <div class="anime-title">Vivy: Fluorite Eye’s Song</div>
+    <div class="anime-meta">
+      <div class="anime-date">2021-04-03</div>
+      <div class="anime-type">ONA</div>
+    </div>
   </div>
   <div class="anime-item">
-    <img src="https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx179955-e4UPTow92B1O.jpg" alt="eps">
-    <div class="anime-title">Anime Title</div>
-    <div class="anime-date">2025-04-01</div>
+    <img src="https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx20785-zfOiNtn1dkqw.jpg" alt="eps">
+    <div class="anime-title">Demon Slayer Movie</div>
+    <div class="anime-meta">
+      <div class="anime-date">2020-10-16</div>
+      <div class="anime-type">Movie</div>
+    </div>
   </div>
-  <!-- Ulangi .anime-item untuk item lainnya -->
 </div>
   </template>
 
@@ -280,6 +362,108 @@
     <div class="nav-item" data-title="Infosaran"><i class="fas fa-universal-access"></i></div>
   </div>
 
-  <script>const pageTitle=document.getElementById("pageTitle"),navItems=document.querySelectorAll(".nav-item"),content=document.getElementById("content");let currentPage="";function loadContent(e,t=!0){if(e.toLowerCase()===currentPage.toLowerCase())return;const n=`tpl-${e.toLowerCase()}`,a=document.getElementById(n);a?(content.innerHTML=a.innerHTML,pageTitle.textContent=e,currentPage=e,navItems.forEach(t=>{t.classList.remove("active"),t.getAttribute("data-title")===e&&t.classList.add("active")}),t&&history.pushState({page:e},"",`#${e.toLowerCase()}`)):content.innerHTML="<p>Konten tidak ditemukan.</p>"}navItems.forEach(e=>{e.addEventListener("click",()=>{const t=e.getAttribute("data-title");loadContent(t,!0)})}),window.onpopstate=e=>{e.state&&e.state.page?loadContent(e.state.page,!1):loadContent("Plixnimein",!1)};const initialPage=location.hash?location.hash.substring(1):"plixnimein";loadContent(initialPage.charAt(0).toUpperCase()+initialPage.slice(1));</script>
+ <script>
+const pageTitle = document.getElementById("pageTitle"),
+      navItems = document.querySelectorAll(".nav-item"),
+      content = document.getElementById("content");
+let currentPage = "";
+
+function loadContent(page, push = true) {
+  if (page.toLowerCase() === currentPage.toLowerCase()) return;
+  const tplId = `tpl-${page.toLowerCase()}`,
+        template = document.getElementById(tplId);
+  if (template) {
+    content.innerHTML = template.innerHTML;
+    pageTitle.textContent = page;
+    currentPage = page;
+
+    navItems.forEach(item => {
+      item.classList.remove("active");
+      if (item.getAttribute("data-title") === page) {
+        item.classList.add("active");
+      }
+    });
+
+    if (push) history.pushState({ page }, "", `#${page.toLowerCase()}`);
+
+    // Initialize search/sort if page is 'Pencarian'
+    if (page.toLowerCase() === "pencarian") initSearchSort();
+  } else {
+    content.innerHTML = "<p>Konten tidak ditemukan.</p>";
+  }
+}
+
+navItems.forEach(item => {
+  item.addEventListener("click", () => {
+    const page = item.getAttribute("data-title");
+    loadContent(page, true);
+  });
+});
+
+window.onpopstate = e => {
+  if (e.state && e.state.page) {
+    loadContent(e.state.page, false);
+  } else {
+    loadContent("Plixnimein", false);
+  }
+};
+
+const initialPage = location.hash ? location.hash.substring(1) : "plixnimein";
+loadContent(initialPage.charAt(0).toUpperCase() + initialPage.slice(1));
+
+// Search/sort/reset setup
+function initSearchSort() {
+  const s = document.getElementById("searchInput"),
+        t = document.getElementById("sortBy"),
+        r = document.getElementById("resetBtn"),
+        f = document.getElementById("refreshBtn"),
+        l = document.querySelector(".anime-list");
+  if (!s || !t || !r || !l) return;
+
+  const o = Array.from(l.children);
+
+  const updateList = () => {
+    const search = s.value.toLowerCase(),
+          sort = t.value;
+
+    let filtered = o.filter(item =>
+      item.querySelector(".anime-title").textContent.toLowerCase().includes(search)
+    );
+
+    filtered.sort((a, b) => {
+      const titleA = a.querySelector(".anime-title").textContent.trim(),
+            titleB = b.querySelector(".anime-title").textContent.trim(),
+            dateA = new Date(a.querySelector(".anime-date").textContent.trim()),
+            dateB = new Date(b.querySelector(".anime-date").textContent.trim()),
+            typeA = a.querySelector(".anime-type")?.textContent.trim() || "",
+            typeB = b.querySelector(".anime-type")?.textContent.trim() || "";
+
+      if (sort === "title") return titleA.localeCompare(titleB);
+      if (sort === "date") return dateB - dateA;
+      if (sort === "type") return typeA.localeCompare(typeB);
+      return 0;
+    });
+
+    l.innerHTML = "";
+    filtered.forEach(item => l.appendChild(item));
+  };
+
+  s.addEventListener("input", updateList);
+  t.addEventListener("change", updateList);
+  r.addEventListener("click", () => {
+    s.value = "";
+    t.value = "title";
+    l.innerHTML = "";
+    o.forEach(item => l.appendChild(item));
+  });
+
+// Tambahan untuk tombol refresh
+  if (f) {
+    f.addEventListener("click", () => {
+      loadContent(currentPage, false);
+    });
+  }
+}
+</script>
 </body>
 </html>
