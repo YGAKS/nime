@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PLIXNIME</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" crossorigin="anonymous" />
+  <style>
+    body {
+      margin: 0;
+      background: #111111;
+      user-select: none;
+      font-family: sans-serif;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 10px;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 999;
+      box-sizing: border-box;
+    }
+    
+    .navbar .title {
+      font-size: 20px;
+      font-weight: bold;
+      color: #fff;
+      text-transform: uppercase;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .navbar .menu-icon {
+      font-size: 22px;
+      color: #FFCC80;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: color 0.3s;
+    }
+
+.bottom-navbar {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: #131313;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 20px 0;
+  z-index: 999;
+  gap: 50px;
+  overflow: hidden;
+}
+
+.bottom-navbar::before {
+  content: '';
+  position: absolute;
+  top: -20px;
+  left: 0;
+  width: 100%;
+  height: 20px;
+  background: linear-gradient(to bottom, rgba(17, 17, 17, 0.5) 0%, #131313 100%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+    .nav-item {
+      display: flex;
+      flex-direction: column;
+      background: #FFCC80;
+      color: #131313;
+      padding: 2px;
+      text-decoration: none;
+      font-size: 22px;
+      transition: all 0.5s ease;
+      border-radius: 20px;
+    }
+
+    .nav-item.active {
+      background: #131313;
+      color: #FFCC80;
+      scale: 1.2;
+    }
+
+     #content {
+      box-sizing: border-box;
+      padding: 10px;
+      overflow-y: auto;
+      position: fixed;
+      top: 50px;
+      bottom: 50px;
+      left: 0;
+      right: 0;
+    }
+    
+    .card-hero {
+      position: relative;
+      width: 100%;
+      max-width: 1200;
+      background-color: #FFCC80;
+      padding: 10px;
+      box-sizing: border-box;
+      margin: 10px 0;
+      display: flex;
+      justify-content: center;
+      text-align: center;
+    }
+    .card-hero .icon-pin {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      font-size: 15px;
+      color: #333;
+    }
+    .card-hero h3 {
+      margin: 0;
+      font-size: 15px;
+      font-weight: bold;
+    }
+    .card-hero p {
+      margin-top: 8px;
+      font-size: 12px;
+      color: #333;
+    }
+    
+    .title-section {
+      display: flex;
+      align-items: center;
+      color: #ddd;
+      padding-bottom: 5px;
+      margin-top: 10px;
+    }
+    .title-section h2 {
+      margin: 0;
+      font-size: 15px;
+      font-weight: bold;
+    }
+    .title-line {
+      flex-grow: 1;
+      height: 1px;
+      background-color: #ccc;
+      margin: 0 5px;
+    }
+    .title-section i {
+     font-size: 15px;
+    }
+    .home-anime-list {
+      display: flex;
+      overflow-x: auto;
+      gap: 5px;
+    }
+    .home-anime-item {
+      flex-shrink: 0;
+    }
+    .home-anime-item img {
+      width: 105px;
+      height: 145px;
+      object-fit: cover;
+    }
+.anime-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 5px;
+}
+
+.anime-item {
+  width: 110px;
+  color: #fff;
+  position: relative;
+}
+
+.anime-item img {
+  width: 110px;
+  height: 150px;
+  object-fit: cover;
+}
+
+.anime-title {
+  font-size: 12px;
+  font-weight: bold;
+  color: #fff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.anime-date {
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.6);
+  margin-top: 2px;
+}
+  </style>
+</head>
+<body>
+ 
+  <div class="navbar">
+  <div class="menu-icon">
+    <i class="fas fa-crown"></i>
+  </div>
+  <div class="title" id="pageTitle">Plixnime</div>
+  <div class="menu-icon" id="menuToggle">
+    <i class="fas fa-info-circle" id="menuIcon"></i>
+  </div>
+</div>
+
+  <div id="content"></div>
+
+  <template id="tpl-plixnimein">
+   <div class="card-hero">
+    <i class="fas fa-thumbtack icon-pin"></i>
+    <div>
+      <h3>INFORMASI</h3>
+      <p>Deskripsi singkat dari hero ini berada di sini.</p>
+    </div>
+  </div>
+  
+  <div class="title-section">
+    <h2>Selesai musim ini</h2>
+    <div class="title-line"></div>
+    <i class="fas fa-fire"></i>
+  </div>
+  <div class="home-anime-list"><div class="home-anime-item"><img src="https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx179955-e4UPTow92B1O.jpg" alt=""></div>
+  <div class="home-anime-item"><img src="https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx179955-e4UPTow92B1O.jpg" alt=""></div>
+  <div class="home-anime-item"><img src="https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx179955-e4UPTow92B1O.jpg" alt=""></div>
+  <div class="home-anime-item"><img src="https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx179955-e4UPTow92B1O.jpg" alt=""></div>
+  <div class="home-anime-item"><img src="https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx179955-e4UPTow92B1O.jpg" alt=""></div>
+  </div><br>
+  </template>
+
+  <template id="tpl-pencarian">
+   <div class="anime-list">
+  <div class="anime-item">
+    <img src="https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx179955-e4UPTow92B1O.jpg" alt="eps">
+    <div class="anime-title">Anime Title hgressse hhrsxc</div>
+    <div class="anime-date">2025-04-01</div>
+  </div>
+  <div class="anime-item">
+    <img src="https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx179955-e4UPTow92B1O.jpg" alt="eps">
+    <div class="anime-title">Anime Title</div>
+    <div class="anime-date">2025-04-01</div>
+  </div>
+  <div class="anime-item">
+    <img src="https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx179955-e4UPTow92B1O.jpg" alt="eps">
+    <div class="anime-title">Anime Title</div>
+    <div class="anime-date">2025-04-01</div>
+  </div>
+  <div class="anime-item">
+    <img src="https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx179955-e4UPTow92B1O.jpg" alt="eps">
+    <div class="anime-title">Anime Title</div>
+    <div class="anime-date">2025-04-01</div>
+  </div>
+  <div class="anime-item">
+    <img src="https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx179955-e4UPTow92B1O.jpg" alt="eps">
+    <div class="anime-title">Anime Title</div>
+    <div class="anime-date">2025-04-01</div>
+  </div>
+  <div class="anime-item">
+    <img src="https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx179955-e4UPTow92B1O.jpg" alt="eps">
+    <div class="anime-title">Anime Title</div>
+    <div class="anime-date">2025-04-01</div>
+  </div>
+  <!-- Ulangi .anime-item untuk item lainnya -->
+</div>
+  </template>
+
+  <template id="tpl-infosaran">
+  </template>
+
+  <div class="bottom-navbar">
+    <div class="nav-item active" data-title="Plixnimein"><i class="fas fa-circle-h"></i></div>
+    <div class="nav-item" data-title="Pencarian"><i class="fas fa-circle-chevron-up"></i></div>
+    <div class="nav-item" data-title="Infosaran"><i class="fas fa-universal-access"></i></div>
+  </div>
+
+  <script>const pageTitle=document.getElementById("pageTitle"),navItems=document.querySelectorAll(".nav-item"),content=document.getElementById("content");let currentPage="";function loadContent(e,t=!0){if(e.toLowerCase()===currentPage.toLowerCase())return;const n=`tpl-${e.toLowerCase()}`,a=document.getElementById(n);a?(content.innerHTML=a.innerHTML,pageTitle.textContent=e,currentPage=e,navItems.forEach(t=>{t.classList.remove("active"),t.getAttribute("data-title")===e&&t.classList.add("active")}),t&&history.pushState({page:e},"",`#${e.toLowerCase()}`)):content.innerHTML="<p>Konten tidak ditemukan.</p>"}navItems.forEach(e=>{e.addEventListener("click",()=>{const t=e.getAttribute("data-title");loadContent(t,!0)})}),window.onpopstate=e=>{e.state&&e.state.page?loadContent(e.state.page,!1):loadContent("Plixnimein",!1)};const initialPage=location.hash?location.hash.substring(1):"plixnimein";loadContent(initialPage.charAt(0).toUpperCase()+initialPage.slice(1));</script>
+</body>
+</html>
