@@ -1,6 +1,109 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"><style>body{margin:0;font-family:Arial,sans-serif;background-color:#f9f9f9;padding-top:60px;user-select:none}.navbar{display:flex;align-items:center;background-color:#111;padding:15px 10px;position:fixed;top:0;left:0;width:100%;z-index:1000}.back-icon{position:absolute;left:1rem;font-size:22px;color:#fff}.nav-title{margin:0 auto;font-size:20px;color:#fff;text-transform:uppercase}.description{padding:0 1rem;font-size:1rem;color:#444;text-align:justify;line-height:1.6}.bold-title{font-weight:bold;color:#333}#offline-notice{position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(20,20,20,0.85);backdrop-filter:blur(4px);color:white;font-size:1rem;display:flex;justify-content:center;align-items:center;z-index:9999;cursor:none;pointer-events:none;opacity:0;transition:opacity .3s ease}body.offline{pointer-events:none;cursor:none}body.offline #offline-notice{opacity:1}</style></head><body><div id="offline-notice">Jaringan tidak tersedia</div><nav class="navbar"><div class="back-icon" onclick="goBack()"><i class="fas fa-arrow-left"></i></div><div class="nav-title">Tentang Kami</div></nav>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #111111;
+      overflow: hidden;
+      user-select: none;
+    }
 
-<div class="description">
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 10px;
+  background-color: rgba(17, 17, 17, 0.8);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 999;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.navbar .title {
+  font-size: 20px;
+  font-weight: bold;
+  color: #fff;
+  text-transform: uppercase;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+}
+
+.navbar .menu-icon {
+  font-size: 22px;
+  color: #FFCC80;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.3s;
+}
+
+    .content-scroll {
+      height: calc(100vh - 50px);
+      overflow-y: auto;
+      padding: 1rem;
+      padding-top: 50px;
+    }
+
+    .description {
+      font-size: 1rem;
+      color: #777;
+      line-height: 1.6;
+      text-align: justify;
+    }
+
+    .bold-title {
+      font-weight: bold;
+    }
+
+    #offline-notice {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(20, 20, 20, 0.85);
+      backdrop-filter: blur(4px);
+      color: white;
+      font-size: 1rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      cursor: none;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    body.offline {
+      pointer-events: none;
+      cursor: none;
+    }
+
+    body.offline #offline-notice {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <div id="offline-notice">Jaringan tidak tersedia</div>
+
+<div class="navbar"><div class="menu-icon" onclick="window.location.href='mailto:plixbantuan@email.com';"><i class="fas fa-question-circle" id="menuIcon"></i></div><div class="title" id="pageTitle">Tentang Kami</div><div class="menu-icon" onclick="window.history.back();"><i class="fas fa-times-circle" id="menuIcon"></i></div></div>
+
+  <div class="content-scroll">
+    <div class="description">
     <p>
       <span class="bold-title">Plixnime</span> adalah sebuah aplikasi streaming anime yang dikembangkan oleh <span class="bold-title">PlixTeams</span>, sebuah tim individu yang memiliki tujuan untuk belajar dan mengasah keterampilan dalam pengembangan perangkat lunak dan aplikasi berbasis web. Aplikasi ini didesain untuk memberikan kemudahan akses bagi pecinta anime untuk menonton berbagai anime tanpa perlu membuat akun atau memberikan data pribadi mereka. 
       <br><br>
@@ -13,5 +116,8 @@
       Kami berterima kasih atas setiap dukungan dan masukan yang kami terima, dan kami berharap dapat terus mengembangkan <span class="bold-title">Plixnime</span> menjadi aplikasi yang lebih baik untuk semua penggunanya. Terima kasih telah menggunakan aplikasi ini dan mendukung perjalanan pembelajaran kami!
     </p>
   </div>
+  </div>
 
-<script>function goBack(){window.history.back()}</script><script>async function checkInternetConnection(){try{return await fetch("https://www.google.com/favicon.ico",{method:"HEAD",mode:"no-cors"}),!0}catch(e){return!1}}async function updateConnectionStatus(){const e=navigator.onLine,t=e&&await checkInternetConnection();document.body.classList.toggle("offline",!t)}window.addEventListener("online",updateConnectionStatus),window.addEventListener("offline",updateConnectionStatus),setInterval(updateConnectionStatus,3e3);updateConnectionStatus();</script></body></html>
+ <script>function goBack(){window.history.back()}</script><script>async function checkInternetConnection(){try{return await fetch("https://www.google.com/favicon.ico",{method:"HEAD",mode:"no-cors"}),!0}catch(e){return!1}}async function updateConnectionStatus(){const isOnline=navigator.onLine,confirmedOnline=isOnline&&await checkInternetConnection();document.body.classList.toggle("offline",!confirmedOnline)}window.addEventListener("online",updateConnectionStatus);window.addEventListener("offline",updateConnectionStatus);setInterval(updateConnectionStatus,3e3);updateConnectionStatus()</script>
+</body>
+</html>
