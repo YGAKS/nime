@@ -12,50 +12,44 @@
       padding-top: 60px;
       user-select: none;
     }
-
+    
     .navbar {
       display: flex;
       align-items: center;
       background-color: #111111;
-      padding: 1.5rem;
+      padding: 1rem;
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
-      z-index: 1000; /* Memastikan navbar tetap di atas */
+      z-index: 1000;
     }
 
     .back-icon {
       position: absolute;
       left: 1rem;
       font-size: 1.2rem;
-      cursor: pointer;
       color: #fff;
     }
 
     .nav-title {
       margin: 0 auto;
-      font-size: 1rem;
+      font-size: 1.5rem;
       font-weight: bold;
       color: #fff;
       text-transform: uppercase;
     }
-
-    /* Deskripsi Styling */
     .description {
-      padding: 20px;
+      padding: 1rem;
       font-size: 1rem;
       color: #444;
       line-height: 1.6;
     }
-
-    /* Styling untuk bold title dalam deskripsi */
     .bold-title {
       font-weight: bold;
       color: #333;
     }
-    
-    #offline-notice {
+#offline-notice {
     position: fixed;
     top: 0;
     left: 0;
@@ -86,46 +80,32 @@
   </style>
 </head>
 <body>
-<div id="offline-notice">Jaringan tidak tersedia</div>
+ <div id="offline-notice">Jaringan tidak tersedia</div>
   <nav class="navbar">
-    <div class="back-icon">
+    <div class="back-icon" onclick="goBack()">
       <i class="fas fa-arrow-left"></i>
     </div>
-    <div class="nav-title">Kebijakan privasi</div>
+    <div class="nav-title">Kebijakan Privasi</div>
   </nav>
 
   <div class="description">
-    <p>
-      <span class="bold-title">Plixnime</span> adalah aplikasi streaming anime yang memungkinkan Anda untuk menonton berbagai anime tanpa harus mendaftar atau membuat akun. Aplikasi ini menyediakan berbagai pilihan anime dari berbagai genre, dan dapat diakses secara langsung oleh siapa saja tanpa memerlukan data pribadi atau akun pengguna. 
-      <br><br>
-      Dibangun oleh <span class="bold-title">PlixTeams</span>, <span class="bold-title">Plixnime</span> menawarkan kenyamanan dan privasi lebih bagi penggunanya. Semua yang Anda butuhkan adalah koneksi internet untuk menikmati tayangan anime berkualitas tinggi langsung di perangkat Anda. 
-      <br><br>
-      Dengan tampilan yang sederhana dan mudah digunakan, <span class="bold-title">Plixnime</span> menjadikannya pilihan terbaik bagi pecinta anime yang menginginkan akses cepat tanpa repot. Tidak ada data yang perlu Anda daftarkan, yang membuat aplikasi ini sangat cocok untuk mereka yang ingin menjaga privasi dan hanya fokus pada pengalaman menonton anime.
-    </p>
-  </div>
-<script>
-  async function checkInternetConnection() {
-    try {
-      // Ping file kecil yang pasti online
-      const response = await fetch("https://www.google.com/favicon.ico", { method: "HEAD", mode: "no-cors" });
-      return true;
-    } catch (error) {
-      return false;
+  <p>
+    <span class="bold-title">Plixnime</span> adalah aplikasi streaming anime yang memungkinkan Anda menonton berbagai judul anime tanpa harus mendaftar atau membuat akun. Aplikasi ini menyediakan beragam pilihan anime dari berbagai genre, yang dapat diakses secara langsung oleh siapa saja tanpa perlu memberikan data pribadi atau membuat profil pengguna.
+    <br><br>
+    Dibangun oleh <span class="bold-title">PlixTeams</span>, <span class="bold-title">Plixnime</span> mengutamakan kenyamanan sekaligus menjaga privasi penggunanya. Anda tidak akan diminta untuk mengisi email, nomor telepon, atau informasi identitas lainnya. Dengan demikian, tidak ada data pribadi yang dikumpulkan, disimpan, ataupun dibagikan kepada pihak ketiga. Ini menjadikan Plixnime pilihan ideal bagi mereka yang menghargai anonimitas dan keamanan dalam dunia digital.
+    <br><br>
+    Aplikasi ini juga tidak menggunakan pelacakan atau iklan yang mengganggu pengalaman menonton. Fokus utama adalah menyediakan layanan streaming berkualitas tinggi dengan antarmuka yang sederhana dan mudah digunakan. Semua yang Anda perlukan hanyalah koneksi internet yang stabil untuk menikmati tayangan anime favorit Anda.
+    <br><br>
+    Dengan filosofi “nonton tanpa batas, tanpa jejak,” <span class="bold-title">Plixnime</span> hadir sebagai solusi bagi pecinta anime yang ingin menikmati hiburan tanpa harus mengorbankan data pribadi atau menghadapi proses registrasi yang rumit. Privasi Anda adalah prioritas kami.
+  </p>
+</div>
+
+  <script>
+    function goBack() {
+      window.history.back();
     }
-  }
+  </script>
+  <script>async function checkInternetConnection(){try{return await fetch("https://www.google.com/favicon.ico",{method:"HEAD",mode:"no-cors"}),!0}catch(e){return!1}}async function updateConnectionStatus(){const e=navigator.onLine,t=e&&await checkInternetConnection();document.body.classList.toggle("offline",!t)}window.addEventListener("online",updateConnectionStatus),window.addEventListener("offline",updateConnectionStatus),setInterval(updateConnectionStatus,3e3);updateConnectionStatus();</script>
 
-  async function updateConnectionStatus() {
-    const online = navigator.onLine;
-    const trulyOnline = online && await checkInternetConnection();
-
-    document.body.classList.toggle("offline", !trulyOnline);
-  }
-
-  window.addEventListener("online", updateConnectionStatus);
-  window.addEventListener("offline", updateConnectionStatus);
-  setInterval(updateConnectionStatus, 3000); // Cek ulang tiap 3 detik
-
-  updateConnectionStatus(); // Initial check
-</script>
 </body>
 </html>
