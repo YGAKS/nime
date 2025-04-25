@@ -133,7 +133,7 @@
     .title-section {
       display: flex;
       align-items: center;
-      color: #ddd;
+      color: #fff;
       padding-bottom: 5px;
       margin-top: 10px;
     }
@@ -151,21 +151,32 @@
     .title-section i {
      font-size: 15px;
     }
-    .home-anime-list {
-      display: flex;
-      overflow-x: auto;
-      gap: 5px;
-    }
-    .home-anime-item {
-      flex-shrink: 0;
-    }
-.home-anime-item img {
+.home-anime-list {
+  display: flex;
+  overflow-x: auto;
+  gap: 5px;
+}
+
+.home-anime-item {
+  flex-shrink: 0;
   width: 110px;
+}
+
+.home-anime-item img {
+  width: 100%;
   height: 150px;
   object-fit: cover;
   background: linear-gradient(120deg, rgba(204, 204, 204, 0.6) 25%, rgba(255, 255, 255, 0.6) 50%, rgba(204, 204, 204, 0.6) 75%);
   background-size: 200% 100%;
   animation: loading-skeleton 1.5s infinite linear;
+}
+
+.home-anime-title {
+  font-size: 10px;
+  color: #ddd;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 @keyframes loading-skeleton {
@@ -175,7 +186,7 @@
   100% {
     background-position: 200px 0;
   }
-}    
+}
 .control-bar {
   display: flex;
   flex-wrap: wrap;
@@ -234,12 +245,14 @@
   width: 110px;
   height: 150px;
   object-fit: cover;
+  background: linear-gradient(120deg, rgba(204, 204, 204, 0.6) 25%, rgba(255, 255, 255, 0.6) 50%, rgba(204, 204, 204, 0.6) 75%);
+  background-size: 200% 100%;
+  animation: loading-skeleton 1.5s infinite linear;
 }
 
 .anime-title {
-  font-size: 12px;
-  font-weight: bold;
-  color: #fff;
+  font-size: 10px;
+  color: #ddd;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -257,11 +270,11 @@
 }
 
 .anime-date {
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(255, 255, 255, 0.5);
 }
 
 .anime-type {
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(255, 255, 255, 0.5);
 }
 .infosaran-container {
   width: 100%;
@@ -352,56 +365,57 @@ a {
     <i class="fas fa-fire"></i>
   </div>
   <div class="home-anime-list">
-   <a class="home-anime-item" href="/anime/enennoshouboutai.html"><img src="https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx149118-AOQb0xuTssGl.jpg" alt=""></a>
-   <a class="home-anime-item" href="/anime/lazarus.html"><img src="https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx167336-KpGIIBie71OX.png" alt=""></a>
-   <a class="home-anime-item" href="/anime/saikyounoousama.html"><img src="https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx183161-5M054tuPmZJX.jpg" alt=""></a>
-   <a class="home-anime-item" href="/anime/windbreakers2.html"><img src="https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx178680-nIAhCizY46ZU.jpg" alt=""></a>
-   <a class="home-anime-item" href="/anime/witchwatch.html"><img src="https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx180367-GlRuB2lG7Kaa.jpg" alt=""></a>
-   <a class="home-anime-item" href="/anime/kowloongeneric.html"><img src="https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx182814-UTKRUUm7Jah5.jpg" alt=""></a>
+   <a class="home-anime-item" href="/anime/enennoshouboutai.html"><img src="https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx149118-AOQb0xuTssGl.jpg" alt=""><div class="home-anime-title">Enen no Shouboutai: San no Shou</div></a>
+   <a class="home-anime-item" href="/anime/lazarus.html"><img src="https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx167336-KpGIIBie71OX.png" alt=""><div class="home-anime-title">Lazarus</div></a>
+   <a class="home-anime-item" href="/anime/saikyounoousama.html"><img src="https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx183161-5M054tuPmZJX.jpg" alt=""><div class="home-anime-title">Saikyou no Ousama, Nidome no Jinsei wa Nani wo Suru?</div></a>
+   <a class="home-anime-item" href="/anime/windbreakers2.html"><img src="https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx178680-nIAhCizY46ZU.jpg" alt=""><div class="home-anime-title">WIND BREAKER S2</div></a>
+   <a class="home-anime-item" href="/anime/witchwatch.html"><img src="https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx180367-GlRuB2lG7Kaa.jpg" alt=""><div class="home-anime-title">Witch Watch</div></a>
+   <a class="home-anime-item" href="/anime/kowloongeneric.html"><img src="https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx182814-UTKRUUm7Jah5.jpg" alt=""><div class="home-anime-title">Kowloon Generic Romance</div></a>
   </div>
   <div class="title-section">
     <h2>OnGoing musim ini</h2>
     <div class="title-line"></div>
     <i class="fas fa-fire"></i>
   </div>
-  <div class="home-anime-list"><div class="home-anime-item"><img src="https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx179955-e4UPTow92B1O.jpg" alt=""></div>
-  <div class="home-anime-item"><img src="https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx179955-e4UPTow92B1O.jpg" alt=""></div>
-  <div class="home-anime-item"><img src="https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx179955-e4UPTow92B1O.jpg" alt=""></div>
-  <div class="home-anime-item"><img src="https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx179955-e4UPTow92B1O.jpg" alt=""></div>
-  <div class="home-anime-item"><img src="https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx179955-e4UPTow92B1O.jpg" alt=""></div>
+  <div class="home-anime-list"><a class="home-anime-item" href="/anime/windbreakers2.html"><img src="https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx178680-nIAhCizY46ZU.jpg" alt=""><div class="home-anime-title">WIND BREAKER S2</div></a>
+  <a class="home-anime-item" href="/anime/rockwalady.html"><img src="https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx179694-7zhc0T6IImor.jpg" alt=""><div class="home-anime-title">Rock wa Lady no Tashinami Deshite</div></a>
+  <a class="home-anime-item" href="/anime/yamihealer.html"><img src="https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx175872-d55nfiC4WWHO.jpg" alt=""><div class="home-anime-title">Yami Healer</div></a>
+  <a class="home-anime-item" href="/anime/yourforma.html"><img src="https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx167142-dJwdHptpILkF.jpg" alt=""><div class="home-anime-title">Your Forma</div></a>
+  <a class="home-anime-item" href="/anime/saikyounoousama.html"><img src="https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx183161-5M054tuPmZJX.jpg" alt=""><div class="home-anime-title">Saikyou no Ousama, Nidome no Jinsei wa Nani wo Suru?</div></a>
+  <a class="home-anime-item" href="/anime/uchuujinmuumuu.html"><img src="https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx185070-VKzUA4B9kmaX.jpg" alt=""><div class="home-anime-title">Uchuujin MuuMuu</div></a>
   </div><br>
   </template>
 
-  <template id="tpl-pencarian">
+ <template id="tpl-pencarian">
   <div class="control-bar">
   <input type="text" id="searchInput" placeholder="Cari anime...">
   <select id="sortBy">
-    <option value="title">Alfabet (A-Z)</option>
-    <option value="date">Tanggal (Terbaru)</option>
-    <option value="type">Jenis (movie-eps)</option>
+    <option value="title">List Dafault</option>
+    <option value="date">Tanggal(terbaru)</option>
+    <option value="type">Jenis(movie-eps)</option>
   </select>
   <button id="resetBtn">Reset</button>
   <button id="refreshBtn">Cek Update</button>
 </div>
    <div class="anime-list">
-  <div class="anime-item">
-    <img src="https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx179955-e4UPTow92B1O.jpg" alt="eps">
-    <div class="anime-title">Attack on Titan</div>
+  <div class="anime-item" onclick="window.open('/anime/enennoshouboutai.html', '_blank')">
+    <img src="https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx149118-AOQb0xuTssGl.jpg" alt="">
+    <div class="anime-title">Enen no Shouboutai: San no Shou</div>
     <div class="anime-meta">
       <div class="anime-date">2023-12-18</div>
       <div class="anime-type">TV</div>
     </div>
   </div>
-  <div class="anime-item">
-    <img src="https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx179955-e4UPTow92B1O.jpg" alt="eps">
+  <div class="anime-item" onclick="window.open('/anime/yourname.html', '_blank')">
+    <img src="https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx179955-e4UPTow92B1O.jpg" alt="">
     <div class="anime-title">Your Name</div>
     <div class="anime-meta">
       <div class="anime-date">2016-08-26</div>
       <div class="anime-type">Movie</div>
     </div>
   </div>
-  <div class="anime-item">
-    <img src="https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx179955-e4UPTow92B1O.jpg" alt="eps">
+  <div class="anime-item" onclick="window.open('/anime/mobpsycho100.html', '_blank')">
+    <img src="https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx179955-e4UPTow92B1O.jpg" alt="">
     <div class="anime-title">Mob Psycho 100</div>
     <div class="anime-meta">
       <div class="anime-date">2018-10-05</div>
@@ -460,7 +474,6 @@ a {
     <div class="nav-item" data-title="Pencarian"><i class="fas fa-circle-chevron-up"></i></div>
     <div class="nav-item" data-title="Infosaran"><i class="fas fa-universal-access"></i></div>
   </div>
-
  <script>const pageTitle=document.getElementById("pageTitle"),navItems=document.querySelectorAll(".nav-item"),content=document.getElementById("content");let currentPage="";function loadContent(page,push=!0){if(page.toLowerCase()===currentPage.toLowerCase())return;const tplId=`tpl-${page.toLowerCase()}`,template=document.getElementById(tplId);if(template){content.innerHTML=template.innerHTML,pageTitle.textContent=page,currentPage=page,navItems.forEach(item=>{item.classList.remove("active"),item.getAttribute("data-title")===page&&item.classList.add("active")}),push&&history.pushState({page},"",`#${page.toLowerCase()}`),page.toLowerCase()==="pencarian"&&initSearchSort()}else content.innerHTML="<p>Konten tidak ditemukan.</p>";}navItems.forEach(item=>{item.addEventListener("click",()=>{const page=item.getAttribute("data-title");loadContent(page,!0);});});window.onpopstate=e=>{e.state&&e.state.page?loadContent(e.state.page,!1):loadContent("Plixnimein",!1);};const initialPage=location.hash?location.hash.substring(1):"plixnimein";loadContent(initialPage.charAt(0).toUpperCase()+initialPage.slice(1));function initSearchSort(){const s=document.getElementById("searchInput"),t=document.getElementById("sortBy"),r=document.getElementById("resetBtn"),f=document.getElementById("refreshBtn"),l=document.querySelector(".anime-list");if(!s||!t||!r||!l)return;const o=Array.from(l.children),updateList=()=>{const search=s.value.toLowerCase(),sort=t.value;let filtered=o.filter(item=>item.querySelector(".anime-title").textContent.toLowerCase().includes(search));filtered.sort((a,b)=>{const titleA=a.querySelector(".anime-title").textContent.trim(),titleB=b.querySelector(".anime-title").textContent.trim(),dateA=new Date(a.querySelector(".anime-date").textContent.trim()),dateB=new Date(b.querySelector(".anime-date").textContent.trim()),typeA=a.querySelector(".anime-type")?.textContent.trim()||"",typeB=b.querySelector(".anime-type")?.textContent.trim()||"";if(sort==="title")return titleA.localeCompare(titleB);if(sort==="date")return dateB-dateA;if(sort==="type")return typeA.localeCompare(typeB);return 0;});l.innerHTML="",filtered.forEach(item=>l.appendChild(item));};s.addEventListener("input",updateList),t.addEventListener("change",updateList),r.addEventListener("click",()=>{s.value="",t.value="title",l.innerHTML="",o.forEach(item=>l.appendChild(item));}),f&&f.addEventListener("click",()=>{location.href=location.origin+location.pathname;});} </script><script>async function checkInternetConnection(){try{const response=await fetch("https://www.google.com/favicon.ico",{method:"HEAD",mode:"no-cors"});return!0;}catch(error){return!1;}}async function updateConnectionStatus(){const online=navigator.onLine,trulyOnline=online&&await checkInternetConnection();document.body.classList.toggle("offline",!trulyOnline);}window.addEventListener("online",updateConnectionStatus),window.addEventListener("offline",updateConnectionStatus),setInterval(updateConnectionStatus,3e3);updateConnectionStatus();</script>
 </body>
 </html>
