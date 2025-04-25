@@ -1,15 +1,81 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"><style>body{margin:0;font-family:Arial,sans-serif;background-color:#f9f9f9;padding-top:60px;user-select:none}.navbar{display:flex;align-items:center;background-color:#111;padding:15px 10px;position:fixed;top:0;left:0;width:100%;z-index:1000}.back-icon{position:absolute;left:1rem;font-size:22px;color:#fff}.nav-title{margin:0 auto;font-size:20px;color:#fff;text-transform:uppercase}.description{padding:0 1rem;font-size:1rem;color:#444;text-align:justify;line-height:1.6}.bold-title{font-weight:bold;color:#333}#offline-notice{position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(20,20,20,0.85);backdrop-filter:blur(4px);color:white;font-size:1rem;display:flex;justify-content:center;align-items:center;z-index:9999;cursor:none;pointer-events:none;opacity:0;transition:opacity .3s ease}body.offline{pointer-events:none;cursor:none}body.offline #offline-notice{opacity:1}</style></head><body><div id="offline-notice">Jaringan tidak tersedia</div><nav class="navbar"><div class="back-icon" onclick="goBack()"><i class="fas fa-arrow-left"></i></div><div class="nav-title">Kebijakan Privasi</div></nav>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body { margin: 0; font-family: Arial, sans-serif; background-color: #f9f9f9; padding-top: 60px; user-select: none; }
+    .navbar { display: flex; align-items: center; background-color: #111111; padding: 15px 10px; position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; }
+    .back-icon { position: absolute; left: 1rem; font-size: 22px; color: #fff; cursor: none; }
+    .nav-title { margin: 0 auto; font-size: 20px; color: #fff; text-transform: uppercase; }
+    .description { padding: 0 1rem; font-size: 1rem; color: #444; text-align: justify; line-height: 1.6; }
+    .bold-title { font-weight: bold; color: #333; }
+    #offline-notice { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(20, 20, 20, 0.85); backdrop-filter: blur(4px); color: white; font-size: 1rem; display: flex; justify-content: center; align-items: center; z-index: 9999; cursor: none; pointer-events: none; opacity: 0; transition: opacity 0.3s ease; }
+    body.offline { pointer-events: none; cursor: none; }
+    body.offline #offline-notice { opacity: 1; }
+  </style>
+</head>
+<body>
+ <div id="offline-notice">Jaringan tidak tersedia</div>
+  <nav class="navbar">
+    <div class="back-icon" id="backButton" onclick="goBack()">
+      <i class="fas fa-arrow-left"></i>
+    </div>
+    <div class="nav-title">Kebijakan Privasi</div>
+  </nav>
 
-<div class="description">
-  <p>
-    <span class="bold-title">Plixnime</span> adalah aplikasi streaming anime yang memungkinkan Anda menonton berbagai judul anime tanpa harus mendaftar atau membuat akun. Aplikasi ini menyediakan beragam pilihan anime dari berbagai genre, yang dapat diakses secara langsung oleh siapa saja tanpa perlu memberikan data pribadi atau membuat profil pengguna.
-    <br><br>
-    Dibangun oleh <span class="bold-title">PlixTeams</span>, <span class="bold-title">Plixnime</span> mengutamakan kenyamanan sekaligus menjaga privasi penggunanya. Anda tidak akan diminta untuk mengisi email, nomor telepon, atau informasi identitas lainnya. Dengan demikian, tidak ada data pribadi yang dikumpulkan, disimpan, ataupun dibagikan kepada pihak ketiga. Ini menjadikan Plixnime pilihan ideal bagi mereka yang menghargai anonimitas dan keamanan dalam dunia digital.
-    <br><br>
-    Aplikasi ini juga tidak menggunakan pelacakan atau iklan yang mengganggu pengalaman menonton. Fokus utama adalah menyediakan layanan streaming berkualitas tinggi dengan antarmuka yang sederhana dan mudah digunakan. Semua yang Anda perlukan hanyalah koneksi internet yang stabil untuk menikmati tayangan anime favorit Anda.
-    <br><br>
-    Dengan filosofi “nonton tanpa batas, tanpa jejak,” <span class="bold-title">Plixnime</span> hadir sebagai solusi bagi pecinta anime yang ingin menikmati hiburan tanpa harus mengorbankan data pribadi atau menghadapi proses registrasi yang rumit. Privasi Anda adalah prioritas kami.
-  </p>
-</div>
+  <div class="description">
+    <p>
+      <span class="bold-title">Plixnime</span> adalah aplikasi streaming anime yang memungkinkan Anda menonton berbagai judul anime tanpa harus mendaftar atau membuat akun. Aplikasi ini menyediakan beragam pilihan anime dari berbagai genre, yang dapat diakses secara langsung oleh siapa saja tanpa perlu memberikan data pribadi atau membuat profil pengguna.
+      <br><br>
+      Dibangun oleh <span class="bold-title">PlixTeams</span>, <span class="bold-title">Plixnime</span> mengutamakan kenyamanan sekaligus menjaga privasi penggunanya. Anda tidak akan diminta untuk mengisi email, nomor telepon, atau informasi identitas lainnya. Dengan demikian, tidak ada data pribadi yang dikumpulkan, disimpan, ataupun dibagikan kepada pihak ketiga. Ini menjadikan Plixnime pilihan ideal bagi mereka yang menghargai anonimitas dan keamanan dalam dunia digital.
+      <br><br>
+      Aplikasi ini juga tidak menggunakan pelacakan atau iklan yang mengganggu pengalaman menonton. Fokus utama adalah menyediakan layanan streaming berkualitas tinggi dengan antarmuka yang sederhana dan mudah digunakan. Semua yang Anda perlukan hanyalah koneksi internet yang stabil untuk menikmati tayangan anime favorit Anda.
+      <br><br>
+      Dengan filosofi “nonton tanpa batas, tanpa jejak,” <span class="bold-title">Plixnime</span> hadir sebagai solusi bagi pecinta anime yang ingin menikmati hiburan tanpa harus mengorbankan data pribadi atau menghadapi proses registrasi yang rumit. Privasi Anda adalah prioritas kami.
+    </p>
+  </div>
 
-<script>function goBack(){window.history.back()}</script><script>async function checkInternetConnection(){try{return await fetch("https://www.google.com/favicon.ico",{method:"HEAD",mode:"no-cors"}),!0}catch(e){return!1}}async function updateConnectionStatus(){const e=navigator.onLine,t=e&&await checkInternetConnection();document.body.classList.toggle("offline",!t)}window.addEventListener("online",updateConnectionStatus),window.addEventListener("offline",updateConnectionStatus),setInterval(updateConnectionStatus,3e3);updateConnectionStatus();</script></body></html>
+  <script>
+    function goBack() {
+      if (!navigator.onLine) {
+        return; // Prevent going back if offline
+      }
+      window.history.back();
+    }
+
+    async function checkInternetConnection() {
+      try {
+        return await fetch("https://www.google.com/favicon.ico", { method: "HEAD", mode: "no-cors" }), !0;
+      } catch (e) {
+        return !1;
+      }
+    }
+
+    async function updateConnectionStatus() {
+      const isOnline = navigator.onLine;
+      const hasConnection = isOnline && await checkInternetConnection();
+      document.body.classList.toggle("offline", !hasConnection);
+      const backButton = document.getElementById("backButton");
+      if (hasConnection) {
+        backButton.style.cursor = 'none'; // Enable the button when online
+      } else {
+        backButton.style.cursor = 'not-allowed'; // Disable the button when offline
+      }
+    }
+
+    // Handle Android back button press
+    document.addEventListener('backbutton', function(event) {
+      if (!navigator.onLine) {
+        event.preventDefault(); // Prevent back action when offline
+      }
+    });
+
+    window.addEventListener("online", updateConnectionStatus);
+    window.addEventListener("offline", updateConnectionStatus);
+    setInterval(updateConnectionStatus, 3000);
+    updateConnectionStatus();
+  </script>
+</body>
+</html>
