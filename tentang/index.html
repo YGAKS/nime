@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      padding-top: 60px;
+      user-select: none;
+    }
+
+    .navbar {
+      display: flex;
+      align-items: center;
+      background-color: #111111;
+      padding: 1.5rem;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000; /* Memastikan navbar tetap di atas */
+    }
+
+    .back-icon {
+      position: absolute;
+      left: 1rem;
+      font-size: 1.2rem;
+      cursor: pointer;
+      color: #fff;
+    }
+
+    .nav-title {
+      margin: 0 auto;
+      font-size: 1rem;
+      font-weight: bold;
+      color: #fff;
+      text-transform: uppercase;
+    }
+
+    /* Deskripsi Styling */
+    .description {
+      padding: 20px;
+      font-size: 1rem;
+      color: #444;
+      line-height: 1.6;
+    }
+
+    /* Styling untuk bold title dalam deskripsi */
+    .bold-title {
+      font-weight: bold;
+      color: #333;
+    }
+    
+    #offline-notice {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(20, 20, 20, 0.85);
+    backdrop-filter: blur(4px);
+    color: white;
+    font-size: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    cursor: none;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  body.offline {
+    pointer-events: none;
+    cursor: none;
+  }
+
+  body.offline #offline-notice {
+    opacity: 1;
+  }
+  </style>
+</head>
+<body>
+<div id="offline-notice">Jaringan tidak tersedia</div>
+  <nav class="navbar">
+    <div class="back-icon">
+      <i class="fas fa-arrow-left"></i>
+    </div>
+    <div class="nav-title">Tentang kami</div>
+  </nav>
+
+   <div class="description">
+    <p>
+      <span class="bold-title">Plixnime</span> adalah sebuah aplikasi streaming anime yang dikembangkan oleh <span class="bold-title">PlixTeams</span>, sebuah tim individu yang memiliki tujuan untuk belajar dan mengasah keterampilan dalam pengembangan perangkat lunak dan aplikasi berbasis web. Aplikasi ini didesain untuk memberikan kemudahan akses bagi pecinta anime untuk menonton berbagai anime tanpa perlu membuat akun atau memberikan data pribadi mereka. 
+      <br><br>
+      Proyek <span class="bold-title">Plixnime</span> dimulai sebagai bagian dari upaya belajar oleh <span class="bold-title">PlixTeams</span> dalam membangun aplikasi dengan pengalaman pengguna yang sederhana dan tanpa hambatan. Dengan memanfaatkan teknologi terbaru dan berbagai API untuk memastikan tayangan anime berkualitas, aplikasi ini hadir untuk memenuhi kebutuhan hiburan bagi pengguna yang menginginkan pengalaman menonton anime yang lancar dan menyenangkan.
+      <br><br>
+      Meskipun <span class="bold-title">Plixnime</span> dikembangkan dengan tujuan belajar, proyek ini juga mencerminkan komitmen kami untuk memberikan pengalaman yang aman dan nyaman bagi pengguna. Kami sadar akan pentingnya menjaga privasi, oleh karena itu aplikasi ini tidak memerlukan pendaftaran atau informasi akun pengguna, memberikan kebebasan dan privasi bagi setiap penggunanya.
+      <br><br>
+      Selama pengembangan aplikasi ini, <span class="bold-title">PlixTeams</span> terus belajar dan mengeksplorasi berbagai aspek pengembangan perangkat lunak, termasuk keamanan, desain antarmuka, dan pengoptimalan performa. Dengan rencana untuk terus memperbarui dan meningkatkan aplikasi ini, kami berharap <span class="bold-title">Plixnime</span> dapat berkembang menjadi salah satu pilihan utama bagi penggemar anime yang mencari alternatif streaming yang praktis dan bebas dari persyaratan pendaftaran yang rumit.
+      <br><br>
+      Kami berterima kasih atas setiap dukungan dan masukan yang kami terima, dan kami berharap dapat terus mengembangkan <span class="bold-title">Plixnime</span> menjadi aplikasi yang lebih baik untuk semua penggunanya. Terima kasih telah menggunakan aplikasi ini dan mendukung perjalanan pembelajaran kami!
+    </p>
+  </div>
+<script>
+  async function checkInternetConnection() {
+    try {
+      // Ping file kecil yang pasti online
+      const response = await fetch("https://www.google.com/favicon.ico", { method: "HEAD", mode: "no-cors" });
+      return true;
+    } catch (error) {
+      return false;
+    }
+  }
+
+  async function updateConnectionStatus() {
+    const online = navigator.onLine;
+    const trulyOnline = online && await checkInternetConnection();
+
+    document.body.classList.toggle("offline", !trulyOnline);
+  }
+
+  window.addEventListener("online", updateConnectionStatus);
+  window.addEventListener("offline", updateConnectionStatus);
+  setInterval(updateConnectionStatus, 3000); // Cek ulang tiap 3 detik
+
+  updateConnectionStatus(); // Initial check
+</script>
+</body>
+</html>
