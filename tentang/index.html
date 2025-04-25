@@ -12,50 +12,44 @@
       padding-top: 60px;
       user-select: none;
     }
-
+    
     .navbar {
       display: flex;
       align-items: center;
       background-color: #111111;
-      padding: 1.5rem;
+      padding: 1rem;
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
-      z-index: 1000; /* Memastikan navbar tetap di atas */
+      z-index: 1000;
     }
 
     .back-icon {
       position: absolute;
       left: 1rem;
       font-size: 1.2rem;
-      cursor: pointer;
       color: #fff;
     }
 
     .nav-title {
       margin: 0 auto;
-      font-size: 1rem;
+      font-size: 1.5rem;
       font-weight: bold;
       color: #fff;
       text-transform: uppercase;
     }
-
-    /* Deskripsi Styling */
     .description {
-      padding: 20px;
+      padding: 1rem;
       font-size: 1rem;
       color: #444;
       line-height: 1.6;
     }
-
-    /* Styling untuk bold title dalam deskripsi */
     .bold-title {
       font-weight: bold;
       color: #333;
     }
-    
-    #offline-notice {
+#offline-notice {
     position: fixed;
     top: 0;
     left: 0;
@@ -86,15 +80,15 @@
   </style>
 </head>
 <body>
-<div id="offline-notice">Jaringan tidak tersedia</div>
+ <div id="offline-notice">Jaringan tidak tersedia</div>
   <nav class="navbar">
-    <div class="back-icon">
+    <div class="back-icon" onclick="goBack()">
       <i class="fas fa-arrow-left"></i>
     </div>
-    <div class="nav-title">Tentang kami</div>
+    <div class="nav-title">Tentang Kami</div>
   </nav>
 
-   <div class="description">
+  <div class="description">
     <p>
       <span class="bold-title">Plixnime</span> adalah sebuah aplikasi streaming anime yang dikembangkan oleh <span class="bold-title">PlixTeams</span>, sebuah tim individu yang memiliki tujuan untuk belajar dan mengasah keterampilan dalam pengembangan perangkat lunak dan aplikasi berbasis web. Aplikasi ini didesain untuk memberikan kemudahan akses bagi pecinta anime untuk menonton berbagai anime tanpa perlu membuat akun atau memberikan data pribadi mereka. 
       <br><br>
@@ -107,29 +101,13 @@
       Kami berterima kasih atas setiap dukungan dan masukan yang kami terima, dan kami berharap dapat terus mengembangkan <span class="bold-title">Plixnime</span> menjadi aplikasi yang lebih baik untuk semua penggunanya. Terima kasih telah menggunakan aplikasi ini dan mendukung perjalanan pembelajaran kami!
     </p>
   </div>
-<script>
-  async function checkInternetConnection() {
-    try {
-      // Ping file kecil yang pasti online
-      const response = await fetch("https://www.google.com/favicon.ico", { method: "HEAD", mode: "no-cors" });
-      return true;
-    } catch (error) {
-      return false;
+
+  <script>
+    function goBack() {
+      window.history.back();
     }
-  }
+  </script>
+  <script>async function checkInternetConnection(){try{return await fetch("https://www.google.com/favicon.ico",{method:"HEAD",mode:"no-cors"}),!0}catch(e){return!1}}async function updateConnectionStatus(){const e=navigator.onLine,t=e&&await checkInternetConnection();document.body.classList.toggle("offline",!t)}window.addEventListener("online",updateConnectionStatus),window.addEventListener("offline",updateConnectionStatus),setInterval(updateConnectionStatus,3e3);updateConnectionStatus();</script>
 
-  async function updateConnectionStatus() {
-    const online = navigator.onLine;
-    const trulyOnline = online && await checkInternetConnection();
-
-    document.body.classList.toggle("offline", !trulyOnline);
-  }
-
-  window.addEventListener("online", updateConnectionStatus);
-  window.addEventListener("offline", updateConnectionStatus);
-  setInterval(updateConnectionStatus, 3000); // Cek ulang tiap 3 detik
-
-  updateConnectionStatus(); // Initial check
-</script>
 </body>
 </html>
