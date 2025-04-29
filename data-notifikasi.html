@@ -87,15 +87,10 @@
 
     .notif-container {
         height: 100vh;
-        overflow-y: auto;
+        overflow: hidden;
         padding: 10px;
         box-sizing: border-box;
-        scrollbar-width: none;
-        -ms-overflow-style: none;
-    }
-
-    .notif-container::-webkit-scrollbar {
-        display: none;
+        position: relative;
     }
 
     .notif-card {
@@ -130,12 +125,11 @@
         color: #bbb;
     }
 
-    /* Scroll Indicator */
     .scroll-indicator {
         position: absolute;
         top: 0;
         right: 0;
-        width: 4px;
+        width: 5px;
         height: 100%;
         background: #eee;
         overflow: hidden;
@@ -146,12 +140,65 @@
         height: 0%;
         background-color: #f29e38;
         transition: height 0.2s ease;
+        position: relative;
     }
 </style>
 
 <script>
     const container = document.getElementById('notifContainer');
     const indicator = document.getElementById('indicatorFill');
+    const scrollIndicator = document.querySelector('.scroll-indicator');
+
+    let isDragging = false;
+
+    function updateScroll(e) {
+        const wrapperRect = scrollIndicator.getBoundingClientRect();
+        const offsetY = e.clientY - wrapperRect.top;
+        const percent = offsetY / scrollIndicator.offsetHeight;
+        const scrollHeight = container.scrollHeight - container.clientHeight;
+        container.scrollTop = percent * scrollHeight;
+        indicator.style.height = `${percent * 100}%`;
+    }
+
+    scrollIndicator.addEventListener('mousedown', (e) => {
+        isDragging = true;
+        updateScroll(e);
+    });
+
+    document.addEventListener('mousemove', (e) => {
+        if (isDragging) {
+            updateScroll(e);
+        }
+    });
+
+    document.addEventListener('mouseup', () => {
+        isDragging = false;
+    });
+
+    scrollIndicator.addEventListener('touchstart', (e) => {
+        isDragging = true;
+        updateTouchScroll(e);
+    });
+
+    document.addEventListener('touchmove', (e) => {
+        if (isDragging) {
+            updateTouchScroll(e);
+        }
+    });
+
+    document.addEventListener('touchend', () => {
+        isDragging = false;
+    });
+
+    function updateTouchScroll(e) {
+        const wrapperRect = scrollIndicator.getBoundingClientRect();
+        const touchY = e.touches[0].clientY;
+        const offsetY = touchY - wrapperRect.top;
+        const percent = offsetY / scrollIndicator.offsetHeight;
+        const scrollHeight = container.scrollHeight - container.clientHeight;
+        container.scrollTop = percent * scrollHeight;
+        indicator.style.height = `${percent * 100}%`;
+    }
 
     container.addEventListener('scroll', () => {
         const scrollTop = container.scrollTop;
