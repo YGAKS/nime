@@ -18,7 +18,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px;
+  padding: 15px 10px;
   background-color: #F4F4F4;
   position: fixed;
   top: 0;
@@ -45,11 +45,25 @@
 .navbar .menu-icon {
   font-size: 20px;
   color: #f63;
+  background-color: #F4F4F4;
+ height: 30px;
+ width: 30px;
+ border-radius: 50%;
+ display: flex;
   height: 30px;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: color 0.3s;
+  transition: background-color 0.3s;
+}
+
+.menu-icon:active {
+ background-color: #bbb;
+ font-size: 20px;
+ height: 30px;
+ width: 30px;
+ border-radius: 50%;
+ display: flex;
 }
 
 @keyframes slideDown {
