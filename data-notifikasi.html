@@ -1,16 +1,11 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
 
-<div class="notif-card">
-    <div class="notif-card-header">
-        <h3 class="notif-title">beta apk relaes plixnimein by Yoga kusmara project</h3>
-    </div>
-    <div class="notif-card-body">
-        <p class="notif-description">Beta versi 1 apk plixnimein manga read yeah :v mengisi waktu kosong menghilangkan stress! project PlixTeam's 2023 - 2025 staff Yogaks, Vxploit, Kenzo and Pakrifki.</p>
-        <div class="notif-footer">
-            <span class="notif-date">29 April 2025</span>
-            <span class="notif-author">BY YGAKS</span>
-        </div>
-    </div>
+<div id="notif-container"></div>
+
+<div class="pagination">
+    <button onclick="prevPage()">Prev</button>
+    <span id="page-indicator">1</span>
+    <button onclick="nextPage()">Next</button>
 </div>
 
 <style>
@@ -22,6 +17,7 @@
         background-color: #ffffff;
         padding: 10px;
         font-family: 'Poppins', sans-serif;
+        margin-bottom: 10px;
     }
 
     .notif-card-header {
@@ -37,7 +33,7 @@
 
     .notif-card-body {
         font-size: 12px;
-        color: #555;
+        color: #666;
         line-height: 1.4;
         padding-top: 5px;
     }
@@ -51,11 +47,104 @@
         color: #bbb;
     }
 
-    .notif-date {
-        text-align: left;
+    .pagination {
+        margin-top: 15px;
+        display: flex;
+        justify-content: center;
+        gap: 10px;
     }
 
-    .notif-author {
-        text-align: right;
-    }
+    .pagination button {
+    padding: 8px 16px;
+    font-size: 13px;
+    font-weight: 500;
+    background-color: #f29e38;
+    color: #fff;
+    border: none;
+    border-radius: 999px;
+}
+
+#page-indicator {
+    font-weight: bold;
+    padding: 8px 16px;
+    border-radius: 999px;
+    background-color: #eee;
+    font-size: 13px;
+}
 </style>
+
+<script>
+    const notifs = [
+        {
+            title: "beta apk relaes plixnimein by ©PlixTams Present project",
+            description: "Beta versi 1 apk plixnimein manga read yeah :v mengisi waktu kosong menghilangkan stress! project PlixTeam's 2023 - 2025 staff Yogaks, Vxploit, Kenzo and Pakrifki.",
+            date: "29 April 2025",
+            author: "BY Ygaks"
+        },
+        {
+            title: "update fitur darkmode",
+            description: "Sekarang aplikasi mendukung dark mode! Bye mata perih.",
+            date: "30 April 2025",
+            author: "BY Kenzo"
+        },
+        {
+            title: "fix bug login",
+            description: "Masalah login akun sudah diperbaiki.",
+            date: "1 Mei 2025",
+            author: "BY Vxploit"
+        },
+        {
+            title: "pengumuman maintenance",
+            description: "Aplikasi akan maintenance tanggal 5 Mei.",
+            date: "2 Mei 2025",
+            author: "BY Pakrifki"
+        }
+    ];
+
+    const maxPerPage = 2;
+    let currentPage = 1;
+
+    function renderNotifs() {
+        const container = document.getElementById("notif-container");
+        container.innerHTML = "";
+
+        const start = (currentPage - 1) * maxPerPage;
+        const end = start + maxPerPage;
+        const currentNotifs = notifs.slice(start, end);
+
+        currentNotifs.forEach(n => {
+            container.innerHTML += `
+                <div class="notif-card">
+                    <div class="notif-card-header">
+                        <h3 class="notif-title">${n.title}</h3>
+                    </div>
+                    <div class="notif-card-body">
+                        <p class="notif-description">${n.description}</p>
+                        <div class="notif-footer">
+                            <span class="notif-date">${n.date}</span>
+                            <span class="notif-author">${n.author}</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+        });
+
+        document.getElementById("page-indicator").textContent = currentPage;
+    }
+
+    function nextPage() {
+        if (currentPage * maxPerPage < notifs.length) {
+            currentPage++;
+            renderNotifs();
+        }
+    }
+
+    function prevPage() {
+        if (currentPage > 1) {
+            currentPage--;
+            renderNotifs();
+        }
+    }
+
+    renderNotifs();
+</script>
