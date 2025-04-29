@@ -69,8 +69,7 @@
         background-color: #fff;
         padding: 12px;
         margin-bottom: 12px;
-        font-family: 'Poppins', sans-serif;  
-        box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+        font-family: 'Poppins', sans-serif;
     }
 
     .notif-card-header {
@@ -116,8 +115,21 @@
     }
 
     .pagination label {
-        padding: 8px 14px;
-        background-color: #f29e38;
-        color: #fff;
-    }
+    padding: 8px 14px;
+    background-color: #f29e38;
+    color: #fff;
+    border-radius: 999px;
+    transition: background-color 0.3s ease;
+    font-weight: normal;
+}
+
+.pagination label:hover {
+    background-color: #d6842c;
+}
+
+#page1:checked ~ .pagination label[for="page1"],
+#page2:checked ~ .pagination label[for="page2"] {
+    background-color: #333;
+    font-weight: bold;
+}
 </style>
