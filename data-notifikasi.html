@@ -1,5 +1,13 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
+<div class="notif-section">
+    <div class="notif-section-header">
+        <h2 class="notif-section-title">Update Utama</h2>
+        <i class="fas fa-bolt notif-icon"></i>
+    </div>
+    <div class="notif-container">
+        <!-- Notifikasi 1 -->
         <div class="notif-card">
             <div class="notif-card-header">
                 <h3 class="notif-title">Perbikan dan pembaruan animasi antarmuka</h3>
@@ -12,94 +20,129 @@
                 </div>
             </div>
         </div>
+        <!-- Notifikasi 2 -->
         <div class="notif-card">
             <div class="notif-card-header">
-                <h3 class="notif-title">Perbikan antarmuka ui/ux and masalah kecil</h3>
+                <h3 class="notif-title">Perbikan antarmuka ui/ux dan masalah kecil</h3>
             </div>
             <div class="notif-card-body">
-                <p class="notif-description">klik responsif dan tema warna apklikasi di perbarui ke lebih matang dan lebih baik</p>
+                <p class="notif-description">klik responsif dan tema warna diperbarui lebih matang</p>
                 <div class="notif-footer">
                     <span class="notif-date">29 April 2025</span>
                     <span class="notif-author">BY Ygaks</span>
                 </div>
             </div>
         </div>
+    </div>
+</div>
+
+<div class="notif-section">
+    <div class="notif-section-header">
+        <h2 class="notif-section-title">Update Manga</h2>
+        <i class="fas fa-book-open notif-icon"></i>
+    </div>
+    <div class="notif-container">
+        <!-- Notifikasi Manga -->
         <div class="notif-card">
             <div class="notif-card-header">
-                <h3 class="notif-title">beta apk release plixnimein by ©PlixTeams</h3>
+                <h3 class="notif-title">Beta apk release plixnimein by ©PlixTeams</h3>
             </div>
             <div class="notif-card-body">
-                <p class="notif-description">Beta versi 1 apk plixnimein manga read yeah :v mengisi waktu kosong menghilangkan stress! project PlixTeam's 2023 - 2025 staff Yogaks, Vxploit, Kenzo and Pakrifki.</p>
+                <p class="notif-description">Beta versi 1 apk plixnimein manga read yeah :v menghilangkan stress!</p>
                 <div class="notif-footer">
                     <span class="notif-date">29 April 2025</span>
                     <span class="notif-author">BY Ygaks</span>
                 </div>
             </div>
         </div>
+    </div>
+</div>
+
+<div class="notif-section">
+    <div class="notif-section-header">
+        <h2 class="notif-section-title">Update Acara</h2>
+        <i class="fas fa-calendar-check notif-icon"></i>
+    </div>
+    <div class="notif-container">
+        <!-- Contoh lorem -->
         <div class="notif-card">
             <div class="notif-card-header">
                 <h3 class="notif-title">Lorem Ipsum Dolor Sit Amet</h3>
             </div>
             <div class="notif-card-body">
-                <p class="notif-description">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent feugiat, turpis sed ultrices fringilla, risus nulla tincidunt risus, ac facilisis arcu magna vel elit.
-                </p>
+                <p class="notif-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                 <div class="notif-footer">
                     <span class="notif-date">29 April 2025</span>
                     <span class="notif-author">BY IpsumBot</span>
                 </div>
             </div>
         </div>
-        <div class="notif-card">
-            <div class="notif-card-header">
-                <h3 class="notif-title">Lorem Ipsum Dolor Sit Amet</h3>
-            </div>
-            <div class="notif-card-body">
-                <p class="notif-description">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent feugiat, turpis sed ultrices fringilla, risus nulla tincidunt risus, ac facilisis arcu magna vel elit.
-                </p>
-                <div class="notif-footer">
-                    <span class="notif-date">29 April 2025</span>
-                    <span class="notif-author">BY IpsumBot</span>
-                </div>
-            </div>
-        </div>
+    </div>
+</div>
 
 <style>
+.notif-section {
+    margin-bottom: 10px;
+}
 
-    .notif-container {
-    }
+.notif-section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #f29e38;
+}
 
-    .notif-card {
-        background-color: #fff;
-        padding: 10px;
-        margin-bottom: 10px;
-        font-family: 'Poppins', sans-serif;
-    }
+.notif-section-title {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+}
 
-    .notif-card-header {
-        border-bottom: 1px solid #eee;
-    }
+.notif-icon {
+    color: #f29e38;
+    font-size: 16px;
+}
 
-    .notif-title {
-        font-size: 15px;
-        font-weight: bold;
-        color: #f29e38;
-        padding-bottom: 5px;
-    }
+.notif-container {
+    display: flex;
+    overflow-x: auto;
+    gap: 5px;
+    padding-bottom: 5px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scroll-padding-left: 10px;
+}
 
-    .notif-card-body {
-        font-size: 12px;
-        color: #666;
-        line-height: 1.4;
-        padding-top: 5px;
-    }
+.notif-card {
+    background-color: #fff;
+    padding: 10px;
+    flex: 0 0 auto;
+    width: 300px;
+    scroll-snap-align: center;
+}
 
-    .notif-footer {
-        display: flex;
-        justify-content: space-between;
-        margin-top: 5px;
-        font-size: 12px;
-        color: #bbb;
-    }
-    </style>
+.notif-card-header {
+    border-bottom: 1px solid #eee;
+}
+
+.notif-title {
+    font-size: 15px;
+    font-weight: bold;
+    color: #f29e38;
+}
+
+.notif-card-body {
+    font-size: 12px;
+    color: #666;
+    line-height: 1.4;
+    padding-top: 5px;
+}
+
+.notif-footer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5px;
+    font-size: 12px;
+    color: #bbb;
+}
+</style>
