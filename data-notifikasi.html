@@ -1,9 +1,11 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-<br>
 <div class="line-container">
-    <div class="line"></div>
-    <div class="arrow"><i class="fas fa-chevron-right"></i></div>
+    <div class="title">pembaruan utama halaman</div>
+    <div class="line-wrapper">
+      <div class="line"></div>
+      <div class="arrow"><i class="fas fa-chevron-right"></i></div>
+    </div>
   </div>
 <div class="notif-section">
     <div class="notif-container">
@@ -33,8 +35,11 @@
     </div>
 </div>
 <div class="line-container">
-    <div class="line"></div>
-    <div class="arrow"><i class="fas fa-chevron-right"></i></div>
+    <div class="title">pembaruan konten manga</div>
+    <div class="line-wrapper">
+      <div class="line"></div>
+      <div class="arrow"><i class="fas fa-chevron-right"></i></div>
+    </div>
   </div>
 <div class="notif-section">
     <div class="notif-container">
@@ -64,8 +69,11 @@
     </div>
 </div>
 <div class="line-container">
-    <div class="line"></div>
-    <div class="arrow"><i class="fas fa-chevron-right"></i></div>
+    <div class="title">pembaruan event plixnimein</div>
+    <div class="line-wrapper">
+      <div class="line"></div>
+      <div class="arrow"><i class="fas fa-chevron-right"></i></div>
+    </div>
   </div>
 <div class="notif-section">
     <div class="notif-container">
@@ -141,11 +149,24 @@
     color: #bbb;
 }
 
-    .line-container {
+  .line-container {
       position: relative;
-      padding: 0;
-      margin: 10px 0;
       width: 100%;
+      margin: 10px 0;
+      display: flex;
+      align-items: center;
+    }
+
+    .title {
+      font-size: 16px;
+      margin-right: 10px;
+      color: #bbb;
+      white-space: nowrap;
+    }
+
+    .line-wrapper {
+      position: relative;
+      flex: 1;
     }
 
     .line {
@@ -160,4 +181,5 @@
       top: 50%;
       transform: translateY(-50%);
       color: #bbb;
+    }
 </style>
