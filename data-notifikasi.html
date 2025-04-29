@@ -2,10 +2,13 @@
 
 <input type="radio" name="page" id="page1" checked hidden>
 <input type="radio" name="page" id="page2" hidden>
+<input type="radio" name="page" id="page3" hidden>
+<input type="radio" name="page" id="page4" hidden>
+<input type="radio" name="page" id="page5" hidden>
 
 <div class="notif-container">
     <div class="notif-page page1">
-     <div class="notif-card">
+        <div class="notif-card">
             <div class="notif-card-header">
                 <h3 class="notif-title">Perbikan dan pembaruan animasi antarmuka</h3>
             </div>
@@ -17,7 +20,7 @@
                 </div>
             </div>
         </div>
-     <div class="notif-card">
+        <div class="notif-card">
             <div class="notif-card-header">
                 <h3 class="notif-title">Perbikan antarmuka ui/ux and masalah kecil</h3>
             </div>
@@ -30,20 +33,65 @@
             </div>
         </div>
         <div class="notif-card">
-            <div class="notif-card-header">  
-        <h3 class="notif-title">beta apk relaes plixnimein by ©PlixTeams Present project</h3>  
-    </div>  
-    <div class="notif-card-body">  
-        <p class="notif-description">Beta versi 1 apk plixnimein manga read yeah :v mengisi waktu kosong menghilangkan stress! project PlixTeam's 2023 - 2025 staff Yogaks, Vxploit, Kenzo and Pakrifki.</p>  
-        <div class="notif-footer">  
-            <span class="notif-date">29 April 2025</span>  
-            <span class="notif-author">BY Ygaks</span>  
-            </div>  
-           </div> 
+            <div class="notif-card-header">
+                <h3 class="notif-title">beta apk release plixnimein by ©PlixTeams</h3>
+            </div>
+            <div class="notif-card-body">
+                <p class="notif-description">Beta versi 1 apk plixnimein manga read yeah :v mengisi waktu kosong menghilangkan stress! project PlixTeam's 2023 - 2025 staff Yogaks, Vxploit, Kenzo and Pakrifki.</p>
+                <div class="notif-footer">
+                    <span class="notif-date">29 April 2025</span>
+                    <span class="notif-author">BY Ygaks</span>
+                </div>
+            </div>
         </div>
     </div>
 
+    <!-- Page 2 - already like desired -->
     <div class="notif-page page2">
+        <div class="notif-card">
+            <div class="notif-card-header">
+                <h3 class="notif-title">Notifikasi Not found</h3>
+            </div>
+            <div class="notif-card-body">
+                <p class="notif-description">cuma buat simpanan nanti kalo dah banyak notifkaai juga di ganti :v.</p>
+                <div class="notif-footer">
+                    <span class="notif-date">2 Mei 2025</span>
+                    <span class="notif-author">BY Sistem</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pages 3-5 identical to Page 2 -->
+    <div class="notif-page page3">
+        <div class="notif-card">
+            <div class="notif-card-header">
+                <h3 class="notif-title">Notifikasi Not found</h3>
+            </div>
+            <div class="notif-card-body">
+                <p class="notif-description">cuma buat simpanan nanti kalo dah banyak notifkaai juga di ganti :v.</p>
+                <div class="notif-footer">
+                    <span class="notif-date">2 Mei 2025</span>
+                    <span class="notif-author">BY Sistem</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="notif-page page4">
+        <div class="notif-card">
+            <div class="notif-card-header">
+                <h3 class="notif-title">Notifikasi Not found</h3>
+            </div>
+            <div class="notif-card-body">
+                <p class="notif-description">cuma buat simpanan nanti kalo dah banyak notifkaai juga di ganti :v.</p>
+                <div class="notif-footer">
+                    <span class="notif-date">2 Mei 2025</span>
+                    <span class="notif-author">BY Sistem</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="notif-page page5">
         <div class="notif-card">
             <div class="notif-card-header">
                 <h3 class="notif-title">Notifikasi Not found</h3>
@@ -59,9 +107,13 @@
     </div>
 </div>
 
+<!-- Pagination updated -->
 <div class="pagination">
     <label for="page1">1</label>
     <label for="page2">2</label>
+    <label for="page3">3</label>
+    <label for="page4">4</label>
+    <label for="page5">5</label>
 </div>
 
 <style>
@@ -103,31 +155,35 @@
     }
 
     #page1:checked ~ .notif-container .page1,
-    #page2:checked ~ .notif-container .page2 {
+    #page2:checked ~ .notif-container .page2,
+    #page3:checked ~ .notif-container .page3,
+    #page4:checked ~ .notif-container .page4,
+    #page5:checked ~ .notif-container .page5 {
         display: block;
     }
 
-   .pagination {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-top: 25px;
-   }
+    .pagination {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin-top: 25px;
+    }
 
     .pagination label {
-    padding: 8px 14px;
-    background-color: #bbb;
-    color: #fff;
-    flex: 1;
-    max-width: 50px;
-    text-align: center;
-    transition: background-color 0.3s ease;
-    font-weight: normal;
-}
+        padding: 10px 20px;
+        background-color: #bbb;
+        color: #fff;
+        text-align: center;
+        transition: background-color 0.3s ease;
+        font-weight: normal;
+    }
 
-#page1:checked ~ .pagination label[for="page1"],
-#page2:checked ~ .pagination label[for="page2"] {
-    background-color: #f29e38;
-    font-weight: bold;
-}
+    #page1:checked ~ .pagination label[for="page1"],
+    #page2:checked ~ .pagination label[for="page2"],
+    #page3:checked ~ .pagination label[for="page3"],
+    #page4:checked ~ .pagination label[for="page4"],
+    #page5:checked ~ .pagination label[for="page5"] {
+        background-color: #f29e38;
+        font-weight: bold;
+    }
 </style>
