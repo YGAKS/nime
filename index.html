@@ -49,6 +49,16 @@
     opacity: 1;
   }
 }
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
     .navbar-title span {
       display: block;
       position: absolute;
@@ -110,6 +120,7 @@
       justify-content: space-around;
       padding: 10px 0;
       z-index: 100;
+      animation: slideUp 0.5s ease-out forwards;
     }
     .nav-item {
       display: flex;
@@ -257,10 +268,10 @@
   <div class="navbar-title" id="navbarTitle">
     <span>PLIXNIMEIN</span>
   </div>
-  <div class="navbar-icons">
-  <a href="" class="icon" onclick="location.reload();">
+   <div class="navbar-icons">
+  <div class="icon" onclick="location.reload();">
     <i class="fas fa-circle-play"></i>
-  </a>
+  </div>
 </div>
 </nav>
 <div class="content-wrapper" id="wrapper">
