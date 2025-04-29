@@ -1,46 +1,61 @@
+<link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
 <div class="notif-card">
     <div class="notif-card-header">
         <h3 class="notif-title">beta apk relaes plixnimein by Yoga kusmara project</h3>
-        <span class="notif-date">29 April 2025</span>
     </div>
     <div class="notif-card-body">
         <p class="notif-description">Beta versi 1 apk plixnimein manga read yeah :v mengisi waktu kosong menghilangkan stress! project PlixTeam's 2023 - 2025 staff Yogaks, Vxploit, Kenzo and Pakrifki.</p>
+        <div class="notif-footer">
+            <span class="notif-date">29 April 2025</span>
+            <span class="notif-author">BY YGAKS</span>
+        </div>
     </div>
 </div>
 
 <style>
+    body {
+        font-family: 'Poppins', sans-serif;
+    }
+
     .notif-card {
         background-color: #ffffff;
         padding: 10px;
+        font-family: 'Poppins', sans-serif;
     }
 
     .notif-card-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
         border-bottom: 1px solid #ddd;
     }
 
     .notif-title {
-        font-size: 16px;
-        font-weight: 500;
+        font-size: 15px;
+        font-weight: bold;
         color: #f29e38;
         padding-bottom: 5px;
-    }
-
-    .notif-date {
-        font-size: 12px;
-        color: #bbb;
     }
 
     .notif-card-body {
         font-size: 12px;
         color: #555;
-        line-height: 1;
+        line-height: 1.4;
         padding-top: 5px;
     }
 
-    .notif-description {
-        /* optional: add style here */
+    .notif-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 8px;
+        font-size: 12px;
+        color: #bbb;
+    }
+
+    .notif-date {
+        text-align: left;
+    }
+
+    .notif-author {
+        text-align: right;
     }
 </style>
