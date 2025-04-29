@@ -1,7 +1,5 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
-
-<div class="notif-wrapper">
-    <div class="notif-container" id="notifContainer">
+<div class="notif-container">
         <div class="notif-card">
             <div class="notif-card-header">
                 <h3 class="notif-title">Perbikan dan pembaruan animasi antarmuka</h3>
@@ -66,25 +64,14 @@
                 </div>
             </div>
         </div>
-    </div>
-    <div class="scroll-indicator">
-        <div class="indicator-fill" id="indicatorFill"></div>
-    </div>
 </div>
 
 <style>
     .notif-wrapper {
         position: relative;
-        max-height: 100vh;
-        overflow: hidden;
     }
 
     .notif-container {
-        height: 100vh;
-        overflow: hidden;
-        padding: 5px;
-        box-sizing: border-box;
-        position: relative;
     }
 
     .notif-card {
@@ -119,21 +106,4 @@
         font-size: 12px;
         color: #bbb;
     }
-
-    .scroll-indicator {
-        position: absolute;
-        top: 0;
-        right: 0;
-        width: 5px;
-        height: 100%;
-        background: #eee;
-        overflow: hidden;
-    }
-
-    .indicator-fill {
-        width: 100%;
-        height: 0%;
-        background-color: #f29e38;
-        transition: height 0.2s ease;
-        position: relative;
-    }
+    </style>
