@@ -132,33 +132,6 @@
       margin-top: 5px;
       font-size: 10px;
     }
-    
-     .pull-area {
-      width: 100%;
-      height: 0;
-      background: transparent;
-      display: flex;
-      align-items: flex-end;
-      justify-content: center;
-      overflow: visible;
-      transition: height 0.2s ease;
-      pointer-events: none;
-    }
-    .icon-wrapper {
-      transform: scale(0);
-      transition: transform 0.2s ease;
-      color: #fff;
-      background-color: #f29e38;
-      font-size: 20px;
-      height: 35px;
-      width: 35px;
-      border-radius: 50%;
-      z-index: 100;
-      margin-bottom: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
     #offline-notice {
       position: fixed;
       top: 0;
@@ -194,6 +167,85 @@
       from { transform: rotate(0deg);}
       to { transform: rotate(360deg);}
     }
+    
+    .notif-container {
+    padding: 0;
+    display: flex;
+    overflow-x: auto;
+    gap: 5px;
+    padding-bottom: 5px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scroll-padding-left: 5px;
+}
+
+.notif-card {
+    background-color: #fff;
+    padding: 10px;
+    flex: 0 0 auto;
+    width: 300px;
+    scroll-snap-align: center;
+    font-family: 'Poppins', sans-serif;
+}
+
+.notif-card-header {
+    border-bottom: 1px solid #eee;
+}
+
+.notif-title {
+    font-size: 14px;
+    font-weight: bold;
+    color: #f29e38;
+}
+
+.notif-card-body {
+    font-size: 12px;
+    color: #666;
+    line-height: 1.4;
+    padding-top: 5px;
+}
+
+.notif-footer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5px;
+    font-size: 12px;
+    color: #bbb;
+}
+
+  .line-container {
+      position: relative;
+      width: 100%;
+      margin: 10px 0;
+      display: flex;
+      align-items: center;
+    }
+
+    .title {
+      font-size: 16px;
+      margin-right: 10px;
+      color: #bbb;
+      white-space: nowrap;
+    }
+
+    .line-wrapper {
+      position: relative;
+      flex: 1;
+    }
+
+    .line {
+      height: 2px;
+      background-color: #bbb;
+      width: 100%;
+    }
+
+    .arrow {
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #bbb;
+    }
   </style>
 </head>
 <body>
@@ -206,15 +258,12 @@
     <span>PLIXNIMEIN</span>
   </div>
   <div class="navbar-icons">
-    <a href="/tentang/tambah.html" class="icon"><i class="fas fa-circle-plus"></i></a>
-  </div>
+  <a href="" class="icon" onclick="location.reload();">
+    <i class="fas fa-circle-play"></i>
+  </a>
+</div>
 </nav>
 <div class="content-wrapper" id="wrapper">
- <div class="pull-area" id="pullArea">
-    <div class="icon-wrapper" id="iconWrapper">
-      <i class="fas fa-redo" id="refreshIcon"></i>
-    </div>
- </div>
   <div id="content">
   
   </div>
@@ -240,15 +289,6 @@
 </div>
 
 <script>let isAnimating=!1,currentIndex=0,menuOrder=["PLIXNIMEIN","EKSPLORASI","PEMBARUAN","NOTIFIKASI"];document.addEventListener("DOMContentLoaded",function(){loadContent("PLIXNIMEIN","none")});function setActive(e,t){if(isAnimating)return;isAnimating=!0;const n=menuOrder.indexOf(t),o=n>currentIndex?"left":"right";currentIndex=n,document.querySelectorAll(".nav-item").forEach(t=>{t.classList.remove("active"),t.style.pointerEvents="auto"}),e.classList.add("active"),e.style.pointerEvents="none";const i=document.getElementById("navbarTitle"),r=i.querySelector("span"),l=document.getElementById("content");r&&(r.style.top="100%",r.style.opacity="0",setTimeout(()=>{i.removeChild(r);const e=document.createElement("span");e.textContent=t,e.style.top="-100%",e.style.opacity="0",i.appendChild(e),void e.offsetWidth,setTimeout(()=>{e.style.top="0",e.style.opacity="1"},10)},100)),l.style.transition="transform 0.3s ease, opacity 0.3s ease",l.style.transform="left"===o?"translateX(-100%)":"translateX(100%)",l.style.opacity="0",setTimeout(()=>{loadContent(t,o)},100)}function loadContent(e,t){const n=document.getElementById("content");let o="";"PLIXNIMEIN"===e?o="https://plixgo.my.id/data-home.html":"EKSPLORASI"===e?o="https://plixgo.my.id/data-eksplorasi.html":"PEMBARUAN"===e?o="https://plixgo.my.id/data-pembaruan.html":"NOTIFIKASI"===e&&(o="https://plixgo.my.id/data-notifikasi.html"),o&&fetch(o+"?v="+Date.now()).then(e=>{if(!e.ok)throw new Error("File tidak ditemukan.");return e.text()}).then(o=>{n.innerHTML=o,"none"!==t?(n.style.transition="none",n.style.transform="left"===t?"translateX(100%)":"translateX(-100%)",void n.offsetWidth,setTimeout(()=>{n.style.transition="transform 0.3s ease, opacity 0.3s ease",n.style.transform="translateX(0)",n.style.opacity="1",setTimeout(()=>{isAnimating=!1},100)},20)):isAnimating=!1}).catch(e=>{n.innerHTML='<div class="card">Gagal memuat konten.</div>',console.error(e),isAnimating=!1})}</script>
-<script>
-let startY=0,currentY=0,isReadyToRefresh=false,wrapper=document.getElementById("wrapper"),pullArea=document.getElementById("pullArea"),iconWrapper=document.getElementById("iconWrapper"),refreshIcon=document.getElementById("refreshIcon");
-window.addEventListener("touchstart",function(e){if(window.scrollY===0){startY=e.touches[0].pageY}});
-window.addEventListener("touchmove",function(e){if(window.scrollY===0){currentY=e.touches[0].pageY;if(currentY>startY){let distance=(currentY-startY)/1,pullDistance=Math.min(distance,50);
-pullArea.style.height=`${pullDistance}px`;wrapper.style.transform=`translateY(${pullDistance}px)`;let scale=Math.min(pullDistance/50,1);
-iconWrapper.style.transform=`scale(${scale})`;
-if(pullDistance>40){isReadyToRefresh=true;refreshIcon.classList.add("rotate")}else{isReadyToRefresh=false;refreshIcon.classList.remove("rotate")}}}});
-window.addEventListener("touchend",function(){if(isReadyToRefresh){setTimeout(()=>{location.reload()},500)}else{pullArea.style.height=`0px`;wrapper.style.transform=`translateY(0)`;iconWrapper.style.transform=`scale(0)`;refreshIcon.classList.remove("rotate")}});
-</script>
 <script>function goBack(){window.history.back()}</script><script>async function checkInternetConnection(){try{return await fetch("https://www.google.com/favicon.ico",{method:"HEAD",mode:"no-cors"}),!0}catch(e){return!1}}async function updateConnectionStatus(){const isOnline=navigator.onLine,confirmedOnline=isOnline&&await checkInternetConnection();document.body.classList.toggle("offline",!confirmedOnline)}window.addEventListener("online",updateConnectionStatus);window.addEventListener("offline",updateConnectionStatus);setInterval(updateConnectionStatus,3e3);updateConnectionStatus()</script>
 </body>
 </html>
