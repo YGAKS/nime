@@ -1,477 +1,307 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-  <title>PLIXNIME</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" crossorigin="anonymous" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dynamic Navbar Title with Slide Animation</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
-    body {
+    * {
       margin: 0;
-      background: #111111;
+      padding: 0;
+      box-sizing: border-box;
       user-select: none;
-      font-family: sans-serif;
     }
-
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+    }
     .navbar {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 15px 10px;
-      position: fixed;
+      padding: 15px;
+      position: sticky;
       top: 0;
-      width: 100%;
-      z-index: 999;
-      box-sizing: border-box;
+      z-index: 1000;
+      overflow: hidden;
+      height: 60px;
+      background: #f4f4f4;
     }
-    
-    .navbar .title {
-      font-size: 20px;
+    .navbar-title {
+      font-size: 18px;
+      color: #333;
       font-weight: bold;
-      color: #fff;
-      text-transform: uppercase;
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
+      text-align: center;
+      flex-grow: 1;
+      position: relative;
+      height: 25px;
+      overflow: hidden;
     }
-
-    .navbar .menu-icon {
-      font-size: 22px;
-      color: #FFCC80;
-      height: 30px;
+    .navbar-title span {
+      display: block;
+      position: absolute;
+      width: 100%;
+      text-align: center;
+      top: 0;
+      left: 0;
+      opacity: 1;
+      transition: all 0.5s ease;
+    }
+    .navbar-icons {
       display: flex;
       align-items: center;
-      justify-content: center;
-      transition: color 0.3s;
     }
-
-.bottom-navbar {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  background: #131313;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  padding: 20px 0;
-  z-index: 999;
-  gap: 50px;
-  overflow: hidden;
-}
-
-.bottom-navbar::before {
-  content: '';
-  position: absolute;
-  top: -20px;
-  left: 0;
-  width: 100%;
-  height: 20px;
-  background: linear-gradient(to bottom, rgba(17, 17, 17, 0.5) 0%, #131313 100%);
-  pointer-events: none;
-  z-index: -1;
-}
-
+    .navbar-icons .icon {
+      color: #f29e38;
+      font-size: 20px;
+      cursor: none;
+    }
+    .content-wrapper {
+      padding: 10px;
+      min-height: calc(100vh - 120px);
+      position: relative;
+      overflow: hidden;
+    }
+    #content {
+      position: relative;
+    }
+    .card {
+      background: white;
+      color: #BBB;
+      border-radius: 8px;
+      padding: 10px;
+      margin-bottom: 10px;
+      font-size: 14px;
+    }
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background-color: #fff;
+      display: flex;
+      justify-content: space-around;
+      padding: 10px 0;
+      z-index: 100;
+    }
     .nav-item {
       display: flex;
       flex-direction: column;
-      background: #FFCC80;
-      color: #131313;
-      padding: 2px;
-      text-decoration: none;
-      font-size: 22px;
-      transition: all 0.5s ease;
-      border-radius: 20px;
-    }
-
-    .nav-item.active {
-      background: #131313;
-      color: #FFCC80;
-      scale: 1.2;
-    }
-
-     #content {
-      box-sizing: border-box;
-      padding: 10px;
-      overflow-y: auto;
-      position: fixed;
-      top: 50px;
-      bottom: 50px;
-      left: 0;
-      right: 0;
-    }
-    
-    .card-hero {
-      position: relative;
-      width: 100%;
-      max-width: 1200;
-      background-color: #FFCC80;
-      padding: 10px;
-      box-sizing: border-box;
-      margin: 10px 0;
-      display: flex;
-      justify-content: center;
-      text-align: center;
-    }
-    .card-hero .icon-pin {
-      position: absolute;
-      top: 10px;
-      left: 10px;
-      font-size: 15px;
-      color: #333;
-    }
-    .card-hero h3 {
-      margin: 0;
-      font-size: 15px;
-      font-weight: bold;
-    }
-    .card-hero p {
-      margin-top: 8px;
-      font-size: 12px;
-      color: #333;
-    }
-    
-    .title-section {
-      display: flex;
       align-items: center;
-      color: #fff;
-      padding-bottom: 5px;
-      margin-top: 10px;
+      color: #bbb;
+      padding-top: 5px;
+      font-size: 12px;
+      transition: color 0.3s ease, transform 0.3s ease;
+      pointer-events: auto;
     }
-    .title-section h2 {
-      margin: 0;
-      font-size: 15px;
-      font-weight: bold;
+    .nav-item.active {
+      color: #f29e38;
+      pointer-events: none;
     }
-    .title-line {
-      flex-grow: 1;
-      height: 1px;
-      background-color: #ccc;
-      margin: 0 5px;
+    .nav-icon {
+      font-size: 22px;
+      transition: transform 0.3s ease;
     }
-    .title-section i {
-     font-size: 15px;
+    .nav-item span {
+      margin-top: 5px;
+      font-size: 10px;
     }
-.home-anime-list {
+    
+     .pull-area {
+      width: 100%;
+      height: 0;
+      background: transparent;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      overflow: visible;
+      transition: height 0.2s ease;
+      pointer-events: none;
+    }
+.icon-wrapper {
+  transform: scale(0);
+  transition: transform 0.2s ease;
+  color: #333;
+  background-color: #fff;
+  font-size: 20px;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  z-index: 100;
+  margin-bottom: 10px;
   display: flex;
-  overflow-x: auto;
-  gap: 5px;
-}
-
-.home-anime-item {
-  flex-shrink: 0;
-  width: 110px;
-}
-
-.home-anime-item img {
-  width: 100%;
-  height: 150px;
-  object-fit: cover;
-  background: linear-gradient(120deg, rgba(204, 204, 204, 0.6) 25%, rgba(255, 255, 255, 0.6) 50%, rgba(204, 204, 204, 0.6) 75%);
-  background-size: 200% 100%;
-  animation: loading-skeleton 1.5s infinite linear;
-}
-
-.home-anime-title {
-  font-size: 10px;
-  color: #ddd;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-@keyframes loading-skeleton {
-  0% {
-    background-position: -200px 0;
-  }
-  100% {
-    background-position: 200px 0;
-  }
-}
-.control-bar {
-  display: flex;
-  flex-wrap: wrap;
-  flex: 1;
-  gap: 8px;
-  justify-content: flex-start;
   align-items: center;
-  padding: 10px;
-  background-color: #FFCC80;
-  margin: 10px 0;
-}
-
-.control-bar input {
-  flex: 1;
-  min: 100%;
-  padding: 10px;
-  border: none;
-  font-size: 12px;
-  outline: none;
-}
-
-.control-bar select {
- padding: 9px;
-}
-
-.control-bar button {
- padding: 10px;
-}
-
-.control-bar select,
-.control-bar button {
-  flex: 1;
-  background-color: #2c2c2c;
-  color: #fff;
-  border: none;
-  font-size: 12px;
-  outline: none;
-}
-.anime-list {
-  display: flex;
-  flex-wrap: wrap;
   justify-content: center;
-  gap: 5px;
 }
-
-.anime-item {
-  width: 110px;
-  color: #fff;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.anime-item img {
-  width: 110px;
-  height: 150px;
-  object-fit: cover;
-  background: linear-gradient(120deg, rgba(204, 204, 204, 0.6) 25%, rgba(255, 255, 255, 0.6) 50%, rgba(204, 204, 204, 0.6) 75%);
-  background-size: 200% 100%;
-  animation: loading-skeleton 1.5s infinite linear;
-}
-
-.anime-title {
-  font-size: 10px;
-  color: #ddd;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  margin-top: 5px;
-  width: 100%;
-}
-
-.anime-meta {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  font-size: 10px;
-  margin-top: 2px;
-  padding: 0 2px;
-}
-
-.anime-date {
-  color: rgba(255, 255, 255, 0.5);
-}
-
-.anime-type {
-  color: rgba(255, 255, 255, 0.5);
-}
-.infosaran-container {
-  width: 100%;
-  padding: 0;
-  gap: 5px;
-  box-sizing: border-box;
-  overflow: hidden;
-}
-.infosaran-menu-item {
-  display: flex;
-  margin: 10px 0;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 10px;
-  background-color: #1c1c1c;
-  color: #fff;
-  box-shadow:0 4px 12px rgba(0,0,0,0.4);
-}
-.infosaran-menu-title {
-  display: flex;
-  align-items: center;
-  font-size: 14px;
-  color: #bbb;
-  gap: 8px;
-}
-.infosaran-menu-icon {
-  color: #bbb;
-  font-size: 16px;
-}
-a {
-  text-decoration: none;
-  display: block;
-  cursor: none;
-}
-#offline-notice {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background: rgba(20, 20, 20, 0.85);
-    backdrop-filter: blur(4px);
-    color: white;
-    font-size: 1rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;
-    cursor: none;
-    pointer-events: none;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-
-  body.offline {
-    pointer-events: none;
-    cursor: none;
-  }
-
-  body.offline #offline-notice {
-    opacity: 1;
-  }
+    .rotate {
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin {
+      from { transform: rotate(0deg);}
+      to { transform: rotate(360deg);}
+    }
   </style>
 </head>
 <body>
- <div id="offline-notice">Jaringan tidak tersedia</div>
-  <div class="navbar">
-  <div class="menu-icon" onclick="window.location.href='/tentang/premium.html';">
-  <i class="fas fa-crown" id="menuIcon"></i>
-</div>
-  <div class="title" id="pageTitle">Plixnime</div>
-  <div class="menu-icon" onclick="window.location.href='/tentang';">
-  <i class="fas fa-info-circle" id="menuIcon"></i>
-</div>
+
+<nav class="navbar">
+  <div class="navbar-icons">
+    <a href="#" class="icon"><i class="fa-solid fa-circle-question"></i></a>
+  </div>
+  <div class="navbar-title" id="navbarTitle">
+    <span>PLIXNIMEIN</span>
+  </div>
+  <div class="navbar-icons">
+    <a href="#" class="icon"><i class="fas fa-circle-plus"></i></a>
+  </div>
+</nav>
+<div class="content-wrapper" id="wrapper">
+ <div class="pull-area" id="pullArea">
+    <div class="icon-wrapper" id="iconWrapper">
+      <i class="fas fa-redo" id="refreshIcon"></i>
+    </div>
+  </div>
+  <div id="content">
+  </div>
 </div>
 
-  <div id="content"></div>
-
-  <template id="tpl-plixnimein">
-   <div class="card-hero">
-    <i class="fas fa-thumbtack icon-pin"></i>
-    <div>
-      <h3>INFORMASI</h3>
-      <p>Geser list itu Ongoing dan selesai ke kiri untuk melihat list lebihnya ok!.cek Update itu untuk mengecek update semua update anime dsb jadi sory balik ke sini :v</p>
-    </div>
+<div class="bottom-nav">
+  <div class="nav-item active" onclick="setActive(this, 'PLIXNIMEIN')">
+    <i class="fas fa-home nav-icon"></i>
+    <span>beranda</span>
   </div>
-  <div class="title-section">
-    <h2>Popular musim ini</h2>
-    <div class="title-line"></div>
-    <i class="fas fa-fire"></i>
+  <div class="nav-item" onclick="setActive(this, 'EKSPLORASI')">
+    <i class="fas fa-compass nav-icon"></i>
+    <span>eksplorasi</span>
   </div>
-  <div class="home-anime-list">
-   <a class="home-anime-item" href="/anime/enennoshouboutai.html"><img src="https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx149118-AOQb0xuTssGl.jpg" alt=""><div class="home-anime-title">Enen no Shouboutai: San no Shou</div></a>
-   <a class="home-anime-item" href="/anime/lazarus.html"><img src="https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx167336-KpGIIBie71OX.png" alt=""><div class="home-anime-title">Lazarus</div></a>
-   <a class="home-anime-item" href="/anime/saikyounoousama.html"><img src="https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx183161-5M054tuPmZJX.jpg" alt=""><div class="home-anime-title">Saikyou no Ousama, Nidome no Jinsei wa Nani wo Suru?</div></a>
-   <a class="home-anime-item" href="/anime/windbreakers2.html"><img src="https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx178680-nIAhCizY46ZU.jpg" alt=""><div class="home-anime-title">WIND BREAKER S2</div></a>
-   <a class="home-anime-item" href="/anime/witchwatch.html"><img src="https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx180367-GlRuB2lG7Kaa.jpg" alt=""><div class="home-anime-title">Witch Watch</div></a>
-   <a class="home-anime-item" href="/anime/kowloongeneric.html"><img src="https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx182814-UTKRUUm7Jah5.jpg" alt=""><div class="home-anime-title">Kowloon Generic Romance</div></a>
+  <div class="nav-item" onclick="setActive(this, 'PEMBARUAN')">
+    <i class="fas fa-book nav-icon"></i>
+    <span>pembaruan</span>
   </div>
-  <div class="title-section">
-    <h2>OnGoing musim ini</h2>
-    <div class="title-line"></div>
-    <i class="fas fa-fire"></i>
-  </div>
-  <div class="home-anime-list"><a class="home-anime-item" href="/anime/windbreakers2.html"><img src="https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx178680-nIAhCizY46ZU.jpg" alt=""><div class="home-anime-title">WIND BREAKER S2</div></a>
-  <a class="home-anime-item" href="/anime/rockwalady.html"><img src="https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx179694-7zhc0T6IImor.jpg" alt=""><div class="home-anime-title">Rock wa Lady no Tashinami Deshite</div></a>
-  <a class="home-anime-item" href="/anime/yamihealer.html"><img src="https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx175872-d55nfiC4WWHO.jpg" alt=""><div class="home-anime-title">Yami Healer</div></a>
-  <a class="home-anime-item" href="/anime/yourforma.html"><img src="https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx167142-dJwdHptpILkF.jpg" alt=""><div class="home-anime-title">Your Forma</div></a>
-  <a class="home-anime-item" href="/anime/saikyounoousama.html"><img src="https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx183161-5M054tuPmZJX.jpg" alt=""><div class="home-anime-title">Saikyou no Ousama, Nidome no Jinsei wa Nani wo Suru?</div></a>
-  <a class="home-anime-item" href="/anime/uchuujinmuumuu.html"><img src="https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx185070-VKzUA4B9kmaX.jpg" alt=""><div class="home-anime-title">Uchuujin MuuMuu</div></a>
-  </div><br>
-  </template>
-
- <template id="tpl-pencarian">
-  <div class="control-bar">
-  <input type="text" id="searchInput" placeholder="Cari anime...">
-  <select id="sortBy">
-    <option value="title">List Dafault</option>
-    <option value="date">Tanggal(terbaru)</option>
-    <option value="type">Jenis(movie-eps)</option>
-  </select>
-  <button id="resetBtn">Reset</button>
-  <button id="refreshBtn">Cek Update</button>
-</div>
-   <div class="anime-list">
-  <div class="anime-item" onclick="window.open('/anime/enennoshouboutai.html', '_blank')">
-    <img src="https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx149118-AOQb0xuTssGl.jpg" alt="">
-    <div class="anime-title">Enen no Shouboutai: San no Shou</div>
-    <div class="anime-meta">
-      <div class="anime-date">2023-12-18</div>
-      <div class="anime-type">TV</div>
-    </div>
-  </div>
-  <div class="anime-item" onclick="window.open('/anime/yourname.html', '_blank')">
-    <img src="https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx179955-e4UPTow92B1O.jpg" alt="">
-    <div class="anime-title">Your Name</div>
-    <div class="anime-meta">
-      <div class="anime-date">2016-08-26</div>
-      <div class="anime-type">Movie</div>
-    </div>
-  </div>
-  <div class="anime-item" onclick="window.open('/anime/mobpsycho100.html', '_blank')">
-    <img src="https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx179955-e4UPTow92B1O.jpg" alt="">
-    <div class="anime-title">Mob Psycho 100</div>
-    <div class="anime-meta">
-      <div class="anime-date">2018-10-05</div>
-      <div class="anime-type">TV</div>
-    </div>
+  <div class="nav-item" onclick="setActive(this, 'NOTIFIKASI')">
+    <i class="fas fa-bell nav-icon"></i>
+    <span>notifikasi</span>
   </div>
 </div>
-  </template>
 
-  <template id="tpl-infosaran">
-   <div class="card-hero">
-    <i class="fas fa-thumbtack icon-pin"></i>
-    <div>
-      <h3>INFORMASI</h3>
-      <p>Support gabung komunitas untuk saran diskusi dan request anime mu! ayo kembangkan plixnime bersama.</p>
-    </div>
-  </div>
-  <div class="infosaran-container">
-  <a href="/tentang/privacy.html">
-    <div class="infosaran-menu-item">
-      <div class="infosaran-menu-title">Kebijakan privasi aplikasi plixnime
-      </div>
-      <div class="infosaran-menu-icon"><i class="fas fa-angle-right"></i></div>
-    </div>
-  </a>
-  <a href="https://wa.me/message/4HEISZIHC7FSI1">
-    <div class="infosaran-menu-item">
-      <div class="infosaran-menu-title">Request animemu! lets go request
-      </div>
-      <div class="infosaran-menu-icon"><i class="fas fa-angle-right"></i></div>
-    </div>
-  </a>
-  <a href="https://discord.gg/NANMb6ZNHs">
-    <div class="infosaran-menu-item">
-      <div class="infosaran-menu-title">Gabung komunitas discord kami!
-      </div>
-      <div class="infosaran-menu-icon"><i class="fas fa-angle-right"></i></div>
-    </div>
-  </a>
-  <a href="/tentang">
-    <div class="infosaran-menu-item">
-      <div class="infosaran-menu-title">Tentang informasi aplikasi plixnime
-      </div>
-      <div class="infosaran-menu-icon"><i class="fas fa-angle-right"></i></div>
-    </div>
-  </a>
-</div>
-  </template>
+<script>let isAnimating = false;
+let currentIndex = 0;
+const menuOrder = ['PLIXNIMEIN', 'EKSPLORASI', 'PEMBARUAN', 'NOTIFIKASI'];
 
-  <div class="bottom-navbar">
-    <div class="nav-item active" data-title="Plixnimein"><i class="fas fa-circle-h"></i></div>
-    <div class="nav-item" data-title="Pencarian"><i class="fas fa-circle-chevron-up"></i></div>
-    <div class="nav-item" data-title="Infosaran"><i class="fas fa-universal-access"></i></div>
-  </div>
- <script>const pageTitle=document.getElementById("pageTitle"),navItems=document.querySelectorAll(".nav-item"),content=document.getElementById("content");let currentPage="";function loadContent(page,push=!0){if(page.toLowerCase()===currentPage.toLowerCase())return;const tplId=`tpl-${page.toLowerCase()}`,template=document.getElementById(tplId);if(template){content.innerHTML=template.innerHTML,pageTitle.textContent=page,currentPage=page,navItems.forEach(item=>{item.classList.remove("active"),item.getAttribute("data-title")===page&&item.classList.add("active")}),push&&history.pushState({page},"",`#${page.toLowerCase()}`),page.toLowerCase()==="pencarian"&&initSearchSort()}else content.innerHTML="<p>Konten tidak ditemukan.</p>";}navItems.forEach(item=>{item.addEventListener("click",()=>{const page=item.getAttribute("data-title");loadContent(page,!0);});});window.onpopstate=e=>{e.state&&e.state.page?loadContent(e.state.page,!1):loadContent("Plixnimein",!1);};const initialPage=location.hash?location.hash.substring(1):"plixnimein";loadContent(initialPage.charAt(0).toUpperCase()+initialPage.slice(1));function initSearchSort(){const s=document.getElementById("searchInput"),t=document.getElementById("sortBy"),r=document.getElementById("resetBtn"),f=document.getElementById("refreshBtn"),l=document.querySelector(".anime-list");if(!s||!t||!r||!l)return;const o=Array.from(l.children),updateList=()=>{const search=s.value.toLowerCase(),sort=t.value;let filtered=o.filter(item=>item.querySelector(".anime-title").textContent.toLowerCase().includes(search));filtered.sort((a,b)=>{const titleA=a.querySelector(".anime-title").textContent.trim(),titleB=b.querySelector(".anime-title").textContent.trim(),dateA=new Date(a.querySelector(".anime-date").textContent.trim()),dateB=new Date(b.querySelector(".anime-date").textContent.trim()),typeA=a.querySelector(".anime-type")?.textContent.trim()||"",typeB=b.querySelector(".anime-type")?.textContent.trim()||"";if(sort==="title")return titleA.localeCompare(titleB);if(sort==="date")return dateB-dateA;if(sort==="type")return typeA.localeCompare(typeB);return 0;});l.innerHTML="",filtered.forEach(item=>l.appendChild(item));};s.addEventListener("input",updateList),t.addEventListener("change",updateList),r.addEventListener("click",()=>{s.value="",t.value="title",l.innerHTML="",o.forEach(item=>l.appendChild(item));}),f&&f.addEventListener("click",()=>{location.href=location.origin+location.pathname;});} </script><script>async function checkInternetConnection(){try{const response=await fetch("https://www.google.com/favicon.ico",{method:"HEAD",mode:"no-cors"});return!0;}catch(error){return!1;}}async function updateConnectionStatus(){const online=navigator.onLine,trulyOnline=online&&await checkInternetConnection();document.body.classList.toggle("offline",!trulyOnline);}window.addEventListener("online",updateConnectionStatus),window.addEventListener("offline",updateConnectionStatus),setInterval(updateConnectionStatus,3e3);updateConnectionStatus();</script>
+document.addEventListener("DOMContentLoaded", function() {
+  // Memuat konten pertama, misalnya 'PLIXNIMEIN' (home) saat halaman pertama kali dimuat
+  loadContent('PLIXNIMEIN', 'none');
+});
+
+function setActive(el, titleText) {
+  if (isAnimating) return;
+  isAnimating = true;
+
+  const newIndex = menuOrder.indexOf(titleText);
+  const direction = newIndex > currentIndex ? 'left' : 'right';
+  currentIndex = newIndex;
+
+  document.querySelectorAll('.nav-item').forEach(item => {
+    item.classList.remove('active');
+    item.style.pointerEvents = 'auto';
+  });
+  el.classList.add('active');
+  el.style.pointerEvents = 'none';
+
+  const navbarTitle = document.getElementById('navbarTitle');
+  const currentTitle = navbarTitle.querySelector('span');
+  const content = document.getElementById('content');
+
+  if (currentTitle) {
+    currentTitle.style.top = '100%';
+    currentTitle.style.opacity = '0';
+    setTimeout(() => {
+      navbarTitle.removeChild(currentTitle);
+      const newTitle = document.createElement('span');
+      newTitle.textContent = titleText;
+      newTitle.style.top = '-100%';
+      newTitle.style.opacity = '0';
+      navbarTitle.appendChild(newTitle);
+      void newTitle.offsetWidth;
+      setTimeout(() => {
+        newTitle.style.top = '0';
+        newTitle.style.opacity = '1';
+      }, 10);
+    }, 100);
+  }
+
+  // Animasi keluar hanya jika konten berubah
+  content.style.transition = 'transform 0.3s ease, opacity 0.3s ease';
+  content.style.transform = direction === 'left' ? 'translateX(-100%)' : 'translateX(100%)';
+  content.style.opacity = '0';
+
+  setTimeout(() => {
+    loadContent(titleText, direction);
+  }, 100);
+}
+
+function loadContent(titleText, direction) {
+  const content = document.getElementById('content');
+  let fileName = '';
+
+  if (titleText === 'PLIXNIMEIN') {
+    fileName = 'https://plixgo.my.id/data-home.html'; // URL untuk file data-home.html
+  } else if (titleText === 'EKSPLORASI') {
+    fileName = 'https://plixgo.my.id/data-eksplorasi.html'; // URL untuk file data-eksplorasi.html
+  } else if (titleText === 'PEMBARUAN') {
+    fileName = 'https://plixgo.my.id/data-pembaruan.html'; // URL untuk file data-pembaruan.html
+  } else if (titleText === 'NOTIFIKASI') {
+    fileName = 'https://plixgo.my.id/data-notifikasi.html'; // URL untuk file data-notifikasi.html
+  }
+
+  if (fileName) {
+    // Memuat konten dari URL file
+    fetch(fileName + '?v=' + Date.now()) // Menambahkan query string untuk menghindari cache
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('File tidak ditemukan.');
+        }
+        return response.text();
+      })
+      .then(html => {
+        // Jika konten berhasil dimuat, animasi masuk dilakukan setelah loading selesai
+        content.innerHTML = html;
+
+        // Animasi masuk setelah konten baru dimuat
+        if (direction !== 'none') {
+          content.style.transition = 'none';
+          content.style.transform = direction === 'left' ? 'translateX(100%)' : 'translateX(-100%)';
+          void content.offsetWidth; // Force reflow untuk animasi
+          setTimeout(() => {
+            content.style.transition = 'transform 0.3s ease, opacity 0.3s ease';
+            content.style.transform = 'translateX(0)';
+            content.style.opacity = '1';
+            setTimeout(() => {
+              isAnimating = false;
+            }, 100);
+          }, 20);
+        } else {
+          // Jika tidak ada animasi (awal load), hanya tampilkan konten tanpa animasi
+          isAnimating = false;
+        }
+      })
+      .catch(error => {
+        content.innerHTML = '<div class="card">Gagal memuat konten.</div>';
+        console.error(error);
+        isAnimating = false;
+      });
+  }
+}
+</script>
+<script>
+let startY=0,currentY=0,isReadyToRefresh=false,wrapper=document.getElementById("wrapper"),pullArea=document.getElementById("pullArea"),iconWrapper=document.getElementById("iconWrapper"),refreshIcon=document.getElementById("refreshIcon");
+window.addEventListener("touchstart",function(e){if(window.scrollY===0){startY=e.touches[0].pageY}});
+window.addEventListener("touchmove",function(e){if(window.scrollY===0){currentY=e.touches[0].pageY;if(currentY>startY){let distance=(currentY-startY)/1,pullDistance=Math.min(distance,50);
+pullArea.style.height=`${pullDistance}px`;wrapper.style.transform=`translateY(${pullDistance}px)`;let scale=Math.min(pullDistance/50,1);
+iconWrapper.style.transform=`scale(${scale})`;
+if(pullDistance>40){isReadyToRefresh=true;refreshIcon.classList.add("rotate")}else{isReadyToRefresh=false;refreshIcon.classList.remove("rotate")}}}});
+window.addEventListener("touchend",function(){if(isReadyToRefresh){setTimeout(()=>{location.reload()},500)}else{pullArea.style.height=`0px`;wrapper.style.transform=`translateY(0)`;iconWrapper.style.transform=`scale(0)`;refreshIcon.classList.remove("rotate")}});
+</script>
 </body>
 </html>
