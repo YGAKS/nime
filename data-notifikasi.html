@@ -107,29 +107,30 @@
         display: block;
     }
 
-    .pagination {
-        display: flex;
-        justify-content: center;
-        gap: 10px;
-        margin-top: 15px;
-    }
+   .pagination {
+    position: fixed;
+    bottom: 50px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    z-index: 999;
+}
 
     .pagination label {
     padding: 8px 14px;
-    background-color: #f29e38;
+    background-color: #bbb;
     color: #fff;
     border-radius: 999px;
     transition: background-color 0.3s ease;
     font-weight: normal;
 }
 
-.pagination label:hover {
-    background-color: #d6842c;
-}
-
 #page1:checked ~ .pagination label[for="page1"],
 #page2:checked ~ .pagination label[for="page2"] {
-    background-color: #333;
+    background-color: #f29e38;
     font-weight: bold;
 }
 </style>
