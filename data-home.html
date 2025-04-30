@@ -57,7 +57,20 @@
     .anime-cover {
       width: 100%;
       height: 140px;
+      background: linear-gradient(120deg, rgba(204, 204, 204, 0.6) 25%, rgba(255, 255, 255, 0.6) 50%, rgba(204, 204, 204, 0.6) 75%);
+  background-size: 200% 100%;
+  animation: loading-skeleton 1.5s infinite linear;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     }
+
+@keyframes loading-skeleton {
+  0% {
+    background-position: -200px 0;
+  }
+  100% {
+    background-position: 200px 0;
+  }
+}
 
     .anime-info {
     }
