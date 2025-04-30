@@ -9,12 +9,15 @@
     * {
       margin: 0;
       padding: 0;
+      background-color: #f4f4f4;
       box-sizing: border-box;
       user-select: none;
     }
     body {
       font-family: Arial, sans-serif;
       background-color: #f4f4f4;
+      animation: load 0.8s ease-out forwards;
+      opacity: (0);
     }
     .navbar {
       display: flex;
@@ -97,7 +100,6 @@
       min-height: calc(100vh - 120px);
       position: relative;
       overflow: hidden;
-      animation: load 1s ease-out forwards;
     }
 @keyframes load {
   from {
