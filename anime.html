@@ -11,13 +11,16 @@
     }
     
     .navbar {
-      background-color: #F4F4F4;
       display: flex;
+      justify-content: space-between;
       align-items: center;
-      padding: 20px 10px;
+      padding: 15px 10px;
       position: sticky;
       top: 0;
-      z-index: 10;
+      z-index: 1000;
+      overflow: hidden;
+      height: 60px;
+      background: #f4f4f4;
     }
 
      .navbar-icons {
@@ -46,11 +49,13 @@
 
     .navbar-title {
       font-size: 18px;
-      font-weight: bold;
       color: #333;
-      margin: 0 auto;
-      text-transform: uppercase;
-      opacity: 0;
+      font-weight: bold;
+      text-align: center;
+      flex-grow: 1;
+      position: relative;
+      height: 25px;
+      overflow: hidden;
       animation: slideDown 0.6s ease-out forwards;
     }
 
