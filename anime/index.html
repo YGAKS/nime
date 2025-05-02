@@ -75,14 +75,13 @@
   justify-content: space-between;
   align-items: center;
   box-sizing: border-box;
-  z-index: 100;
 }
 
 .search-bar input[type="text"] {
   border: none;
   outline: none;
   font-size: 16px;
-  color: #333;
+  color: #bbb;
   flex: 1;
   margin-right: 10px;
 }
@@ -209,8 +208,7 @@
 </head><body>
  <div id="offline-notice">Jaringan tidak tersedia</div>
 <div class="navbar"><div class="navbar-icons"><a href="/tentang" class="icon"><i class="fa-solid fa-circle-question"></i></a></div><div class="navbar-title" id="navbar-title">Manga List</div><div class="navbar-icons"><i class="fas fa-circle-xmark icon" onclick="history.back()"></i></div></div>
-<form class="search-bar" action="/anime" method="GET"><input type="text" name="q" placeholder="Cari manga..." /><div class="search-bar-button"><i class="fas fa-search"></i></div></form>
-  
+<form class="search-bar"><input type="text" placeholder="cari manga..." /><div class="search-bar-button"><i class="fas fa-search"></i></div></form>
 <div class="anime-container">
  <!-- batas top list manga buat batas nambahin nanti :v -->
 <div class="anime-item" data-genre="shounen">
