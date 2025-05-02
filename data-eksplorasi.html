@@ -265,10 +265,19 @@
         background-position: -200% 0;
       }
     }
-    
+    @keyframes slideUp {
+      from {
+        transform: translateY(40px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
     .floating-search {
       position: fixed;
-      bottom: 5px;
+      bottom: 0;
       left: 0;
       right: 0;
       background: #fff;
@@ -280,6 +289,7 @@
       align-items: center;
       box-sizing: border-box;
       z-index: 1000;
+      animation: slideUp 0.5s ease-out;
     }
 
     .floating-search:active {
