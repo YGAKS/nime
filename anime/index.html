@@ -104,7 +104,7 @@
       flex-wrap: wrap;
       gap: 10px;
       padding: 0 20px;
-      height: 60vh;
+      height: 75vh;
       overflow-y: auto;
     }
 
@@ -290,10 +290,14 @@
 <div class="filter-bar">
   <div class="genre-scroll">
     <button class="genre-btn" data-genre="all">All</button>
-    <button class="genre-btn" data-genre="shounen">Shounen</button>
-    <button class="genre-btn" data-genre="shoujo">Shoujo</button>
-    <button class="genre-btn" data-genre="manhwa">Manhwa</button>
-    <!-- Tambahkan genre lain di sini -->
+    <button class="genre-btn" data-genre="slice of life">slice of life</button>
+    <button class="genre-btn" data-genre="action">action</button>
+    <button class="genre-btn" data-genre="romance">romance</button>
+    <button class="genre-btn" data-genre="adventure">adventure</button>
+    <button class="genre-btn" data-genre="comedy">comedy</button>
+    <button class="genre-btn" data-genre="fantasy">fantasy</button>
+   <button class="genre-btn" data-genre="horor">horor</button>
+   <button class="genre-btn" data-genre="ecchi">ecchi</button>
   </div>
  <div class="select-wrapper">
   <select id="sortSelect">
@@ -304,14 +308,14 @@
 </div>
 <div class="anime-container">
  <!-- batas top list manga buat batas nambahin nanti :v -->
-<div class="anime-item" data-genre="shounen">
+<div class="anime-item" data-genre="slice of life, action">
 <div class="anime-list">
 <div class="label-top">OnGoing</div>
 <div class="label-bottom">12 eps</div>
 <img class="anime-cover" src="https://cdn.myanimelist.net/r/200x268/images/manga/5/259834.webp?s=0e5d2b769d52d7e097ffe244ca2ce3c3" alt=""></div>
 <div class="anime-info">
 <div class="anime-title">specata Title</div>
-<div class="anime-type">shounen</div></div></div>
+<div class="anime-type">slice of life, action</div></div></div>
 <div class="anime-item" data-genre="manhwa">
 <div class="anime-list">
 <div class="label-top">OnGoing</div>
@@ -360,28 +364,12 @@
 <div class="anime-info">
 <div class="anime-title">specata Title</div>
 <div class="anime-type">shounen</div></div></div>
-<div class="anime-item" data-genre="manhwa">
-<div class="anime-list">
-<div class="label-top">OnGoing</div>
-<div class="label-bottom">12 eps</div>
-<img class="anime-cover" src="https://cdn.myanimelist.net/r/200x268/images/manga/5/259834.webp?s=0e5d2b769d52d7e097ffe244ca2ce3c3" alt=""></div>
-<div class="anime-info">
-<div class="anime-title">percobaan title</div>
-<div class="anime-type">manhwa</div></div></div>
-<div class="anime-item" data-genre="shoujo">
-<div class="anime-list">
-<div class="label-top">OnGoing</div>
-<div class="label-bottom">12 eps</div>
-<img class="anime-cover" src="https://cdn.myanimelist.net/r/200x268/images/manga/5/259834.webp?s=0e5d2b769d52d7e097ffe244ca2ce3c3" alt=""></div>
-<div class="anime-info">
-<div class="anime-title">contoh title</div>
-<div class="anime-type">shoujo</div></div></div>
+
 <!-- batas bottom list manga buat batas nambahin nanti :v -->
 </div>
 
-<script>async function checkInternetConnection(){try{return await fetch("https://www.google.com/favicon.ico",{method:"HEAD",mode:"no-cors"}),!0}catch(e){return!1}}async function updateConnectionStatus(){const isOnline=navigator.onLine,confirmedOnline=isOnline&&await checkInternetConnection();document.body.classList.toggle("offline",!confirmedOnline)}window.addEventListener("online",updateConnectionStatus);window.addEventListener("offline",updateConnectionStatus);setInterval(updateConnectionStatus,3e3);updateConnectionStatus()</script>
-<script>
-const s=document.querySelector(".search-bar input"),a=document.querySelectorAll(".anime-item"),g=document.querySelectorAll(".genre-btn"),o=document.getElementById("sortSelect");function r(e){g.forEach(t=>{t.classList.toggle("active",t.dataset.genre===e)}),a.forEach(t=>{const n=t.dataset.genre;t.classList.toggle("hidden","all"!==e&&n!==e)})}window.addEventListener("DOMContentLoaded",()=>{r("all")}),g.forEach(e=>{e.addEventListener("click",()=>{r(e.dataset.genre)})}),s.addEventListener("input",function(){const e=this.value.toLowerCase();r("all"),a.forEach(t=>{const n=t.querySelector(".anime-title").textContent.toLowerCase();t.classList.toggle("hidden",!n.includes(e))})}),o.addEventListener("change",()=>{const e=document.querySelector(".anime-container"),t=Array.from(a).sort((n,l)=>{const c=n.querySelector(".anime-title").textContent.trim().toLowerCase(),d=l.querySelector(".anime-title").textContent.trim().toLowerCase();return"asc"===o.value?c.localeCompare(d):d.localeCompare(c)});e.innerHTML="",t.forEach(n=>e.appendChild(n))});
+<script>async function checkInternetConnection(){try{return await fetch("https://www.google.com/favicon.ico",{method:"HEAD",mode:"no-cors"}),!0}catch(e){return!1}}async function updateConnectionStatus(){const isOnline=navigator.onLine,confirmedOnline=isOnline&&await checkInternetConnection();document.body.classList.toggle("offline",!confirmedOnline)}window.addEventListener("online",updateConnectionStatus);window.addEventListener("offline",updateConnectionStatus);setInterval(updateConnectionStatus,3e3);updateConnectionStatus()</script><script>
+const s=document.querySelector(".search-bar input"),a=document.querySelectorAll(".anime-item"),g=document.querySelectorAll(".genre-btn"),o=document.getElementById("sortSelect");function r(e){g.forEach(t=>{t.classList.toggle("active",t.dataset.genre===e)}),a.forEach(t=>{const n=t.dataset.genre.toLowerCase().split(/\s*,\s*/);t.classList.toggle("hidden","all"!==e&&!n.includes(e))})}window.addEventListener("DOMContentLoaded",()=>{r("all")}),g.forEach(e=>{e.addEventListener("click",()=>{r(e.dataset.genre)})}),s.addEventListener("input",function(){const e=this.value.toLowerCase();r("all"),a.forEach(t=>{const n=t.querySelector(".anime-title").textContent.toLowerCase();t.classList.toggle("hidden",!n.includes(e))})}),o.addEventListener("change",()=>{const e=document.querySelector(".anime-container"),t=Array.from(a).sort((n,l)=>{const c=n.querySelector(".anime-title").textContent.trim().toLowerCase(),d=l.querySelector(".anime-title").textContent.trim().toLowerCase();return"asc"===o.value?c.localeCompare(d):d.localeCompare(c)});e.innerHTML="",t.forEach(n=>e.appendChild(n))});
 </script>
 </body>
 </html>
