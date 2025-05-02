@@ -158,6 +158,10 @@
       </div>
     </div>
   </div>
+   <div class="floating-search" onclick="window.location.href='/anime'">
+    <div class="text">cari anime</div>
+    <i class="fas fa-search icon"></i>
+  </div>
  
   <style>
     .day-container {
@@ -260,5 +264,34 @@
       100% {
         background-position: -200% 0;
       }
+    }
+    
+    .floating-search {
+      position: fixed;
+      bottom: 75px;
+      left: 10px;
+      right: 10px;
+      background: #fff;
+      border-radius: 20px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      padding: 14px 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-sizing: border-box;
+    }
+
+    .floating-search:active {
+     opacity: 0.5;
+    }
+
+    .floating-search .text {
+      font-size: 16px;
+      color: #777;
+    }
+
+    .floating-search .icon {
+      font-size: 18px;
+      color: #777;
     }
   </style>
