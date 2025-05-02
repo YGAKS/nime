@@ -57,6 +57,7 @@
 <span class="notif-by">by Plixnime Team</span></div></div>
   
   </div>
+ <div class="floating-search" onclick="window.location.href='mailto:plixbantuan@email.com'"><div class="text">request anime dan feedback...</div><i class="fas fa-paper-plane icon"></i></div>
 <style>
 .notif-container {
   height: 80vh;
@@ -111,4 +112,46 @@
 .notif-by {
   text-align: right;
 }
+
+.floating-search {
+      position: fixed;
+      bottom: -8px;
+      left: 0;
+      right: 0;
+      background: #fff;
+      border-radius: 20px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      padding: 14px 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-sizing: border-box;
+      z-index: 1000;
+      animation: slideUp 0.5s ease-out;
+    }
+
+    .floating-search:active {
+     opacity: 0.8;
+    }
+
+    .floating-search .text {
+      font-size: 16px;
+      color: #bbb;
+    }
+
+    .floating-search .icon {
+      font-size: 17px;
+      color: #bbb;
+    }
+    
+    @keyframes slideUp {
+      from {
+        transform: translateY(100px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
 </style>
