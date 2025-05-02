@@ -67,13 +67,12 @@
     #anime-container {
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
+      gap: 15px;
       padding: 15px;
     }
 
     .anime-item {
       width: 100px;
-      margin: 0 auto;
     }
 
     .anime-list {
@@ -144,92 +143,114 @@
     .hidden {
       display: none !important;
     }
+    
+        #offline-notice {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: #f4f4f4;
+      color: #333;
+      font-size: 1rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      cursor: none;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    body.offline {
+      pointer-events: none;
+      cursor: none;
+    }
+
+    body.offline #offline-notice {
+      opacity: 1;
+    }
   </style>
-</head>
-<body>
+</head><body>
+ <div id="offline-notice">Jaringan tidak tersedia</div>
+<div class="navbar"><div class="navbar-icons"><a href="/tentang" class="icon"><i class="fa-solid fa-circle-question"></i></a></div><div class="navbar-title" id="navbar-title">Manga List</div><div class="navbar-icons"><i class="fas fa-circle-chevron-left icon" onclick="history.back()"></i></div></div>
 
-  <div class="navbar">
-    <div class="navbar-icons">
-    <a href="/tentang" class="icon"><i class="fa-solid fa-circle-question"></i></a>
-  </div>
-    <div class="navbar-title" id="navbar-title">Manga List</div>
-    <div class="navbar-icons">
-    <i class="fas fa-circle-xmark icon" onclick="history.back()"></i></div>
-  </div>
+<div id="anime-container">
+<div class="anime-item" data-genre="shounen">
+<div class="anime-list">
+<div class="label-top">OnGoing</div>
+<div class="label-bottom">12 eps</div>
+<img class="anime-cover" src="https://cdn.myanimelist.net/r/200x268/images/manga/5/259834.webp?s=0e5d2b769d52d7e097ffe244ca2ce3c3" alt=""></div>
+<div class="anime-info">
+<div class="anime-title">Shoujo Title</div>
+<div class="anime-type">shounen</div></div></div>
 
-  <div id="anime-container">
-    <div class="anime-item" data-genre="shoujo">
-      <div class="anime-list">
-        <div class="label-top">OnGoing</div>
-        <div class="label-bottom">12 eps</div>
-        <img class="anime-cover" src="https://cdn.myanimelist.net/r/200x268/images/manga/5/259834.webp?s=0e5d2b769d52d7e097ffe244ca2ce3c3" alt="">
-      </div>
-      <div class="anime-info">
-        <div class="anime-title">Shoujo Title</div>
-        <div class="anime-type">TV</div>
-      </div>
-    </div>
+<div class="anime-item" data-genre="manhwa">
+<div class="anime-list">
+<div class="label-top">OnGoing</div>
+<div class="label-bottom">12 eps</div>
+<img class="anime-cover" src="https://cdn.myanimelist.net/r/200x268/images/manga/5/259834.webp?s=0e5d2b769d52d7e097ffe244ca2ce3c3" alt=""></div>
+<div class="anime-info">
+<div class="anime-title">Shoujo Title</div>
+<div class="anime-type">manhwa</div></div></div>
 
-    <div class="anime-item" data-genre="shounen">
-      <div class="anime-list">
-        <div class="label-top">OnGoing</div>
-        <div class="label-bottom">24 eps</div>
-        <img class="anime-cover" src="https://cdn.myanimelist.net/r/200x268/images/manga/5/259834.webp?s=0e5d2b769d52d7e097ffe244ca2ce3c3" alt="">
-      </div>
-      <div class="anime-info">
-        <div class="anime-title">Shounen Title</div>
-        <div class="anime-type">Movie</div>
-      </div>
-    </div>
+<div class="anime-item" data-genre="shoujo">
+<div class="anime-list">
+<div class="label-top">OnGoing</div>
+<div class="label-bottom">12 eps</div>
+<img class="anime-cover" src="https://cdn.myanimelist.net/r/200x268/images/manga/5/259834.webp?s=0e5d2b769d52d7e097ffe244ca2ce3c3" alt=""></div>
+<div class="anime-info">
+<div class="anime-title">Shoujo Title</div>
+<div class="anime-type">shoujo</div></div></div>
 
-    <div class="anime-item" data-genre="isekai">
-      <div class="anime-list">
-        <div class="label-top">OnGoing</div>
-        <div class="label-bottom">13 eps</div>
-        <img class="anime-cover" src="https://cdn.myanimelist.net/r/200x268/images/manga/5/259834.webp?s=0e5d2b769d52d7e097ffe244ca2ce3c3" alt="">
-      </div>
-      <div class="anime-info">
-        <div class="anime-title">Isekai Title</div>
-        <div class="anime-type">OVA</div>
-      </div>
-    </div>
-  </div>
+<div class="anime-item" data-genre="shounen">
+<div class="anime-list">
+<div class="label-top">OnGoing</div>
+<div class="label-bottom">12 eps</div>
+<img class="anime-cover" src="https://cdn.myanimelist.net/r/200x268/images/manga/5/259834.webp?s=0e5d2b769d52d7e097ffe244ca2ce3c3" alt=""></div>
+<div class="anime-info">
+<div class="anime-title">Shoujo Title</div>
+<div class="anime-type">shounen</div></div></div>
 
-  <script>
-    function updateNavbarTitle() {
-      const hash = window.location.hash.slice(1).toLowerCase();
-      const titleEl = document.getElementById("navbar-title");
-      const pageTitle = "Manga List";
-      if (hash) {
-        titleEl.textContent = `${pageTitle} genre ${hash}`;
-        document.title = `${pageTitle} genre ${hash}`;
-      } else {
-        titleEl.textContent = pageTitle;
-        document.title = pageTitle;
-      }
-    }
+<div class="anime-item" data-genre="manhwa">
+<div class="anime-list">
+<div class="label-top">OnGoing</div>
+<div class="label-bottom">12 eps</div>
+<img class="anime-cover" src="https://cdn.myanimelist.net/r/200x268/images/manga/5/259834.webp?s=0e5d2b769d52d7e097ffe244ca2ce3c3" alt=""></div>
+<div class="anime-info">
+<div class="anime-title">Shoujo Title</div>
+<div class="anime-type">manhwa</div></div></div>
 
-    function filterAnimeByGenre() {
-      const hash = window.location.hash.slice(1).toLowerCase();
-      const items = document.querySelectorAll('.anime-item');
-      items.forEach(item => {
-        const genre = item.getAttribute('data-genre').toLowerCase();
-        if (!hash || genre === hash) {
-          item.classList.remove('hidden');
-        } else {
-          item.classList.add('hidden');
-        }
-      });
-    }
+<div class="anime-item" data-genre="shoujo">
+<div class="anime-list">
+<div class="label-top">OnGoing</div>
+<div class="label-bottom">12 eps</div>
+<img class="anime-cover" src="https://cdn.myanimelist.net/r/200x268/images/manga/5/259834.webp?s=0e5d2b769d52d7e097ffe244ca2ce3c3" alt=""></div>
+<div class="anime-info">
+<div class="anime-title">Shoujo Title</div>
+<div class="anime-type">shoujo</div></div></div>
 
-    function onHashChange() {
-      updateNavbarTitle();
-      filterAnimeByGenre();
-    }
+<div class="anime-item" data-genre="shounen">
+<div class="anime-list">
+<div class="label-top">OnGoing</div>
+<div class="label-bottom">12 eps</div>
+<img class="anime-cover" src="https://cdn.myanimelist.net/r/200x268/images/manga/5/259834.webp?s=0e5d2b769d52d7e097ffe244ca2ce3c3" alt=""></div>
+<div class="anime-info">
+<div class="anime-title">Shoujo Title</div>
+<div class="anime-type">shounen</div></div></div>
 
-    window.addEventListener('load', onHashChange);
-    window.addEventListener('hashchange', onHashChange);
-  </script>
+<div class="anime-item" data-genre="manhwa">
+<div class="anime-list">
+<div class="label-top">OnGoing</div>
+<div class="label-bottom">12 eps</div>
+<img class="anime-cover" src="https://cdn.myanimelist.net/r/200x268/images/manga/5/259834.webp?s=0e5d2b769d52d7e097ffe244ca2ce3c3" alt=""></div>
+<div class="anime-info">
+<div class="anime-title">Shoujo Title</div>
+<div class="anime-type">manhwa</div></div></div>
 
+</div>
+
+<script>async function checkInternetConnection(){try{return await fetch("https://www.google.com/favicon.ico",{method:"HEAD",mode:"no-cors"}),!0}catch(e){return!1}}async function updateConnectionStatus(){const isOnline=navigator.onLine,confirmedOnline=isOnline&&await checkInternetConnection();document.body.classList.toggle("offline",!confirmedOnline)}window.addEventListener("online",updateConnectionStatus);window.addEventListener("offline",updateConnectionStatus);setInterval(updateConnectionStatus,3e3);updateConnectionStatus()</script>
 </body>
 </html>
