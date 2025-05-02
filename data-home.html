@@ -1,9 +1,12 @@
 <div class="card">ini list rekomendasi 10 selebihnya ke eksplorasi untuk mencari lebih banyak manga lainya!</div>
+<div class="floating-search" onclick="window.location.href='mailto:plixbantuan@email.com'">
+  <div class="text">Feedback rating dan saranya!..</div>
+  <i class="fas fa-envelope icon"></i>
+</div>
 <div class="line-container">
     <div class="title">10 rekomendasi manga terbaru</div>
       <div class="arrow"><i class="fas fa-circle-chevron-right"></i></div>
     </div>
-  </div>
   <div class="anime-list">
     <div class="anime-item">
   <div class="anime-cover-wrapper">
@@ -122,11 +125,7 @@
     <div class="anime-type">None</div>
   </div>
 </div></div>
-<div class="floating-search" onclick="window.location.href='mailto:plixbantuan@email.com'">
-  <div class="text">Feedback rating dan saranya!..</div>
-  <i class="fas fa-envelope icon"></i>
-</div>
-
+<img src="hero.png" alt="Hero Image" class="hero-img">
 <style>
     .anime-list {
       display: flex;
@@ -201,7 +200,6 @@
     .floating-search {
       background: #fff;
       border-radius: 20px;
-      margin-top: 50px;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
       padding: 14px 10px;
       display: flex;
@@ -209,6 +207,7 @@
       align-items: center;
       box-sizing: border-box;
       z-index: 1000;
+      margin: 15px 0;
     }
 
     .floating-search:active {
@@ -224,4 +223,12 @@
       font-size: 17px;
       color: #bbb;
     }
+    .hero-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    background: linear-gradient(120deg, rgba(204, 204, 204, 0.6) 25%, rgba(255, 255, 255, 0.6) 50%, rgba(204, 204, 204, 0.6) 75%);
+  background-size: 200% 100%;
+  animation: loading-skeleton 1.5s infinite linear;
+  }
 </style>
