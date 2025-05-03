@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      background-color: #F4F4F4;
+      user-select: none;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    #offline-notice {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: #f4f4f4;
+      color: #333;
+      font-size: 1rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      cursor: none;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    body.offline {
+      pointer-events: none;
+      cursor: none;
+    }
+
+    body.offline #offline-notice {
+      opacity: 1;
+    }
+    
+    @keyframes loading-skeleton {
+      0% {
+        background-position: 200% 0;
+      }
+      100% {
+        background-position: -200% 0;
+      }
+    }
+    
+.manga-container {
+ padding: 0 10px;
+}
+
+.manga-item {
+  display: flex;
+  width: 100%;
+  background: #fff;
+  overflow: hidden;
+  box-sizing: border-box;
+  border-bottom: 2px #f29e38 solid;
+  margin-top: 10px;
+}
+
+.manga-cover {
+  width: 100px;
+  height: 140px;
+  object-fit: cover;
+  background: linear-gradient(120deg, rgba(204, 204, 204, 0.6) 25%, rgba(255, 255, 255, 0.6) 50%, rgba(204, 204, 204, 0.6) 75%);  
+  background-size: 200% 100%;  
+  animation: loading-skeleton 1.5s infinite linear;
+}
+
+.manga-info {
+  flex: 1;
+  display: flex;
+  padding: 5px 10px;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.manga-text {
+}
+
+.manga-title {
+  font-size: 14px;
+  font-weight: bold;
+  color: #777;
+  border-bottom: 1px #bbb solid;
+  margin-bottom: 5px;
+  padding-bottom: 5px;
+}
+
+.manga-description {
+  font-size: 10px;
+  color: #999;
+}
+
+.manga-meta {
+  font-size: 10px;
+  color: #bbb;
+}
+
+.chapter-container {
+  margin-top: 10px;
+  padding: 5px 0;
+  overflow-y: auto;
+  height: 400px;
+}
+
+.chapter-card {
+  display: flex;
+  background: #f29e38;
+  margin-bottom: 5px;
+  border-bottom: 1px solid #eee;
+  padding: 5px;
+}
+
+.chapter-card:last-child {
+  border-bottom: none;
+}
+
+.chapter-icon {
+  width: 100px;
+  height: 50px;
+  object-fit: cover;
+  margin-right: 10px;
+}
+
+.chapter-title {
+  font-size: 12px;
+  font-weight: bold;
+  color: #fff;
+  padding: 5px 0;
+  border-bottom: 1px #fff solid;
+  text-transform: uppercase;
+}
+
+.chapter-info {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.chapter-meta {
+  font-size: 10px;
+  color: #fff;
+  margin-top: 3px;
+  opacity: 0.8;
+}
+  </style>
+</head>
+<body>
+  <div id="offline-notice">Jaringan tidak tersedia</div>
+<div class="manga-container">
+<div class="manga-item"><img class="manga-cover" src="https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx150440-QdBFoMh4YHsK.jpg" alt="Cover"><div class="manga-info"><div class="manga-text"><div class="manga-title">Ruri Dragon</div><div class="manga-description">Ruri menghadapi masalah-masalah biasa: teman sekelas yang menyebalkan, guru-guru yang merepotkan, dan... bangun tidur dengan tanduk naga?!</div>
+</div><div class="manga-meta">comedy, slice of life, supernatural | since Jun 13, 2022</div></div></div>
+
+<div class="chapter-container">
+
+<div class="chapter-card"><img src="https://cdn.komiku.id/uploads2/2563374-3.jpg" alt="Chapter Icon" class="chapter-icon"/><div class="chapter-info"><div class="chapter-title">Ruri Dragon Chapter 1 prolog</div><div class="chapter-meta">01 May 2025 | upload: Ygkas Plixteams</div></div></div>
+
+<div class="chapter-card"><img src="https://cdn.komiku.id/uploads2/2563374-3.jpg" alt="Chapter Icon" class="chapter-icon"/><div class="chapter-info"><div class="chapter-title">Ruri Dragon Chapter 1</div><div class="chapter-meta">01 May 2025 | upload: Ygkas Plixteams</div></div></div>
+
+<div class="chapter-card"><img src="https://cdn.komiku.id/uploads2/2563374-3.jpg" alt="Chapter Icon" class="chapter-icon"/><div class="chapter-info"><div class="chapter-title">Ruri Dragon Chapter 2</div><div class="chapter-meta">01 May 2025 | upload: Ygkas Plixteams</div></div></div>
+
+<div class="chapter-card"><img src="https://cdn.komiku.id/uploads2/2563374-3.jpg" alt="Chapter Icon" class="chapter-icon"/><div class="chapter-info"><div class="chapter-title">Ruri Dragon Chapter 3</div><div class="chapter-meta">01 May 2025 | upload: Ygkas Plixteams</div></div></div>
+
+<div class="chapter-card"><img src="https://cdn.komiku.id/uploads2/2563374-3.jpg" alt="Chapter Icon" class="chapter-icon"/><div class="chapter-info"><div class="chapter-title">Ruri Dragon Chapter 4</div><div class="chapter-meta">01 May 2025 | upload: Ygkas Plixteams</div></div></div>
+
+<div class="chapter-card"><img src="https://cdn.komiku.id/uploads2/2563374-3.jpg" alt="Chapter Icon" class="chapter-icon"/><div class="chapter-info"><div class="chapter-title">Ruri Dragon Chapter 5</div><div class="chapter-meta">01 May 2025 | upload: Ygkas Plixteams</div></div></div>
+
+<div class="chapter-card"><img src="https://cdn.komiku.id/uploads2/2563374-3.jpg" alt="Chapter Icon" class="chapter-icon"/><div class="chapter-info"><div class="chapter-title">Ruri Dragon Chapter 6</div><div class="chapter-meta">01 May 2025 | upload: Ygkas Plixteams</div></div></div>
+
+<div class="chapter-card"><img src="https://cdn.komiku.id/uploads2/2563374-3.jpg" alt="Chapter Icon" class="chapter-icon"/><div class="chapter-info"><div class="chapter-title">Ruri Dragon Chapter 7</div><div class="chapter-meta">02 May 2025 | upload: Ygkas Plixteams</div></div></div>
+
+<div class="chapter-card"><img src="https://cdn.komiku.id/uploads2/2563374-3.jpg" alt="Chapter Icon" class="chapter-icon"/><div class="chapter-info"><div class="chapter-title">Ruri Dragon Chapter 8</div><div class="chapter-meta">03 May 2025 | upload: Ygkas Plixteams</div></div></div>
+
+<div class="chapter-card"><img src="https://cdn.komiku.id/uploads2/2563374-3.jpg" alt="Chapter Icon" class="chapter-icon"/><div class="chapter-info"><div class="chapter-title">Ruri Dragon Chapter 9</div><div class="chapter-meta">04 May 2025 | upload: Ygkas Plixteams</div></div></div>
+
+<div class="chapter-card"><img src="https://cdn.komiku.id/uploads2/2563374-3.jpg" alt="Chapter Icon" class="chapter-icon"/><div class="chapter-info"><div class="chapter-title">Ruri Dragon Chapter 10</div><div class="chapter-meta">05 May 2025 | upload: Ygkas Plixteams</div></div></div>
+
+<div class="chapter-card"><img src="https://cdn.komiku.id/uploads2/2563374-3.jpg" alt="Chapter Icon" class="chapter-icon"/><div class="chapter-info"><div class="chapter-title">Ruri Dragon Chapter 11</div><div class="chapter-meta">06 May 2025 | upload: Ygkas Plixteams</div></div></div>
+
+<div class="chapter-card"><img src="https://cdn.komiku.id/uploads2/2563374-3.jpg" alt="Chapter Icon" class="chapter-icon"/><div class="chapter-info"><div class="chapter-title">Ruri Dragon Chapter 12</div><div class="chapter-meta">07 May 2025 | upload: Ygkas Plixteams</div></div></div>
+
+<div class="chapter-card"><img src="https://cdn.komiku.id/uploads2/2563374-3.jpg" alt="Chapter Icon" class="chapter-icon"/><div class="chapter-info"><div class="chapter-title">Ruri Dragon Chapter 13</div><div class="chapter-meta">08 May 2025 | upload: Ygkas Plixteams</div></div></div>
+
+<div class="chapter-card"><img src="https://cdn.komiku.id/uploads2/2563374-3.jpg" alt="Chapter Icon" class="chapter-icon"/><div class="chapter-info"><div class="chapter-title">Ruri Dragon Chapter 14</div><div class="chapter-meta">09 May 2025 | upload: Ygkas Plixteams</div></div></div>
+
+<div class="chapter-card"><img src="https://cdn.komiku.id/uploads2/2563374-3.jpg" alt="Chapter Icon" class="chapter-icon"/><div class="chapter-info"><div class="chapter-title">Ruri Dragon Chapter 15</div><div class="chapter-meta">10 May 2025 | upload: Ygkas Plixteams</div></div></div>
+
+<div class="chapter-card"><img src="https://cdn.komiku.id/uploads2/2563374-3.jpg" alt="Chapter Icon" class="chapter-icon"/><div class="chapter-info"><div class="chapter-title">Ruri Dragon Chapter 16</div><div class="chapter-meta">11 May 2025 | upload: Ygkas Plixteams</div></div></div>
+
+<div class="chapter-card"><img src="https://cdn.komiku.id/uploads2/2563374-3.jpg" alt="Chapter Icon" class="chapter-icon"/><div class="chapter-info"><div class="chapter-title">Ruri Dragon Chapter 17</div><div class="chapter-meta">12 May 2025 | upload: Ygkas Plixteams</div></div></div>
+
+<div class="chapter-card"><img src="https://cdn.komiku.id/uploads2/2563374-3.jpg" alt="Chapter Icon" class="chapter-icon"/><div class="chapter-info"><div class="chapter-title">Ruri Dragon Chapter 18</div><div class="chapter-meta">13 May 2025 | upload: Ygkas Plixteams</div></div></div>
+
+<div class="chapter-card"><img src="https://cdn.komiku.id/uploads2/2563374-3.jpg" alt="Chapter Icon" class="chapter-icon"/><div class="chapter-info"><div class="chapter-title">Ruri Dragon Chapter 19</div><div class="chapter-meta">14 May 2025 | upload: Ygkas Plixteams</div></div></div>
+
+<div class="chapter-card"><img src="https://cdn.komiku.id/uploads2/2563374-3.jpg" alt="Chapter Icon" class="chapter-icon"/><div class="chapter-info"><div class="chapter-title">Ruri Dragon Chapter 20</div><div class="chapter-meta">15 May 2025 | upload: Ygkas Plixteams</div></div></div>
+
+<div class="chapter-card"><img src="https://cdn.komiku.id/uploads2/2563374-3.jpg" alt="Chapter Icon" class="chapter-icon"/><div class="chapter-info"><div class="chapter-title">Ruri Dragon Chapter 21</div><div class="chapter-meta">16 May 2025 | upload: Ygkas Plixteams</div></div></div>
+
+<div class="chapter-card"><img src="https://cdn.komiku.id/uploads2/2563374-3.jpg" alt="Chapter Icon" class="chapter-icon"/><div class="chapter-info"><div class="chapter-title">Ruri Dragon Chapter 22</div><div class="chapter-meta">17 May 2025 | upload: Ygkas Plixteams</div></div></div>
+
+<div class="chapter-card"><img src="https://cdn.komiku.id/uploads2/2563374-3.jpg" alt="Chapter Icon" class="chapter-icon"/><div class="chapter-info"><div class="chapter-title">Ruri Dragon Chapter 23</div><div class="chapter-meta">18 May 2025 | upload: Ygkas Plixteams</div></div></div>
+
+<div class="chapter-card"><img src="https://cdn.komiku.id/uploads2/2563374-3.jpg" alt="Chapter Icon" class="chapter-icon"/><div class="chapter-info"><div class="chapter-title">Ruri Dragon Chapter 24</div><div class="chapter-meta">19 May 2025 | upload: Ygkas Plixteams</div></div></div>
+
+<div class="chapter-card"><img src="https://cdn.komiku.id/uploads2/2563374-3.jpg" alt="Chapter Icon" class="chapter-icon"/><div class="chapter-info"><div class="chapter-title">Ruri Dragon Chapter 25</div><div class="chapter-meta">20 May 2025 | upload: Ygkas Plixteams</div></div></div>
+
+<div class="chapter-card"><img src="https://cdn.komiku.id/uploads2/2563374-3.jpg" alt="Chapter Icon" class="chapter-icon"/><div class="chapter-info"><div class="chapter-title">Ruri Dragon Chapter 26</div><div class="chapter-meta">21 May 2025 | upload: Ygkas Plixteams</div></div></div>
+
+<div class="chapter-card"><img src="https://cdn.komiku.id/uploads2/2563374-3.jpg" alt="Chapter Icon" class="chapter-icon"/><div class="chapter-info"><div class="chapter-title">Ruri Dragon Chapter 27</div><div class="chapter-meta">22 May 2025 | upload: Ygkas Plixteams</div></div></div>
+
+<div class="chapter-card"><img src="https://cdn.komiku.id/uploads2/2563374-3.jpg" alt="Chapter Icon" class="chapter-icon"/><div class="chapter-info"><div class="chapter-title">Ruri Dragon Chapter 28</div><div class="chapter-meta">23 May 2025 | upload: Ygkas Plixteams</div></div></div>
+
+<div class="chapter-card"><img src="https://cdn.komiku.id/uploads2/2563374-3.jpg" alt="Chapter Icon" class="chapter-icon"/><div class="chapter-info"><div class="chapter-title">Ruri Dragon Chapter 29</div><div class="chapter-meta">24 May 2025 | upload: Ygkas Plixteams</div></div></div>
+
+<div class="chapter-card"><img src="https://cdn.komiku.id/uploads2/2563374-3.jpg" alt="Chapter Icon" class="chapter-icon"/><div class="chapter-info"><div class="chapter-title">Ruri Dragon Chapter 30</div><div class="chapter-meta">25 May 2025 | upload: Ygkas Plixteams</div></div></div>
+
+<div class="chapter-card"><img src="https://cdn.komiku.id/uploads2/2563374-3.jpg" alt="Chapter Icon" class="chapter-icon"/><div class="chapter-info"><div class="chapter-title">Ruri Dragon Chapter 31</div><div class="chapter-meta">26 May 2025 | upload: Ygkas Plixteams</div></div></div>
+
+<div class="chapter-card"><img src="https://cdn.komiku.id/uploads2/2563374-3.jpg" alt="Chapter Icon" class="chapter-icon"/><div class="chapter-info"><div class="chapter-title">Ruri Dragon Chapter 32</div><div class="chapter-meta">27 May 2025 | upload: Ygkas Plixteams</div></div></div>
+
+<div class="chapter-card"><img src="https://cdn.komiku.id/uploads2/2563374-3.jpg" alt="Chapter Icon" class="chapter-icon"/><div class="chapter-info"><div class="chapter-title">Ruri Dragon Chapter 33</div><div class="chapter-meta">28 May 2025 | upload: Ygkas Plixteams</div></div></div>
+
+</div>
+
+</div>
+<script>async function checkInternetConnection(){try{await fetch("https://www.google.com/favicon.ico",{method:"HEAD",mode:"no-cors"});return true}catch(e){return false}}async function updateConnectionStatus(){const isOnline=navigator.onLine,confirmedOnline=isOnline&&await checkInternetConnection();document.body.classList.toggle("offline",!confirmedOnline)}window.addEventListener("online",updateConnectionStatus);window.addEventListener("offline",updateConnectionStatus);setInterval(updateConnectionStatus,3000);updateConnectionStatus();</script>
+</body>
+</html>
