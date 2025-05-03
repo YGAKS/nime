@@ -1,7 +1,7 @@
-<div class="day-container"><div class="card">Ini list jadwal manga kalo mau Search manga lainya klik bagian search bar!</div>
+<div class="card">Ini list jadwal manga kalo mau Search manga lainya klik bagian search bar!</div>
 
 <div class="jadwal-section"><div class="jadwal-title"><div class="jadwal-title-text">manga mingguan shounen jump</div><div class="jadwal-title-line"></div></div>
-
+<div class="jadwal-container">
 <div class="anime-list">
 
 <div class="anime-item"><img class="anime-cover" src="https://cdn.myanimelist.net/r/200x268/images/manga/5/259834.webp?s=0e5d2b769d52d7e097ffe244ca2ce3c3" alt="Cover"><div class="anime-info"><div class="anime-text"><div class="anime-title">Judul Manga</div><div class="anime-description">Deskripsi singkat manga ini...</div>
@@ -19,13 +19,13 @@
 <div class="anime-item"><img class="anime-cover" src="https://cdn.myanimelist.net/r/200x268/images/manga/5/259834.webp?s=0e5d2b769d52d7e097ffe244ca2ce3c3" alt="Cover"><div class="anime-info"><div class="anime-text"><div class="anime-title">Judul Manga</div><div class="anime-description">Deskripsi singkat manga ini...</div>
 </div><div class="anime-meta">Shounen | 02 Mei 2025</div></div></div>
 
-</div>
+</div></div>
 
-<div class="floating-search" onclick="window.location.href='/anime'"><div class="text">cari manga lainya yang kamu cari...</div><i class="fas fa-sliders icon"></i></div>
- 
-  <style>
+<div class="floating-search" onclick="window.location.href='/anime'"><div class="text">cari manga lainya yang kamu cari...</div><i class="fas fa-sliders icon"></i></div></div>
+
+<style>
     .jadwal-container {
-      height: 80vh;
+      height: 75vh;
       overflow-y: auto;
       padding: 0;
       box-sizing: border-box;
@@ -56,9 +56,10 @@
     }
     
 .anime-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
   padding: 0 5px;
-  height: 80vh;
-  overflow-y: auto;
 }
 
 .anime-item {
@@ -68,7 +69,6 @@
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
   overflow: hidden;
   box-sizing: border-box;
-  margin-bottom: 10px;
 }
 
 .anime-cover {
