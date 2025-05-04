@@ -8,7 +8,7 @@
     body {
       margin: 0;
       font-family: sans-serif;
-      background: #f29e38;
+      background: #FFF;
       user-select: none;
     }
 
@@ -72,7 +72,8 @@
 .manga-item {
   display: flex;
   width: 100%;
-  background: #FFF;
+  background: #f29e38;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
   box-sizing: border-box;
   overflow: hidden;
 }
@@ -84,7 +85,7 @@
   background: linear-gradient(120deg, rgba(204, 204, 204, 0.6) 25%, rgba(255, 255, 255, 0.6) 50%, rgba(204, 204, 204, 0.6) 75%);  
   background-size: 200% 100%;  
   animation: loading-skeleton 1.5s infinite linear;
-  border-right: 1px #ccc solid;
+  border-right: 1px #fff solid;
 }
 
 .manga-info {
@@ -101,20 +102,20 @@
 .manga-title {
   font-size: 14px;
   font-weight: bold;
-  color: #777;
-  border-bottom: 1px #ccc solid;
+  color: #fff;
+  border-bottom: 1px #fff solid;
   margin-bottom: 5px;
   padding-bottom: 5px;
 }
 
 .manga-description {
   font-size: 10px;
-  color: #999;
+  color: #fff;
 }
 
 .manga-meta {
   font-size: 10px;
-  color: #bbb;
+  color: #fff;
 }
 
     .line-container {
@@ -122,11 +123,12 @@
       width: 100%;
       display: flex;
       align-items: center;
+      margin-top: 10px;
     }
 
     .title {
       font-size: 16px;
-      color: #fff;
+      color: #bbb;
       font-weight: bold;
       white-space: nowrap;
       padding: 10px;
@@ -136,14 +138,13 @@
       position: absolute;
       right: 10px;
       font-size: 16px;
-      color: #fff;
+      color: #bbb;
     }
 
 .chapter-list {
   display: flex;
   overflow-x: auto;
   gap: 10px;
-  padding: 0;
   margin: 0 10px;
   scroll-behavior: smooth;
 }
@@ -158,6 +159,7 @@
   width: 100%;
   height: 140px;
   overflow: hidden;
+  border: 2px #f29e38 solid;
 }
 
 .chapter-cover-img {
@@ -173,7 +175,7 @@
 .chapter-label {
   position: absolute;
   bottom: 0;
-  background-color: #333;
+  background-color: #f29e38;
   width: 100%;
   height: 20px;
   color: #fff;
@@ -253,7 +255,7 @@
 <div id="update-notice" class="update-notice">Mengecek pembaruan...</div>
  <div class="manga-background"></div><div class="manga-wrapper"><div class="manga-item"><img class="manga-cover" src="https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx150440-QdBFoMh4YHsK.jpg" alt="Cover"><div class="manga-info"><div class="manga-text"><div class="manga-title">Ruri Dragon</div><div class="manga-description">Ruri menghadapi masalah-masalah biasa: teman sekelas yang menyebalkan, guru-guru yang merepotkan, dan... bangun tidur dengan tanduk naga?!</div></div><div class="manga-meta">comedy, slice of life, supernatural | since Jun 13, 2022</div></div></div></div>
   
-<div class="line-container"><div class="title">list chaptet ruri dragon</div><div class="arrow"><i class="fas fa-circle-chevron-right"></i></div></div>
+<div class="line-container"><div class="title">list chapter ruri dragon 0 - 33</div><div class="arrow"><i class="fas fa-circle-chevron-right"></i></div></div>
 <div class="chapter-list">
  
 <div class="chapter-item"><div class="chapter-cover-wrapper"><img class="chapter-cover-img" src="https://cdn.komiku.id/uploads2/2563375-1.jpg" alt="0"><span class="chapter-label">Chapter 0 Prolog</span></div></div>
