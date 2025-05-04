@@ -55,7 +55,7 @@
     
 .manga-background {
   height: 200px;
-  background-color: #fff;
+  background-color: #f4f4f4;
   position: relative;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='50' height='50' viewBox='0 0 30 30'%3E%3Cpath fill='%23ffc75f' d='m21.32 5.27-5.47 5.05-2.94-6.71a1 1 0 0 0-1.83 0l-2.94 6.71-5.46-5.05c-.72-.67-1.87 0-1.65.96l3 13a1 1 0 0 0 .97.78h14c.47 0 .87-.32.97-.78l3-13c.22-.96-.93-1.63-1.65-.96ZM18.2 18H5.8L3.71 8.93l4.12 3.8a1 1 0 0 0 1.59-.33L12 6.49l2.58 5.91a1 1 0 0 0 1.59.33l4.12-3.8L18.2 18Z'/></svg>");
   background-repeat: repeat;
@@ -72,7 +72,7 @@
 .manga-item {
   display: flex;
   width: 100%;
-  background: white;
+  background: #FFF;
   box-sizing: border-box;
   overflow: hidden;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
@@ -166,7 +166,7 @@
   height: 100%;
   object-fit: cover;
   display: block;
-  background: linear-gradient(120deg, rgba(204, 204, 204, 0.8) 25%, rgba(255, 255, 255, 0.9) 50%, rgba(204, 204, 204, 0.8) 75%);  
+  background: linear-gradient(120deg, rgba(204, 204, 204, 1) 25%, rgba(255, 255, 255, 1) 50%, rgba(204, 204, 204, 1) 75%);  
   background-size: 200% 100%;  
   animation: loading-skeleton 1.5s infinite linear;
 }
@@ -174,11 +174,16 @@
 .chapter-label {
   position: absolute;
   bottom: 0;
-  right: 0;
-  background-color: #fff;
-  color: #f29e38;
-  font-size: 12px;
-  padding: 5px;
+  background-color: #333;
+  width: 100%;
+  height: 20px;
+  color: #fff;
+  font-size: 10px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  text-transform: uppercase;
+  justify-content: center;
 }
 
     .header {
@@ -226,35 +231,37 @@
 <div class="line-container"><div class="title">list chaptet ruri dragon</div><div class="arrow"><i class="fas fa-circle-chevron-right"></i></div></div>
 <div class="chapter-list">
  
-<div class="chapter-item"><div class="chapter-cover-wrapper"><img class="chapter-cover-img" src="https://via.placeholder.com/100x140" alt="1"><span class="chapter-label">Chapter 1</span></div></div>
+<div class="chapter-item"><div class="chapter-cover-wrapper"><img class="chapter-cover-img" src="https://cdn.komiku.id/uploads2/2563375-1.jpg" alt="0"><span class="chapter-label">Chapter 0 Prolog</span></div></div>
 
-<div class="chapter-item"><div class="chapter-cover-wrapper"><img class="chapter-cover-img" src="https://via.placeholder.com/100x140" alt="2"><span class="chapter-label">Chapter 2</span></div></div>
+<div class="chapter-item"><div class="chapter-cover-wrapper"><img class="chapter-cover-img" src="https://cdn.komiku.id/uploads2/2563374-3.jpg" alt="2"><span class="chapter-label">Chapter 1</span></div></div>
 
-<div class="chapter-item"><div class="chapter-cover-wrapper"><img class="chapter-cover-img" src="https://via.placeholder.com/100x140" alt="3"><span class="chapter-label">Chapter 3</span></div></div>
+<div class="chapter-item"><div class="chapter-cover-wrapper"><img class="chapter-cover-img" src="https://cdn.komiku.id/uploads2/2563372-3.png" alt="2"><span class="chapter-label">Chapter 2</span></div></div>
 
-<div class="chapter-item"><div class="chapter-cover-wrapper"><img class="chapter-cover-img" src="https://via.placeholder.com/100x140" alt="4"><span class="chapter-label">Chapter 4</span></div></div>
+<div class="chapter-item"><div class="chapter-cover-wrapper"><img class="chapter-cover-img" src="https://cdn.komiku.id/uploads2/2563371-3.png" alt="3"><span class="chapter-label">Chapter 3</span></div></div>
 
-<div class="chapter-item"><div class="chapter-cover-wrapper"><img class="chapter-cover-img" src="https://via.placeholder.com/100x140" alt="5"><span class="chapter-label">Chapter 5</span></div></div>
+<div class="chapter-item"><div class="chapter-cover-wrapper"><img class="chapter-cover-img" src="https://cdn.komiku.id/uploads2/2563370-3.png" alt="4"><span class="chapter-label">Chapter 4</span></div></div>
 
-<div class="chapter-item"><div class="chapter-cover-wrapper"><img class="chapter-cover-img" src="https://via.placeholder.com/100x140" alt="6"><span class="chapter-label">Chapter 6</span></div></div>
+<div class="chapter-item"><div class="chapter-cover-wrapper"><img class="chapter-cover-img" src="https://cdn.komiku.id/uploads2/2563368-3.jpg" alt="5"><span class="chapter-label">Chapter 5</span></div></div>
 
-<div class="chapter-item"><div class="chapter-cover-wrapper"><img class="chapter-cover-img" src="https://via.placeholder.com/100x140" alt="7"><span class="chapter-label">Chapter 7</span></div></div>
+<div class="chapter-item"><div class="chapter-cover-wrapper"><img class="chapter-cover-img" src="https://cdn.komiku.id/uploads2/2563367-3.jpg" alt="6"><span class="chapter-label">Chapter 6</span></div></div>
 
-<div class="chapter-item"><div class="chapter-cover-wrapper"><img class="chapter-cover-img" src="https://via.placeholder.com/100x140" alt="8"><span class="chapter-label">Chapter 8</span></div></div>
+<div class="chapter-item"><div class="chapter-cover-wrapper"><img class="chapter-cover-img" src="https://cdn.komiku.id/uploads2/2792634-2.jpg" alt="7"><span class="chapter-label">Chapter 7</span></div></div>
 
-<div class="chapter-item"><div class="chapter-cover-wrapper"><img class="chapter-cover-img" src="https://via.placeholder.com/100x140" alt="9"><span class="chapter-label">Chapter 9</span></div></div>
+<div class="chapter-item"><div class="chapter-cover-wrapper"><img class="chapter-cover-img" src="https://cdn.komiku.id/uploads2/2792633-2.png" alt="8"><span class="chapter-label">Chapter 8</span></div></div>
 
-<div class="chapter-item"><div class="chapter-cover-wrapper"><img class="chapter-cover-img" src="https://via.placeholder.com/100x140" alt="10"><span class="chapter-label">Chapter 10</span></div></div>
+<div class="chapter-item"><div class="chapter-cover-wrapper"><img class="chapter-cover-img" src="https://cdn.komiku.id/uploads2/2796143-1.jpg" alt="9"><span class="chapter-label">Chapter 9</span></div></div>
 
-<div class="chapter-item"><div class="chapter-cover-wrapper"><img class="chapter-cover-img" src="https://via.placeholder.com/100x140" alt="11"><span class="chapter-label">Chapter 11</span></div></div>
+<div class="chapter-item"><div class="chapter-cover-wrapper"><img class="chapter-cover-img" src="https://cdn.komiku.id/uploads2/2797370-2.jpg" alt="10"><span class="chapter-label">Chapter 10</span></div></div>
 
-<div class="chapter-item"><div class="chapter-cover-wrapper"><img class="chapter-cover-img" src="https://via.placeholder.com/100x140" alt="12"><span class="chapter-label">Chapter 12</span></div></div>
+<div class="chapter-item"><div class="chapter-cover-wrapper"><img class="chapter-cover-img" src="https://cdn.komiku.id/uploads2/2808544-2.jpg" alt="11"><span class="chapter-label">Chapter 11</span></div></div>
 
-<div class="chapter-item"><div class="chapter-cover-wrapper"><img class="chapter-cover-img" src="https://via.placeholder.com/100x140" alt="13"><span class="chapter-label">Chapter 13</span></div></div>
+<div class="chapter-item"><div class="chapter-cover-wrapper"><img class="chapter-cover-img" src="https://cdn.komiku.id/uploads2/2815688-2.jpg" alt="12"><span class="chapter-label">Chapter 12</span></div></div>
 
-<div class="chapter-item"><div class="chapter-cover-wrapper"><img class="chapter-cover-img" src="https://via.placeholder.com/100x140" alt="14"><span class="chapter-label">Chapter 14</span></div></div>
+<div class="chapter-item"><div class="chapter-cover-wrapper"><img class="chapter-cover-img" src="https://cdn.komiku.id/uploads2/2815687-2.jpg" alt="13"><span class="chapter-label">Chapter 13</span></div></div>
 
-<div class="chapter-item"><div class="chapter-cover-wrapper"><img class="chapter-cover-img" src="https://via.placeholder.com/100x140" alt="15"><span class="chapter-label">Chapter 15</span></div></div>
+<div class="chapter-item"><div class="chapter-cover-wrapper"><img class="chapter-cover-img" src="https://cdn.komiku.id/uploads2/2820088-1.jpg" alt="14"><span class="chapter-label">Chapter 14</span></div></div>
+
+<div class="chapter-item"><div class="chapter-cover-wrapper"><img class="chapter-cover-img" src="https://cdn.komiku.id/uploads2/2828163-2.jpg" alt="15"><span class="chapter-label">Chapter 15</span></div></div>
 
 <div class="chapter-item"><div class="chapter-cover-wrapper"><img class="chapter-cover-img" src="https://via.placeholder.com/100x140" alt="16"><span class="chapter-label">Chapter 16</span></div></div>
 
