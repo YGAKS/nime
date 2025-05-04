@@ -220,13 +220,37 @@
     .menu-button {
       right: 15px;
     }
+    
+.update-notice {
+  display: none;
+  position: fixed;
+  top: -50px;
+  left: 50%;
+  transform: translateX(-50%) translateY(0);
+  opacity: 0;
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 10px 20px;
+  font-size: 10px;
+  z-index: 1000;
+  border-radius: 20px;
+  transition: all 0.5s ease-in-out;
+}
+
+.update-notice.show {
+  display: block;
+  top: 20px;
+  opacity: 1;
+}
    
     
   </style>
 </head>
 <body>
 <div id="offline-notice">Jaringan tidak tersedia</div>
-<div class="header"><div class="back-button" onclick="history.back()"><i class="fas fa-arrow-left"></i></div><div class="menu-button" onclick="location.reload()"><i class="fas fa-rotate-right"></i></div></div>
+<div class="header"><div class="back-button" onclick="history.back()"><i class="fas fa-arrow-left"></i></div><div class="menu-button" onclick="showUpdateNotice()"><i class="fas fa-rotate-right"></i></div></div>
+<div id="update-notice" class="update-notice">Mengecek pembaruan...</div>
  <div class="manga-background"></div><div class="manga-wrapper"><div class="manga-item"><img class="manga-cover" src="https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx150440-QdBFoMh4YHsK.jpg" alt="Cover"><div class="manga-info"><div class="manga-text"><div class="manga-title">Ruri Dragon</div><div class="manga-description">Ruri menghadapi masalah-masalah biasa: teman sekelas yang menyebalkan, guru-guru yang merepotkan, dan... bangun tidur dengan tanduk naga?!</div></div><div class="manga-meta">comedy, slice of life, supernatural | since Jun 13, 2022</div></div></div></div>
   
 <div class="line-container"><div class="title">list chaptet ruri dragon</div><div class="arrow"><i class="fas fa-circle-chevron-right"></i></div></div>
@@ -303,5 +327,6 @@
 
 </div>
 <script>async function checkInternetConnection(){try{await fetch("https://www.google.com/favicon.ico",{method:"HEAD",mode:"no-cors"});return true}catch(e){return false}}async function updateConnectionStatus(){const isOnline=navigator.onLine,confirmedOnline=isOnline&&await checkInternetConnection();document.body.classList.toggle("offline",!confirmedOnline)}window.addEventListener("online",updateConnectionStatus);window.addEventListener("offline",updateConnectionStatus);setInterval(updateConnectionStatus,3000);updateConnectionStatus();</script>
+<script>function showUpdateNotice(){const e=document.getElementById('update-notice');e.style.display='block';setTimeout(()=>{e.classList.add('show')},10);setTimeout(()=>{e.classList.remove('show');setTimeout(()=>{location.reload()},500)},1000);}</script>
 </body>
 </html>
