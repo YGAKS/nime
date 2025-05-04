@@ -1,78 +1,332 @@
 <!DOCTYPE html>
 <html lang="en">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no"/><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"><style>body{margin:0;font-family:sans-serif;background-color:#fff;user-select:none}.navbar{background-color:#F4F4F4;display:flex;align-items:center;padding:15px 10px;position:sticky;top:0;z-index:10}.navbar-icons{display:flex;align-items:center;background-color:#F4F4F4;height:30px;width:30px;border-radius:50%;justify-content:center}.navbar-icons:active{background-color:rgba(128,128,128,0.3);font-size:20px;height:30px;width:30px;border-radius:50%;display:flex}.navbar-icons .icon{color:#f29e38;font-size:20px;cursor:none}.navbar-title{font-size:18px;font-weight:bold;color:#333;margin:0 auto;text-transform:uppercase;animation:slideDown .6s ease-out forwards}@keyframes slideDown{from{transform:translateY(-100%);opacity:0}to{transform:translateY(0);opacity:1}}.search-bar{background:#fff;border-radius:20px;margin:10px;box-shadow:0 4px 12px rgba(0,0,0,.1);padding:14px 10px;display:flex;justify-content:space-between;align-items:center;box-sizing:border-box}.search-bar input[type="text"]{border:none;outline:none;font-size:16px;color:#bbb;flex:1;margin-right:10px}.search-bar input::placeholder{color:#bbb}.search-bar-button{font-size:18px;color:#bbb}.search-bar button:hover{color:#888}.anime-container{display:flex;flex-wrap:wrap;gap:10px;padding:0 20px;height:73vh;overflow-y:auto;animation:slideUp .5s ease-out}@keyframes slideUp{from{transform:translateY(100px);opacity:0}to{transform:translateY(0);opacity:1}}.anime-item{width:100px}.anime-list{position:relative;width:100%;height:140px;overflow:hidden}.anime-cover{width:100%;height:140px;object-fit:cover;background:linear-gradient(120deg,rgba(204,204,204,.6) 25%,rgba(255,255,255,.6) 50%,rgba(204,204,204,.6) 75%);background-size:200% 100%;animation:loading-skeleton 1.5s infinite linear}.label-top,.label-bottom{position:absolute;background-color:orange;color:#fff;font-size:10px;padding:2px 5px;z-index:2}.label-top{top:0;left:0}.label-bottom{bottom:0;right:0}.anime-info{margin-top:4px}.anime-title{font-size:12px;font-weight:bold;color:#777;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:200px;display:block}.anime-type{font-size:11px;color:#bbb}@keyframes loading-skeleton{0%{background-position:200% 0}100%{background-position:-200% 0}}.hidden{display:none!important}#offline-notice{position:fixed;top:0;left:0;width:100vw;height:100vh;background:#f4f4f4;color:#333;font-size:1rem;display:flex;justify-content:center;align-items:center;z-index:9999;cursor:none;pointer-events:none;opacity:0;transition:opacity .3s ease}body.offline{pointer-events:none;cursor:none}body.offline #offline-notice{opacity:1}.card-info{padding:5px 0;text-align:center;width:100%;font-size:10px;background-color:#f29e38;color:#fff}.filter-bar{display:flex;justify-content:space-between;align-items:center;padding:0 10px;margin:10px 0;gap:10px}.genre-scroll{display:flex;overflow-x:auto;gap:5px;flex:1;scrollbar-width:none;border-radius:20px}.genre-scroll::-webkit-scrollbar{display:none}.genre-btn{white-space:nowrap;background-color:#f29e38;color:#fff;border:none;border-radius:20px;padding:6px 8px;font-size:14px}.genre-btn.active{background-color:#333}.select-wrapper{position:relative;display:inline-block;width:90px;align-items:center}.select-wrapper select{appearance:none;-webkit-appearance:none;-moz-appearance:none;background:#f29e38;border:1px solid #f29e38;border-radius:20px;padding:5px 8px;font-size:14px;color:#FFF;width:100%;user-select:none}.select-wrapper select:focus{background-color:#f29e38}.select-wrapper::after{content:"\f078";font-family:"Font Awesome 6 Free";font-weight:900;position:absolute;top:50%;right:12px;transform:translateY(-50%);pointer-events:none;color:#fff}</style>
-</head><body>
- <div id="offline-notice">Jaringan tidak tersedia</div><div class="navbar"><div class="navbar-icons"><a href="/tentang" class="icon"><i class="fa-solid fa-circle-question"></i></a></div><div class="navbar-title" id="navbar-title">Manga List</div><div class="navbar-icons"><i class="fas fa-circle-xmark icon" onclick="history.back()"></i></div></div><div class="card-info">info scroll bawah untuk list anime dan scroll ke samping list genre itu.</div><form class="search-bar"><input type="text" placeholder="cari manga..." /><div class="search-bar-button"><i class="fas fa-search"></i></div></form><div class="filter-bar"><div class="genre-scroll"><button class="genre-btn" data-genre="all">semua</button><button class="genre-btn" data-genre="slice of life">slice of life</button><button class="genre-btn" data-genre="action">action</button><button class="genre-btn" data-genre="romance">romance</button><button class="genre-btn" data-genre="adventure">adventure</button><button class="genre-btn" data-genre="comedy">comedy</button><button class="genre-btn" data-genre="fantasy">fantasy</button><button class="genre-btn" data-genre="shoujo">shoujo</button><button class="genre-btn" data-genre="sci-fi">sci-fi</button><button class="genre-btn" data-genre="horror">horror</button><button class="genre-btn" data-genre="sports">sports</button><button class="genre-btn" data-genre="drama">drama</button><button class="genre-btn" data-genre="supernatural">supernatural</button><button class="genre-btn" data-genre="mystery">mystery</button><button class="genre-btn" data-genre="ecchi">ecchi</button><button class="genre-btn" data-genre="hentai">hentai</button></div><div class="select-wrapper"><select id="sortSelect"><option value="default">default</option><option value="asc">A - Z</option><option value="desc">Z - A</option></select></div></div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      background: #f29e38;
+      user-select: none;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    #offline-notice {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: #f4f4f4;
+      color: #333;
+      font-size: 1rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      cursor: none;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    body.offline {
+      pointer-events: none;
+      cursor: none;
+    }
+
+    body.offline #offline-notice {
+      opacity: 1;
+    }
+    
+    @keyframes loading-skeleton {
+      0% {
+        background-position: 200% 0;
+      }
+      100% {
+        background-position: -200% 0;
+      }
+    }
+    
+.manga-background {
+  height: 200px;
+  background-color: #f4f4f4;
+  position: relative;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 70 70'%3E%3Cpath fill='%23ffc75f' d='m21.32 5.27-5.47 5.05-2.94-6.71a1 1 0 0 0-1.83 0l-2.94 6.71-5.46-5.05c-.72-.67-1.87 0-1.65.96l3 13a1 1 0 0 0 .97.78h14c.47 0 .87-.32.97-.78l3-13c.22-.96-.93-1.63-1.65-.96ZM18.2 18H5.8L3.71 8.93l4.12 3.8a1 1 0 0 0 1.59-.33L12 6.49l2.58 5.91a1 1 0 0 0 1.59.33l4.12-3.8L18.2 18Z'/></svg>");
+  background-repeat: repeat;
+  background-size: 50px 50px;
+}
+
+.manga-wrapper {
+  padding: 0 10px;
+  margin-top: -60px;
+  position: relative;
+  z-index: 2;
+}
+
+.manga-item {
+  display: flex;
+  width: 100%;
+  background: #FFF;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.manga-cover {
+  width: 100px;
+  height: 140px;
+  object-fit: cover;
+  background: linear-gradient(120deg, rgba(204, 204, 204, 0.6) 25%, rgba(255, 255, 255, 0.6) 50%, rgba(204, 204, 204, 0.6) 75%);  
+  background-size: 200% 100%;  
+  animation: loading-skeleton 1.5s infinite linear;
+  border-right: 1px #ccc solid;
+}
+
+.manga-info {
+  flex: 1;
+  display: flex;
+  padding: 5px 10px;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.manga-text {
+}
+
+.manga-title {
+  font-size: 14px;
+  font-weight: bold;
+  color: #777;
+  border-bottom: 1px #ccc solid;
+  margin-bottom: 5px;
+  padding-bottom: 5px;
+}
+
+.manga-description {
+  font-size: 10px;
+  color: #999;
+}
+
+.manga-meta {
+  font-size: 10px;
+  color: #bbb;
+}
+
+    .line-container {
+      position: relative;
+      width: 100%;
+      display: flex;
+      align-items: center;
+    }
+
+    .title {
+      font-size: 16px;
+      color: #fff;
+      font-weight: bold;
+      white-space: nowrap;
+      padding: 10px;
+    }
+
+    .arrow {
+      position: absolute;
+      right: 10px;
+      font-size: 16px;
+      color: #fff;
+    }
+
+.chapter-list {
+  display: flex;
+  overflow-x: auto;
+  gap: 10px;
+  padding: 0;
+  margin: 0 10px;
+  scroll-behavior: smooth;
+}
+
+.chapter-item {
+  flex: 0 0 auto;
+  width: 100px;
+}
+
+.chapter-cover-wrapper {
+  position: relative;
+  width: 100%;
+  height: 140px;
+  overflow: hidden;
+}
+
+.chapter-cover-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  background: linear-gradient(120deg, rgba(204, 204, 204, 1) 25%, rgba(255, 255, 255, 1) 50%, rgba(204, 204, 204, 1) 75%);  
+  background-size: 200% 100%;  
+  animation: loading-skeleton 1.5s infinite linear;
+}
+
+.chapter-label {
+  position: absolute;
+  bottom: 0;
+  background-color: #333;
+  width: 100%;
+  height: 20px;
+  color: #fff;
+  font-size: 10px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  text-transform: uppercase;
+  justify-content: center;
+}
+
+    .header {
+      position: fixed;
+      top: 10px;
+      left: 0;
+      right: 0;
+      z-index: 10000;
+      height: 40px;
+    }
+
+    .back-button, .menu-button {
+      position: absolute;
+      top: 7px;
+      width: 20px;
+      height: 20px;
+      background-color: #f29e38;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      color: #fff;
+      pointer-events: auto;
+    }
+    
+    .back-button:active, .menu-button:active {
+     opacity: 0.5;
+    }
+
+    .back-button {
+      left: 15px;
+    }
+
+    .menu-button {
+      right: 15px;
+    }
+    
+.update-notice {
+  display: none;
+  position: fixed;
+  top: -50px;
+  left: 50%;
+  transform: translateX(-50%) translateY(0);
+  opacity: 0;
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 10px 20px;
+  font-size: 10px;
+  z-index: 1000;
+  border-radius: 20px;
+  transition: all 0.5s ease-in-out;
+}
+
+.update-notice.show {
+  display: block;
+  top: 20px;
+  opacity: 1;
+}
+   
+    
+  </style>
+</head>
+<body>
+<div id="offline-notice">Jaringan tidak tersedia</div>
+<div class="header"><div class="back-button" onclick="history.back()"><i class="fas fa-arrow-left"></i></div><div class="menu-button" onclick="showUpdateNotice()"><i class="fas fa-rotate-right"></i></div></div>
+<div id="update-notice" class="update-notice">Mengecek pembaruan...</div>
+ <div class="manga-background"></div><div class="manga-wrapper"><div class="manga-item"><img class="manga-cover" src="https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx150440-QdBFoMh4YHsK.jpg" alt="Cover"><div class="manga-info"><div class="manga-text"><div class="manga-title">Ruri Dragon</div><div class="manga-description">Ruri menghadapi masalah-masalah biasa: teman sekelas yang menyebalkan, guru-guru yang merepotkan, dan... bangun tidur dengan tanduk naga?!</div></div><div class="manga-meta">comedy, slice of life, supernatural | since Jun 13, 2022</div></div></div></div>
+  
+<div class="line-container"><div class="title">list chaptet ruri dragon</div><div class="arrow"><i class="fas fa-circle-chevron-right"></i></div></div>
+<div class="chapter-list">
  
-<div class="anime-container">
- <!-- batas top list manga buat batas nambahin nanti :v -->
-<div class="anime-item" data-genre="comedy, slice of life, supernatural"><div class="anime-list" onclick="window.location.href='/anime/ruridragon.html'" style="cursor:none;"><div class="label-top">Releasing</div><div class="label-bottom">manga</div><img class="anime-cover" src="https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx150440-QdBFoMh4YHsK.jpg" alt=""></div><div class="anime-info"><div class="anime-title">Ruri Dragon</div><div class="anime-type">comedy, slice of life, supernatural</div></div></div>
+<div class="chapter-item"><div class="chapter-cover-wrapper"><img class="chapter-cover-img" src="https://cdn.komiku.id/uploads2/2563375-1.jpg" alt="0"><span class="chapter-label">Chapter 0 Prolog</span></div></div>
 
-<div class="anime-item" data-genre="comedy, romance, supernatural"><div class="anime-list" onclick="window.location.href='/anime/ogamitsumiki.html'" style="cursor:none;"><div class="label-top">Releasing</div><div class="label-bottom">manga</div><img class="anime-cover" src="https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx169904-6gvkXMNpq66N.jpg" alt=""></div><div class="anime-info"><div class="anime-title">Ogami Tsumiki to Kinichijou.</div><div class="anime-type">comedy, romance, supernatural</div></div></div>
+<div class="chapter-item"><div class="chapter-cover-wrapper"><img class="chapter-cover-img" src="https://cdn.komiku.id/uploads2/2563374-3.jpg" alt="2"><span class="chapter-label">Chapter 1</span></div></div>
 
-<div class="anime-item" data-genre="comedy, shoujo, slice of life"><div class="anime-list" onclick="window.location.href='/anime/machikadomazoku.html'" style="cursor:none;"><div class="label-top">Releasing</div><div class="label-bottom">manga</div><img class="anime-cover" src="https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx107462-aNPsVx2SY1tz.jpg" alt=""></div><div class="anime-info"><div class="anime-title">Machikado Mazoku</div><div class="anime-type">comedy, shoujo, slice of life</div></div></div>
+<div class="chapter-item"><div class="chapter-cover-wrapper"><img class="chapter-cover-img" src="https://cdn.komiku.id/uploads2/2563372-3.png" alt="2"><span class="chapter-label">Chapter 2</span></div></div>
 
-<div class="anime-item" data-genre="comedy, ecchi, shoujo, slice of life"><div class="anime-list" onclick="window.location.href='/anime/mahoushoujo201.html'" style="cursor:none;"><div class="label-top">Releasing</div><div class="label-bottom">manga</div><img class="anime-cover" src="https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx170419-cx6SJ3xEa9qQ.jpg" alt=""></div><div class="anime-info"><div class="anime-title">Mahou Shoujo 201</div><div class="anime-type">comedy, ecchi, shoujo, slice of life</div></div></div>
+<div class="chapter-item"><div class="chapter-cover-wrapper"><img class="chapter-cover-img" src="https://cdn.komiku.id/uploads2/2563371-3.png" alt="3"><span class="chapter-label">Chapter 3</span></div></div>
 
-<div class="anime-item" data-genre="action, comedy, slice of life, supernatural"><div class="anime-list" onclick="window.location.href='/anime/spyxfamily.html'" style="cursor:none;"><div class="label-top">Releasing</div><div class="label-bottom">manga</div><img class="anime-cover" src="https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx108556-NHjkz0BNJhLx.jpg" alt=""></div><div class="anime-info"><div class="anime-title">SPY×FAMILY</div><div class="anime-type">action, comedy, slice of life, supernatural</div></div></div>
+<div class="chapter-item"><div class="chapter-cover-wrapper"><img class="chapter-cover-img" src="https://cdn.komiku.id/uploads2/2563370-3.png" alt="4"><span class="chapter-label">Chapter 4</span></div></div>
 
-<div class="anime-item" data-genre="comedy, romance, slice of life"><div class="anime-list" onclick="window.location.href='/anime/kaguya-samawa.html'" style="cursor:none;"><div class="label-top">Finished - 218 CH</div><div class="label-bottom">manga</div><img class="anime-cover" src="https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx86635-EdaLQmsn86Fy.png" alt=""></div><div class="anime-info"><div class="anime-title">Kaguya-sama wa Kokurasetai: Tensaitachi no Renai Zunousen</div><div class="anime-type">comedy, romance, slice of life</div></div></div>
+<div class="chapter-item"><div class="chapter-cover-wrapper"><img class="chapter-cover-img" src="https://cdn.komiku.id/uploads2/2563368-3.jpg" alt="5"><span class="chapter-label">Chapter 5</span></div></div>
 
-<div class="anime-item" data-genre="drama, mystery, supernatural"><div class="anime-list" onclick="window.location.href='/anime/oshinoko.html'" style="cursor:none;"><div class="label-top">Finished - 168 CH</div><div class="label-bottom">manga</div><img class="anime-cover" src="https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx117195-r3kf8eF0xkDJ.png" alt=""></div><div class="anime-info"><div class="anime-title">[Oshi no Ko]</div><div class="anime-type">drama, mystery, supernatural</div></div></div>
+<div class="chapter-item"><div class="chapter-cover-wrapper"><img class="chapter-cover-img" src="https://cdn.komiku.id/uploads2/2563367-3.jpg" alt="6"><span class="chapter-label">Chapter 6</span></div></div>
 
-<div class="anime-item" data-genre="comedy, romance"><div class="anime-list" onclick="window.location.href='/anime/renaidaikou.html'" style="cursor:none;"><div class="label-top">Finished - 39 CH</div><div class="label-bottom">manga</div><img class="anime-cover" src="https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx163754-eVp3Nal8rAjZ.png" alt=""></div><div class="anime-info"><div class="anime-title">Renai Daikou</div><div class="anime-type">comedy, romance</div></div></div>
+<div class="chapter-item"><div class="chapter-cover-wrapper"><img class="chapter-cover-img" src="https://cdn.komiku.id/uploads2/2792634-2.jpg" alt="7"><span class="chapter-label">Chapter 7</span></div></div>
 
-<div class="anime-item" data-genre="comedy, romance"><div class="anime-list" onclick="window.location.href='/anime/koisuruyankee.html'" style="cursor:none;"><div class="label-top">Finished - 74 CH</div><div class="label-bottom">manga</div><img class="anime-cover" src="https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/nx97396-met3g23BP7QL.jpg" alt=""></div><div class="anime-info"><div class="anime-title">Koisuru Yankee Girl</div><div class="anime-type">comedy, romance</div></div></div>
+<div class="chapter-item"><div class="chapter-cover-wrapper"><img class="chapter-cover-img" src="https://cdn.komiku.id/uploads2/2792633-2.png" alt="8"><span class="chapter-label">Chapter 8</span></div></div>
 
-<div class="anime-item" data-genre="comedy, romance"><div class="anime-list" onclick="window.location.href='/anime/hatsukoimaze.html'" style="cursor:none;"><div class="label-top">Finished - 32 CH</div><div class="label-bottom">manga</div><img class="anime-cover" src="https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx126280-ybp9kbp326lC.jpg" alt=""></div><div class="anime-info"><div class="anime-title">Hatsukoi Maze</div><div class="anime-type">comedy, romance</div></div></div>
+<div class="chapter-item"><div class="chapter-cover-wrapper"><img class="chapter-cover-img" src="https://cdn.komiku.id/uploads2/2796143-1.jpg" alt="9"><span class="chapter-label">Chapter 9</span></div></div>
 
-<div class="anime-item" data-genre="comedy, romance, slice of life"><div class="anime-list" onclick="window.location.href='/anime/haji-otsu.html'" style="cursor:none;"><div class="label-top">Finished - 34 CH</div><div class="label-bottom">manga</div><img class="anime-cover" src="https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx79809-DbaRVd7in1kK.jpg" alt=""></div><div class="anime-info"><div class="anime-title">Haji-Otsu.</div><div class="anime-type">comedy, romance, slice of life</div></div></div>
+<div class="chapter-item"><div class="chapter-cover-wrapper"><img class="chapter-cover-img" src="https://cdn.komiku.id/uploads2/2797370-2.jpg" alt="10"><span class="chapter-label">Chapter 10</span></div></div>
 
-<div class="anime-item" data-genre="comedy, romance, slice of life"><div class="anime-list" onclick="window.location.href='/anime/hitomi-chanwa.html'" style="cursor:none;"><div class="label-top">Finished - 153 CH</div><div class="label-bottom">manga</div><img class="anime-cover" src="https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx106434-0XVrugvoaYNG.jpg" alt=""></div><div class="anime-info"><div class="anime-title">Hitomi-chan wa Hitomishiri</div><div class="anime-type">comedy, romance, slice of life</div></div></div>
+<div class="chapter-item"><div class="chapter-cover-wrapper"><img class="chapter-cover-img" src="https://cdn.komiku.id/uploads2/2808544-2.jpg" alt="11"><span class="chapter-label">Chapter 11</span></div></div>
 
-<div class="anime-item" data-genre="drama, romance, slice of life"><div class="anime-list" onclick="window.location.href='/anime/asahinawakaba.html'" style="cursor:none;"><div class="label-top">Finished - 18 CH</div><div class="label-bottom">manga</div><img class="anime-cover" src="https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx113701-zkwZodtpjsQH.jpg" alt=""></div><div class="anime-info"><div class="anime-title">Asahina Wakaba to ○○ na Kareshi</div><div class="anime-type">drama, romance, slice of life</div></div></div>
+<div class="chapter-item"><div class="chapter-cover-wrapper"><img class="chapter-cover-img" src="https://cdn.komiku.id/uploads2/2815688-2.jpg" alt="12"><span class="chapter-label">Chapter 12</span></div></div>
 
-<div class="anime-item" data-genre="comedy, romance, supernatural"><div class="anime-list" onclick="window.location.href='/anime/hadigirl.html'" style="cursor:none;"><div class="label-top">Finished - 30 CH</div><div class="label-bottom">manga</div><img class="anime-cover" src="https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx82741-zfCNERcTx7bD.jpg" alt=""></div><div class="anime-info"><div class="anime-title">Hadi Girl</div><div class="anime-type">comedy, romance, supernatural</div></div></div>
+<div class="chapter-item"><div class="chapter-cover-wrapper"><img class="chapter-cover-img" src="https://cdn.komiku.id/uploads2/2815687-2.jpg" alt="13"><span class="chapter-label">Chapter 13</span></div></div>
 
-<div class="anime-item" data-genre="action, comedy, drama, horror, supernatural"><div class="anime-list" onclick="window.location.href='/anime/chainsawman.html'" style="cursor:none;"><div class="label-top">Releasing</div><div class="label-bottom">manga</div><img class="anime-cover" src="https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx105778-euxXZEIfDY2u.png" alt=""></div><div class="anime-info"><div class="anime-title">Chainsaw Man</div><div class="anime-type">action, comedy, drama, horror, supernatural</div></div></div>
+<div class="chapter-item"><div class="chapter-cover-wrapper"><img class="chapter-cover-img" src="https://cdn.komiku.id/uploads2/2820088-1.jpg" alt="14"><span class="chapter-label">Chapter 14</span></div></div>
 
-<div class="anime-item" data-genre="action, drama, supernatural"><div class="anime-list" onclick="window.location.href='/anime/jujutsukaisen.html'" style="cursor:none;"><div class="label-top">Finished - 272 CH</div><div class="label-bottom">manga</div><img class="anime-cover" src="https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx101517-H3TdM3g5ZUe9.jpg" alt=""></div><div class="anime-info"><div class="anime-title">Jujutsu Kaisen</div><div class="anime-type">action, drama, supernatural</div></div></div>
+<div class="chapter-item"><div class="chapter-cover-wrapper"><img class="chapter-cover-img" src="https://cdn.komiku.id/uploads2/2828163-2.jpg" alt="15"><span class="chapter-label">Chapter 15</span></div></div>
 
-<div class="anime-item" data-genre="comedy, fantasy, romance"><div class="anime-list" onclick="window.location.href='/anime/pleasebullyme.html'" style="cursor:none;"><div class="label-top">Releasing</div><div class="label-bottom">manga</div><img class="anime-cover" src="https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx141756-6veAkPU4jW0p.jpg" alt=""></div><div class="anime-info"><div class="anime-title">Please Bully Me, Miss Villainess!</div><div class="anime-type">comedy, fantasy, romance</div></div></div>
+<div class="chapter-item"><div class="chapter-cover-wrapper"><img class="chapter-cover-img" src="https://via.placeholder.com/100x140" alt="16"><span class="chapter-label">Chapter 16</span></div></div>
 
-<div class="anime-item" data-genre="comedy, romance, slice of life"><div class="anime-list" onclick="window.location.href='/anime/bokunokokoronoyabai.html'" style="cursor:none;"><div class="label-top">Releasing</div><div class="label-bottom">manga</div><img class="anime-cover" src="https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx101557-bEJu54cmVYxx.jpg" alt=""></div><div class="anime-info"><div class="anime-title">Boku no Kokoro no Yabai Yatsu</div><div class="anime-type">comedy, romance, slice of life</div></div></div>
+<div class="chapter-item"><div class="chapter-cover-wrapper"><img class="chapter-cover-img" src="https://via.placeholder.com/100x140" alt="17"><span class="chapter-label">Chapter 17</span></div></div>
 
-<div class="anime-item" data-genre="comedy, romance, slice of life"><div class="anime-list" onclick="window.location.href='/anime/anenotomodachi.html'" style="cursor:none;"><div class="label-top">Releasing</div><div class="label-bottom">manga</div><img class="anime-cover" src="https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx174315-ww59pBzOsNrM.jpg" alt=""></div><div class="anime-info"><div class="anime-title">Ane no Tomodachi</div><div class="anime-type">comedy, romance, slice of life</div></div></div>
+<div class="chapter-item"><div class="chapter-cover-wrapper"><img class="chapter-cover-img" src="https://via.placeholder.com/100x140" alt="18"><span class="chapter-label">Chapter 18</span></div></div>
 
-<div class="anime-item" data-genre="action, comedy, drama, romance, sci-fi"><div class="anime-list" onclick="window.location.href='/anime/dandadan.html'" style="cursor:none;"><div class="label-top">Releasing</div><div class="label-bottom">manga</div><img class="anime-cover" src="https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx132029-prGF4gePdSKv.jpg" alt=""></div><div class="anime-info"><div class="anime-title">Dandadan</div><div class="anime-type">action, comedy, drama, romance, sci-fi</div></div></div>
+<div class="chapter-item"><div class="chapter-cover-wrapper"><img class="chapter-cover-img" src="https://via.placeholder.com/100x140" alt="19"><span class="chapter-label">Chapter 19</span></div></div>
 
-<div class="anime-item" data-genre="comedy, romance, slice of life"><div class="anime-list" onclick="window.location.href='/anime/himaten.html'" style="cursor:none;"><div class="label-top">Releasing</div><div class="label-bottom">manga</div><img class="anime-cover" src="https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx178202-DChIIiw57fRG.jpg" alt=""></div><div class="anime-info"><div class="anime-title">Himaten!</div><div class="anime-type">comedy, romance, slice of life</div></div></div>
+<div class="chapter-item"><div class="chapter-cover-wrapper"><img class="chapter-cover-img" src="https://via.placeholder.com/100x140" alt="20"><span class="chapter-label">Chapter 20</span></div></div>
 
-<div class="anime-item" data-genre="comedy, drama, fantasy, romance, slice of life"><div class="anime-list" onclick="window.location.href='/anime/witchwatch.html'" style="cursor:none;"><div class="label-top">Releasing</div><div class="label-bottom">manga</div><img class="anime-cover" src="https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx128896-VJfCBLFkm4Lb.jpg" alt=""></div><div class="anime-info"><div class="anime-title">WITCH WATCH</div><div class="anime-type">comedy, drama, fantasy, romance, slice of life</div></div></div>
+<div class="chapter-item"><div class="chapter-cover-wrapper"><img class="chapter-cover-img" src="https://via.placeholder.com/100x140" alt="21"><span class="chapter-label">Chapter 21</span></div></div>
 
-<div class="anime-item" data-genre="action, comedy"><div class="anime-list" onclick="window.location.href='/anime/sakamotodays.html'" style="cursor:none;"><div class="label-top">Releasing</div><div class="label-bottom">manga</div><img class="anime-cover" src="https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx125828-p78Z8SflkfmO.jpg" alt=""></div><div class="anime-info"><div class="anime-title">SAKAMOTO DAYS</div><div class="anime-type">action, comedy</div></div></div>
+<div class="chapter-item"><div class="chapter-cover-wrapper"><img class="chapter-cover-img" src="https://via.placeholder.com/100x140" alt="22"><span class="chapter-label">Chapter 22</span></div></div>
 
-<div class="anime-item" data-genre="romance, slice of life, sports"><div class="anime-list" onclick="window.location.href='/anime/aonohako.html'" style="cursor:none;"><div class="label-top">Releasing</div><div class="label-bottom">manga</div><img class="anime-cover" src="https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx132182-maXh2QzYPrqR.jpg" alt=""></div><div class="anime-info"><div class="anime-title">Ao no Hako : Blue Box</div><div class="anime-type">romance, slice of life, sports</div></div></div>
+<div class="chapter-item"><div class="chapter-cover-wrapper"><img class="chapter-cover-img" src="https://via.placeholder.com/100x140" alt="23"><span class="chapter-label">Chapter 23</span></div></div>
 
-<div class="anime-item" data-genre="comedy, drama, romance"><div class="anime-list" onclick="window.location.href='/anime/kaoruhanawa.html'" style="cursor:none;"><div class="label-top">Releasing</div><div class="label-bottom">manga</div><img class="anime-cover" src="https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx140475-QEGtrmdvbpOv.jpg" alt=""></div><div class="anime-info"><div class="anime-title">Kaoru Hana wa Rin to Saku</div>
-<div class="anime-type">comedy, drama, romance</div></div></div>
+<div class="chapter-item"><div class="chapter-cover-wrapper"><img class="chapter-cover-img" src="https://via.placeholder.com/100x140" alt="24"><span class="chapter-label">Chapter 24</span></div></div>
 
-<div class="anime-item" data-genre="action, drama, fantasy, mystery"><div class="anime-list" onclick="window.location.href='/anime/attackontitan.html'" style="cursor:none;"><div class="label-top">Finished - 141 CH</div><div class="label-bottom">manga</div><img class="anime-cover" src="https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx53390-1RsuABC34P9D.jpg" alt=""></div><div class="anime-info"><div class="anime-title">Attack on Titan</div><div class="anime-type">action, drama, fantasy, mystery</div></div></div>
+<div class="chapter-item"><div class="chapter-cover-wrapper"><img class="chapter-cover-img" src="https://via.placeholder.com/100x140" alt="25"><span class="chapter-label">Chapter 25</span></div></div>
 
-<div class="anime-item" data-genre="action, adventure, comedy, sci-fi"><div class="anime-list" onclick="window.location.href='/anime/drstone.html'" style="cursor:none;"><div class="label-top">Finished - 236 CH</div><div class="label-bottom">manga</div><img class="anime-cover" src="https://s4.anilist.co/file/anilistcdn/media/manga/cover/medium/b98416-L44f4idEGMAX.jpg" alt=""></div><div class="anime-info"><div class="anime-title">Dr. STONE</div><div class="anime-type">action, adventure, comedy, sci-fi</div></div></div>
+<div class="chapter-item"><div class="chapter-cover-wrapper"><img class="chapter-cover-img" src="https://via.placeholder.com/100x140" alt="26"><span class="chapter-label">Chapter 26</span></div></div>
 
-<div class="anime-item" data-genre="comedy, ecchi, romance, slice of life"><div class="anime-list" onclick="window.location.href='/anime/sonobisquedoll.html'" style="cursor:none;"><div class="label-top">Finished - 115 CH</div><div class="label-bottom">manga</div><img class="anime-cover" src="https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx101583-VI1PT2QGGT8W.jpg" alt=""></div><div class="anime-info"><div class="anime-title">Sono Bisque Doll wa Koi wo Suru</div><div class="anime-type">comedy, ecchi, romance, slice of life</div></div></div>
+<div class="chapter-item"><div class="chapter-cover-wrapper"><img class="chapter-cover-img" src="https://via.placeholder.com/100x140" alt="27"><span class="chapter-label">Chapter 27</span></div></div>
 
-<div class="anime-item" data-genre="action, drama, adventure, supernatural"><div class="anime-list" onclick="window.location.href='/anime/demonslayer.html'" style="cursor:none;"><div class="label-top">Finished - 207 CH</div><div class="label-bottom">manga</div><img class="anime-cover" src="https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx87216-c9bSNVD10UuD.png" alt=""></div><div class="anime-info"><div class="anime-title">Demon Slayer: Kimetsu no Yaiba</div><div class="anime-type">action, drama, adventure, supernatural</div></div></div>
+<div class="chapter-item"><div class="chapter-cover-wrapper"><img class="chapter-cover-img" src="https://via.placeholder.com/100x140" alt="28"><span class="chapter-label">Chapter 28</span></div></div>
 
-<div class="anime-item" data-genre="action, horor, mystery, supernatural"><div class="anime-list" onclick="window.location.href='/anime/tokyoghoul.html'" style="cursor:none;"><div class="label-top">Finished - 144 CH</div><div class="label-bottom">manga</div><img class="anime-cover" src="https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx63327-glC9cDxYBja9.png" alt=""></div><div class="anime-info"><div class="anime-title">Tokyo Ghoul</div><div class="anime-type">action, horor, mystery, supernatural</div></div></div>
+<div class="chapter-item"><div class="chapter-cover-wrapper"><img class="chapter-cover-img" src="https://via.placeholder.com/100x140" alt="29"><span class="chapter-label">Chapter 29</span></div></div>
 
-<div class="anime-item" data-genre="comedy, drama, romance, slice of life"><div class="anime-list" onclick="window.location.href='/anime/aoharuride.html'" style="cursor:none;"><div class="label-top">Finished - 53 CH</div><div class="label-bottom">manga</div><img class="anime-cover" src="https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/nx54294-Nabu5Ag0L2ay.jpg" alt=""></div><div class="anime-info"><div class="anime-title">Ao Haru Ride</div><div class="anime-type">comedy, drama, romance, slice of life</div></div></div>
-<!-- batas bottom list manga buat batas nambahin nanti :v -->
+<div class="chapter-item"><div class="chapter-cover-wrapper"><img class="chapter-cover-img" src="https://via.placeholder.com/100x140" alt="30"><span class="chapter-label">Chapter 30</span></div></div>
+
+<div class="chapter-item"><div class="chapter-cover-wrapper"><img class="chapter-cover-img" src="https://via.placeholder.com/100x140" alt="31"><span class="chapter-label">Chapter 31</span></div></div>
+
+<div class="chapter-item"><div class="chapter-cover-wrapper"><img class="chapter-cover-img" src="https://via.placeholder.com/100x140" alt="32"><span class="chapter-label">Chapter 32</span></div></div>
+
+<div class="chapter-item"><div class="chapter-cover-wrapper"><img class="chapter-cover-img" src="https://via.placeholder.com/100x140" alt="33"><span class="chapter-label">Chapter 33</span></div></div>
+
+
 </div>
-
-<script>async function checkInternetConnection(){try{return await fetch("https://www.google.com/favicon.ico",{method:"HEAD",mode:"no-cors"}),!0}catch(e){return!1}}async function updateConnectionStatus(){const isOnline=navigator.onLine,confirmedOnline=isOnline&&await checkInternetConnection();document.body.classList.toggle("offline",!confirmedOnline)}window.addEventListener("online",updateConnectionStatus);window.addEventListener("offline",updateConnectionStatus);setInterval(updateConnectionStatus,3e3);updateConnectionStatus()</script><script>
-const s=document.querySelector(".search-bar input"),a=document.querySelectorAll(".anime-item"),g=document.querySelectorAll(".genre-btn"),o=document.getElementById("sortSelect");function r(e){g.forEach(t=>{t.classList.toggle("active",t.dataset.genre===e)}),a.forEach(t=>{const n=t.dataset.genre.toLowerCase().split(/\s*,\s*/);t.classList.toggle("hidden","all"!==e&&!n.includes(e))})}window.addEventListener("DOMContentLoaded",()=>{r("all")}),g.forEach(e=>{e.addEventListener("click",()=>{r(e.dataset.genre)})}),s.addEventListener("input",function(){const e=this.value.toLowerCase();r("all"),a.forEach(t=>{const n=t.querySelector(".anime-title").textContent.toLowerCase();t.classList.toggle("hidden",!n.includes(e))})}),o.addEventListener("change",()=>{const e=document.querySelector(".anime-container"),t=Array.from(a).sort((n,l)=>{const c=n.querySelector(".anime-title").textContent.trim().toLowerCase(),d=l.querySelector(".anime-title").textContent.trim().toLowerCase();return"asc"===o.value?c.localeCompare(d):d.localeCompare(c)});e.innerHTML="",t.forEach(n=>e.appendChild(n))});
-</script>
+<script>async function checkInternetConnection(){try{await fetch("https://www.google.com/favicon.ico",{method:"HEAD",mode:"no-cors"});return true}catch(e){return false}}async function updateConnectionStatus(){const isOnline=navigator.onLine,confirmedOnline=isOnline&&await checkInternetConnection();document.body.classList.toggle("offline",!confirmedOnline)}window.addEventListener("online",updateConnectionStatus);window.addEventListener("offline",updateConnectionStatus);setInterval(updateConnectionStatus,3000);updateConnectionStatus();</script>
+<script>function showUpdateNotice(){const e=document.getElementById('update-notice');e.style.display='block';setTimeout(()=>{e.classList.add('show')},10);setTimeout(()=>{e.classList.remove('show');setTimeout(()=>{location.reload()},500)},1000);}</script>
 </body>
 </html>
