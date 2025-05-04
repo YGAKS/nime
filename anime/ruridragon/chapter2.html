@@ -1,0 +1,151 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+  body {
+    margin: 0;
+    padding: 80px 0;
+    background: #fff;
+    user-select: none;
+  }
+  
+  #Baca_Komik {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+
+  #Baca_Komik img {
+    display: block;
+    width: 100%;
+    height: auto;
+    background: linear-gradient(120deg, rgba(204, 204, 204, 1) 25%, rgba(255, 255, 255, 1) 50%, rgba(204, 204, 204, 1) 75%);  
+  background-size: 200% 100%;  
+  animation: loading-skeleton 1.5s infinite linear;
+  }
+  
+  @keyframes loading-skeleton {
+      0% {
+        background-position: 200% 0;
+      }
+      100% {
+        background-position: -200% 0;
+      }
+    }
+
+.top-navbar {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #f29e38;
+  color: #fff;
+  padding: 10px 20px;
+  width: 80%;
+  text-align: center;
+  border-radius: 40px;
+  font-size: 14px;
+  font-weight: bold;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  z-index: 1000;
+}
+
+.top-navbar.hide {
+  opacity: 0;
+  transform: translate(-50%, -100%);
+  pointer-events: none;
+}
+  
+    .bottom-navbar {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 90%;
+      padding: 10px 0;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      z-index: 1000;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .bottom-navbar.hide {
+      opacity: 0;
+      transform: translate(-50%, 100%);
+      pointer-events: none;
+    }
+
+    .nav-buttons {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    .nav-button {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: #f29e38;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      border-radius: 40px;
+      padding: 10px 20px;
+      text-decoration: none;
+      color: #fff;
+      font-weight: bold;
+      font-size: 14px;
+      white-space: nowrap;
+    }
+
+    .nav-button:active {
+      opacity: 0.9;
+    }
+
+    .chapter-title {
+      font-weight: bold;
+      font-size: 14px;
+      color: #fff;
+      padding: 10px 20px;
+      text-align: center;
+      border-radius: 40px;
+      background: #f29e38;
+      width: 90%;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+</style>
+<body>
+ <div id="Baca_Komik" onclick="klik('body')"><h2 style="font-size: 14px;text-align: center;">manga ruri dragon chapter 2</h2>
+ <div class="top-navbar" id="topNavbar">Geser ke bawah untuk membaca</div>
+<img itemprop="image" src="https://cdn.komiku.id/uploads2/2563372-2.jpg" alt="Baca Manga Ruri Dragon Chapter 2 Gambar 2" class="klazy ww" id="2"  onerror="this.onerror=null;this.src='https://img.komiku.id/uploads2/2563372-2.jpg';">
+                                                <img itemprop="image" src="https://cdn.komiku.id/uploads2/2563372-3.png" alt="Ruri Dragon Chapter 2 Gambar 3" class="klazy ww" id="3"  onerror="this.onerror=null;this.src='https://img.komiku.id/uploads2/2563372-3.png';">
+                                                <img itemprop="image" src="https://cdn.komiku.id/uploads2/2563372-4.png" alt="Ruri Dragon Chapter 2 Gambar 4" class="klazy ww" id="4"  onerror="this.onerror=null;this.src='https://img.komiku.id/uploads2/2563372-4.png';">
+                                                <img itemprop="image" src="https://cdn.komiku.id/uploads2/2563372-5.png" alt="Ruri Dragon Chapter 2 Gambar 5" class="klazy ww" id="5"  onerror="this.onerror=null;this.src='https://img.komiku.id/uploads2/2563372-5.png';">
+                                                <img itemprop="image" src="https://cdn.komiku.id/uploads2/2563372-6.png" alt="Ruri Dragon Chapter 2 Gambar 6" class="klazy ww" id="6"  onerror="this.onerror=null;this.src='https://img.komiku.id/uploads2/2563372-6.png';">
+                                                <img itemprop="image" src="https://cdn.komiku.id/uploads2/2563372-7.png" alt="Ruri Dragon Chapter 2 Gambar 7" class="klazy ww" id="7"  onerror="this.onerror=null;this.src='https://img.komiku.id/uploads2/2563372-7.png';">
+                                                <img itemprop="image" src="https://cdn.komiku.id/uploads2/2563372-8.png" alt="Ruri Dragon Chapter 2 Gambar 8" class="klazy ww" id="8"  onerror="this.onerror=null;this.src='https://img.komiku.id/uploads2/2563372-8.png';">
+                                                <img itemprop="image" src="https://cdn.komiku.id/uploads2/2563372-9.png" alt="Ruri Dragon Chapter 2 Gambar 9" class="klazy ww" id="9"  onerror="this.onerror=null;this.src='https://img.komiku.id/uploads2/2563372-9.png';">
+                                                <img itemprop="image" src="https://cdn.komiku.id/uploads2/2563372-10.png" alt="Ruri Dragon Chapter 2 Gambar 10" class="klazy ww" id="10"  onerror="this.onerror=null;this.src='https://img.komiku.id/uploads2/2563372-10.png';">
+                                                <img itemprop="image" src="https://cdn.komiku.id/uploads2/2563372-11.png" alt="Ruri Dragon Chapter 2 Gambar 11" class="klazy ww" id="11"  onerror="this.onerror=null;this.src='https://img.komiku.id/uploads2/2563372-11.png';">
+                                                <img itemprop="image" src="https://cdn.komiku.id/uploads2/2563372-12.png" alt="Ruri Dragon Chapter 2 Gambar 12" class="klazy ww" id="12"  onerror="this.onerror=null;this.src='https://img.komiku.id/uploads2/2563372-12.png';">
+                                                <img itemprop="image" src="https://cdn.komiku.id/uploads2/2563372-13.png" alt="Ruri Dragon Chapter 2 Gambar 13" class="klazy ww" id="13"  onerror="this.onerror=null;this.src='https://img.komiku.id/uploads2/2563372-13.png';">
+                                                <img itemprop="image" src="https://cdn.komiku.id/uploads2/2563372-14.png" alt="Ruri Dragon Chapter 2 Gambar 14" class="klazy ww" id="14"  onerror="this.onerror=null;this.src='https://img.komiku.id/uploads2/2563372-14.png';">
+                                                <img itemprop="image" src="https://cdn.komiku.id/uploads2/2563372-16.png" alt="Ruri Dragon Chapter 2 Gambar 16" class="klazy ww" id="16"  onerror="this.onerror=null;this.src='https://img.komiku.id/uploads2/2563372-16.png';">
+                                                <img itemprop="image" src="https://cdn.komiku.id/uploads2/2563372-17.png" alt="Ruri Dragon Chapter 2 Gambar 17" class="klazy ww" id="17"  onerror="this.onerror=null;this.src='https://img.komiku.id/uploads2/2563372-17.png';">
+                                                <img itemprop="image" src="https://cdn.komiku.id/uploads2/2563372-18.png" alt="Ruri Dragon Chapter 2 Gambar 18" class="klazy ww" id="18"  onerror="this.onerror=null;this.src='https://img.komiku.id/uploads2/2563372-18.png';">
+                                                <img itemprop="image" src="https://cdn.komiku.id/uploads2/2563372-19.png" alt="Ruri Dragon Chapter 2 Gambar 19" class="klazy ww" id="19"  onerror="this.onerror=null;this.src='https://img.komiku.id/uploads2/2563372-19.png';">
+                                                <img itemprop="image" src="https://cdn.komiku.id/uploads2/2563372-20.png" alt="Ruri Dragon Chapter 2 Gambar 20" class="klazy ww" id="20"  onerror="this.onerror=null;this.src='https://img.komiku.id/uploads2/2563372-20.png';">
+                                                <img itemprop="image" src="https://cdn.komiku.id/uploads2/2563372-21.png" alt="Ruri Dragon Chapter 2 Gambar 21" class="klazy ww" id="21"  onerror="this.onerror=null;this.src='https://img.komiku.id/uploads2/2563372-21.png';">
+                                                <img itemprop="image" src="https://cdn.komiku.id/uploads2/2563372-22.png" alt="Ruri Dragon Chapter 2 Gambar 22" class="klazy ww" id="22"  onerror="this.onerror=null;this.src='https://img.komiku.id/uploads2/2563372-22.png';">
+                                                <img itemprop="image" src="https://cdn.komiku.id/uploads2/2563372-23.png" alt="Ruri Dragon Chapter 2 Gambar 23" class="klazy ww" id="23"  onerror="this.onerror=null;this.src='https://img.komiku.id/uploads2/2563372-23.png';">
+                                                <img itemprop="image" src="https://cdn.komiku.id/uploads2/2563372-24.png" alt="Ruri Dragon Chapter 2 Gambar 24" class="klazy ww" id="24"  onerror="this.onerror=null;this.src='https://img.komiku.id/uploads2/2563372-24.png';">
+                                                <img itemprop="image" src="https://cdn.komiku.id/uploads2/2563372-25.png" alt="Ruri Dragon Chapter 2 Gambar 25" class="klazy ww" id="25"  onerror="this.onerror=null;this.src='https://img.komiku.id/uploads2/2563372-25.png';">
+                                                <img itemprop="image" src="https://cdn.komiku.id/uploads2/2563372-26.png" alt="Ruri Dragon Chapter 2 Gambar 26" class="klazy ww" id="26"  onerror="this.onerror=null;this.src='https://img.komiku.id/uploads2/2563372-26.png';">
+                                                <div style="width:100%;float:left;margin:15px 0;text-align:center;"></div>
+                        <span class="chapterInfo" valueLink="/ruri-dragon-chapter-02/" valueChapter="2" valueGambar="26" valueView="https://analytics.komiku.id/?idChapter=2399940"></span>
+                    </div>
+<h2 style="font-size: 14px;text-align: center;">~ selesai ~</h2>
+<div class="bottom-navbar" id="bottomNavbar"><div class="nav-buttons"><div class="nav-button" onclick="history.back()"><i class="fa-solid fa-chevron-left"></i><span>Sebelumnya</span></div><div class="nav-button" onclick="window.location.href='chapter3.html'"><span>Selanjutnya</span><i class="fa-solid fa-chevron-right"></i></div></div><div class="chapter-title">Ruri Dragon Chapter 2</div></div>
+
+ <script>let l=window.scrollY,b=document.getElementById("bottomNavbar"),t=document.getElementById("topNavbar");window.addEventListener("scroll",()=>{let s=window.scrollY,d=document.documentElement.scrollHeight,i=window.innerHeight,a=s+i>=d-10;s<l||a?b.classList.remove("hide"):s>l&&s>50&&b.classList.add("hide"),s<l?t.classList.remove("hide"):s>l&&s>50&&t.classList.add("hide"),l=s});</script>
+ </body>
