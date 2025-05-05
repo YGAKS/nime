@@ -1,3 +1,5 @@
+<meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
@@ -31,6 +33,22 @@
         background-position: -200% 0;
       }
     }
+    
+#scrollContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 5px;
+  width: 100%;
+  background: #f4f4f4;
+  z-index: 9999;
+}
+
+#scrollIndicator {
+  height: 100%;
+  width: 0%;
+  background: #f29e38;
+}
 
 .top-navbar {
   position: fixed;
@@ -166,8 +184,10 @@
                         <div style="width:100%;float:left;margin:15px 0;text-align:center;"></div>
                         <span class="chapterInfo" valueLink="/ruri-dragon-chapter-00/" valueChapter=".1 - prolog" valueGambar="46" valueView="https://analytics.komiku.id/?idChapter=2399942"></span>
                     </div>
+<div id="scrollContainer"><div id="scrollIndicator"></div></div>
 <h2 style="font-size: 14px;text-align: center;">~ selesai ~</h2>
 <div class="bottom-navbar" id="bottomNavbar"><div class="nav-buttons"><div class="nav-button" onclick="history.back()"><i class="fa-solid fa-chevron-left"></i><span>Sebelumnya</span></div><div class="nav-button" onclick="window.location.href='chapter1.html'"><span>Selanjutnya</span><i class="fa-solid fa-chevron-right"></i></div></div><div class="chapter-title">Ruri Dragon Chapter 0</div></div>
 
  <script>let l=window.scrollY,b=document.getElementById("bottomNavbar"),t=document.getElementById("topNavbar");window.addEventListener("scroll",()=>{let s=window.scrollY,d=document.documentElement.scrollHeight,i=window.innerHeight,a=s+i>=d-10;s<l||a?b.classList.remove("hide"):s>l&&s>50&&b.classList.add("hide"),s<l?t.classList.remove("hide"):s>l&&s>50&&t.classList.add("hide"),l=s});</script>
+<script>window.addEventListener("scroll",()=>{const e=window.scrollY,t=document.documentElement.scrollHeight-window.innerHeight,o=e/t*100;document.getElementById("scrollIndicator").style.width=o+"%"});</script>
  </body>
