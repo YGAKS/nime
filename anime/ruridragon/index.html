@@ -152,6 +152,8 @@
 .chapter-item {
   flex: 0 0 auto;
   width: 100px;
+  opacity: 0;
+  animation: fadeIn 0.5s ease-out forwards;
 }
 
 .chapter-cover-wrapper {
@@ -261,6 +263,11 @@
       color: #fff;
     }
     
+    @keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+    
   </style>
 </head>
 <body>
@@ -349,5 +356,9 @@
   </div>
 <script>async function checkInternetConnection(){try{await fetch("https://www.google.com/favicon.ico",{method:"HEAD",mode:"no-cors"});return true}catch(e){return false}}async function updateConnectionStatus(){const isOnline=navigator.onLine,confirmedOnline=isOnline&&await checkInternetConnection();document.body.classList.toggle("offline",!confirmedOnline)}window.addEventListener("online",updateConnectionStatus);window.addEventListener("offline",updateConnectionStatus);setInterval(updateConnectionStatus,3000);updateConnectionStatus();</script>
 <script>function showUpdateNotice(){const e=document.getElementById('update-notice');e.style.display='block';setTimeout(()=>{e.classList.add('show')},10);setTimeout(()=>{e.classList.remove('show');setTimeout(()=>{location.reload()},500)},1000);}</script>
+<script>document.querySelectorAll('.chapter-item').forEach((el, i) => {
+  el.style.animationDelay = `${i * 0.3}s`;
+  el.classList.add('fade-in');
+});</script>
 </body>
 </html>
