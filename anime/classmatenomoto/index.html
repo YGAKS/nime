@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+<style>
+body{margin:0;font-family:sans-serif;background:#FFF;user-select:none}
+.hidden{display:none!important}
+#offline-notice{position:fixed;top:0;left:0;width:100vw;height:100vh;
+background:linear-gradient(to bottom,#F4F4F4 75%,#FFF 100%);color:#333;
+font-size:1rem;display:flex;justify-content:center;align-items:center;
+z-index:9999;cursor:none;pointer-events:none;opacity:0;
+transition:opacity .3s ease}
+body.offline{pointer-events:none;cursor:none}
+body.offline #offline-notice{opacity:1}
+@keyframes loading-skeleton{0%{background-position:200% 0}
+100%{background-position:-200% 0}}
+.manga-background{height:200px;background-color:#f4f4f4;position:relative;
+background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 70 70'%3E%3Cpath fill='%23ffc75f' d='m21.32 5.27-5.47 5.05-2.94-6.71a1 1 0 0 0-1.83 0l-2.94 6.71-5.46-5.05c-.72-.67-1.87 0-1.65.96l3 13a1 1 0 0 0 .97.78h14c.47 0 .87-.32.97-.78l3-13c.22-.96-.93-1.63-1.65-.96ZM18.2 18H5.8L3.71 8.93l4.12 3.8a1 1 0 0 0 1.59-.33L12 6.49l2.58 5.91a1 1 0 0 0 1.59.33l4.12-3.8L18.2 18Z'/%3E%3C/svg%3E");
+background-repeat:repeat;background-size:50px 50px}
+.manga-wrapper{padding:0 10px;margin-top:-60px;position:relative;z-index:2}
+.manga-item{display:flex;width:100%;background:#f29e38;
+box-shadow:0 10px 30px rgba(0,0,0,.2);box-sizing:border-box;overflow:hidden}
+.manga-cover{width:100px;height:140px;object-fit:cover;
+background:linear-gradient(120deg,rgba(204,204,204,.6) 25%,rgba(255,255,255,.6) 50%,rgba(204,204,204,.6) 75%);
+background-size:200% 100%;animation:loading-skeleton 1.5s infinite linear;
+border-right:1px #fff solid}
+.manga-info{flex:1;display:flex;padding:5px 10px;flex-direction:column;
+justify-content:space-between}
+.manga-title{font-size:14px;font-weight:bold;color:#fff;
+border-bottom:1px #fff solid;margin-bottom:5px;padding-bottom:5px}
+.manga-description,.manga-meta{font-size:10px;color:#fff}
+.line-container{position:relative;width:100%;display:flex;
+align-items:center;margin-top:10px}
+.title{font-size:16px;color:#bbb;font-weight:bold;white-space:nowrap;
+padding:10px}
+.arrow{position:absolute;right:10px;font-size:16px;color:#bbb}
+.chapter-list{display:flex;overflow-x:auto;gap:10px;margin:0 10px;
+scroll-behavior:smooth}
+.chapter-item{flex:0 0 auto;width:100px}
+.chapter-cover-wrapper{position:relative;width:100%;height:140px;
+overflow:hidden;border:2px #f29e38 solid}
+.chapter-cover-img{width:100%;height:100%;object-fit:cover;display:block;
+background:linear-gradient(120deg,rgba(204,204,204,1) 25%,rgba(255,255,255,1) 50%,rgba(204,204,204,1) 75%);
+background-size:200% 100%;animation:loading-skeleton 1.5s infinite linear}
+.chapter-label{position:absolute;bottom:0;background-color:#f29e38;
+width:100%;height:20px;color:#fff;font-size:10px;font-weight:bold;
+display:flex;align-items:center;text-transform:uppercase;justify-content:center}
+.header{position:fixed;top:10px;left:0;right:0;z-index:999;height:40px}
+.back-button,.menu-button{position:absolute;top:7px;width:20px;height:20px;
+background-color:#f29e38;border-radius:50%;display:flex;align-items:center;
+justify-content:center;font-size:10px;color:#fff;pointer-events:auto}
+.back-button:active,.menu-button:active{opacity:.5}
+.back-button{left:15px}.menu-button{right:15px}
+.update-notice{display:none;position:fixed;top:-50px;left:50%;
+transform:translateX(-50%) translateY(0);opacity:0;background-color:#333;
+color:#fff;text-align:center;padding:10px 20px;font-size:10px;z-index:1000;
+border-radius:20px;transition:all .5s ease-in-out}
+.update-notice.show{display:block;top:20px;opacity:1}
+.about-card{background:#f29e38;width:90%;padding:10px;margin:10px auto}
+.about-card p{margin:5px 0;color:#fff;font-size:14px}
+.about-status{color:#fff}
+</style>
+</head>
+<body>
+<div id="offline-notice">Jaringan tidak tersedia</div>
+<div class="header"><div class="back-button" onclick="history.back()"><i class="fas fa-arrow-left"></i></div><div class="menu-button" onclick="showUpdateNotice()"><i class="fas fa-rotate-right"></i></div></div>
+<div id="update-notice" class="update-notice">Mengecek pembaruan...</div>
+ <div class="manga-background"></div><div class="manga-wrapper"><div class="manga-item"><img class="manga-cover" src="https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx164163-IfpQLM9JM4ZP.jpg" alt="Cover"><div class="manga-info"><div class="manga-text"><div class="manga-title">Classmate no Moto Idol ga, Tonikaku Kyodou Fushin Nan desu</div><div class="manga-description">Saegusa, yang pensiun dari dunia idola saat masuk SMA, adalah gadis yang cantik dan cerdas. Dia selalu ceria dan ramah, serta merupakan orang paling populer di sekolah. Namun, Takuya mengetahui sisi lain dari Saegusa yang tampaknya anggun itu.</div></div><div class="manga-meta">comedy, romance | since Apr 13, 2023</div></div></div></div>
+  
+<div class="line-container"><div class="title">list chapter Classmate no Moto.. 0 - 21</div><div class="arrow"><i class="fas fa-circle-chevron-right"></i></div></div>
+<div class="chapter-list">
+ 
+<div class="chapter-item" onclick="window.location.href='chapter1.html'"><div class="chapter-cover-wrapper"><img class="chapter-cover-img" src="https://k7rzspb5flu6zayatfe4mh.my/data/41513555/1/8cdb6a572c58038954046c243488c14f/Wnz2kqFH64nu5cSyfW8ouPJIs2YzAxesyChYT83c.jpg" alt="2"><span class="chapter-label">Chapter 1</span></div></div>
+
+<div class="chapter-item" onclick="window.location.href='chapter2.html'"><div class="chapter-cover-wrapper"><img class="chapter-cover-img" src="https://k7rzspb5flu6zayatfe4mh.my/data/41513555/2/945e20d703d6855019436c2160f0001d/rsIq83WyvtO7lzPUTWWY4ynjey6YOIjqahTDGtGj.jpg" alt="2"><span class="chapter-label">Chapter 2</span></div></div>
+
+<div class="chapter-item" onclick="window.location.href='chapter3.html'"><div class="chapter-cover-wrapper"><img class="chapter-cover-img" src="https://k7rzspb5flu6zayatfe4mh.my/data/41513555/3/118844cee55cae7cc517523cf8e3b7de/UuD0HrZZAby0qTF2unzObSzKKmKyNwoBVCoDOLtC.jpg" alt="3"><span class="chapter-label">Chapter 3</span></div></div>
+
+<div class="chapter-item" onclick="window.location.href='chapter4.html'"><div class="chapter-cover-wrapper"><img class="chapter-cover-img" src="https://k7rzspb5flu6zayatfe4mh.my/data/41513555/4/d3a7f58eac9b3fa5a3f457cc66fea094/5FhBSZVdf4EMNr7kylgxkx59i4YLUJLMEtexYLLp.jpg" alt="4"><span class="chapter-label">Chapter 4</span></div></div>
+
+<div class="chapter-item" onclick="window.location.href='chapter5.html'"><div class="chapter-cover-wrapper"><img class="chapter-cover-img" src="https://k7rzspb5flu6zayatfe4mh.my/data/41513555/5/825d8f520afe45db8c97db41588b1caa/TgQpYvvOcDh0zvHobMxd9squPDv7zo83cERtDB1h.jpg" alt="5"><span class="chapter-label">Chapter 5</span></div></div>
+
+<div class="chapter-item" onclick="window.location.href='chapter6.html'"><div class="chapter-cover-wrapper"><img class="chapter-cover-img" src="https://k7rzspb5flu6zayatfe4mh.my/data/41513555/6/6580add2e7de83f5be76ba78722d1a31/KMAozoGA3JIPrf6ID8js1z8qCi28K3c5IXH3kcuy.jpg" alt="6"><span class="chapter-label">Chapter 6</span></div></div>
+
+<div class="chapter-item" onclick="window.location.href='chapter7.html'"><div class="chapter-cover-wrapper"><img class="chapter-cover-img" src="https://k7rzspb5flu6zayatfe4mh.my/data/41513555/7/fe3d75c5e2a1d6cf2b97783307d73cad/sEbmN6uaZium6tMIItOROBNUm8DDSi6wcoxopPpD.jpg" alt="7"><span class="chapter-label">Chapter 7</span></div></div>
+
+<div class="chapter-item" onclick="window.location.href='chapter8.html'"><div class="chapter-cover-wrapper"><img class="chapter-cover-img" src="https://k7rzspb5flu6zayatfe4mh.my/data/41513555/8/d04a2462ba5deec2a356c6ad60599e70/RC9UyEexDrDhocMq2wlkKENlU1WULri7UFzjYHvV.jpg" alt="8"><span class="chapter-label">Chapter 8</span></div></div>
+
+<div class="chapter-item" onclick="window.location.href='chapter9.html'"><div class="chapter-cover-wrapper"><img class="chapter-cover-img" src="https://k7rzspb5flu6zayatfe4mh.my/data/41513555/9/2671875978714d1ddcaa9a4dd0ee5ec0/XZ3ho3hlzalhqq2MWmhWpFSuCDwO958zsenkQNXX.jpg" alt="9"><span class="chapter-label">Chapter 9</span></div></div>
+
+<div class="chapter-item" onclick="window.location.href='chapter10.html'"><div class="chapter-cover-wrapper"><img class="chapter-cover-img" src="https://k7rzspb5flu6zayatfe4mh.my/data/41513555/10/49d8fcf8f4a17e69272816dcbdedcb79/FCIDk9sxEySQxybvn2eRXldqkYFSyqwdvYO2Uzmy.jpg" alt="10"><span class="chapter-label">Chapter 10</span></div></div>
+
+<div class="chapter-item" onclick="window.location.href='chapter11.html'"><div class="chapter-cover-wrapper"><img class="chapter-cover-img" src="https://k7rzspb5flu6zayatfe4mh.my/data/41513555/11/d11acae73bfcac58d0a7934078fb4739/fXLmWgKX42C6HDcmv24hm1zktbnvtYB7yZ1fOuIQ.jpg" alt="11"><span class="chapter-label">Chapter 11</span></div></div>
+
+<div class="chapter-item" onclick="window.location.href='chapter12.html'"><div class="chapter-cover-wrapper"><img class="chapter-cover-img" src="https://k7rzspb5flu6zayatfe4mh.my/data/41513555/12/4c6a302556a8e0715f10cc72a81a0d17/GTjlLcM56MDagbhFuMW2W6OHvOyDWvI6i8Wq6vB5.jpg" alt="12"><span class="chapter-label">Chapter 12</span></div></div>
+
+<div class="chapter-item" onclick="window.location.href='chapter13.html'"><div class="chapter-cover-wrapper"><img class="chapter-cover-img" src="https://k7rzspb5flu6zayatfe4mh.my/data/41513555/13/6a9a25ceeb919e3e31847c91482514e3/ZlyhbfCOZYjqJiACktR01D3ipft4lBlBT9rbtYE8.jpg" alt="13"><span class="chapter-label">Chapter 13</span></div></div>
+
+<div class="chapter-item" onclick="window.location.href='chapter14.html'"><div class="chapter-cover-wrapper"><img class="chapter-cover-img" src="https://k7rzspb5flu6zayatfe4mh.my/data/41513555/14/d8d97bba66d7a93b9940b0aef99f6e09/7KR7FZLHjIghnOjJvntXoOa1u8IWAJgUkNmJ1DV1.jpg" alt="14"><span class="chapter-label">Chapter 14</span></div></div>
+
+<div class="chapter-item" onclick="window.location.href='chapter15.html'"><div class="chapter-cover-wrapper"><img class="chapter-cover-img" src="https://k7rzspb5flu6zayatfe4mh.my/data/41513555/15/68463e7872398abe0f152ce856a25821/24CPcyQxQ1LLyNjx4w5FC549ZQVkBV2zmB10FKeo.jpg" alt="15"><span class="chapter-label">Chapter 15</span></div></div>
+
+<div class="chapter-item" onclick="window.location.href='chapter16.html'"><div class="chapter-cover-wrapper"><img class="chapter-cover-img" src="https://k7rzspb5flu6zayatfe4mh.my/data/41513555/16/1ce3b360a94f9f35d4aad7b04a973562/RX7h3OjwaQc8jQjEL4jwo9XjKTnas7u7lqUNscyE.jpg" alt="16"><span class="chapter-label">Chapter 16</span></div></div>
+
+<div class="chapter-item" onclick="window.location.href='chapter17.html'"><div class="chapter-cover-wrapper"><img class="chapter-cover-img" src="https://k7rzspb5flu6zayatfe4mh.my/data/41513555/17/9e4d7b562244828112cb7c9c6eb8d53a/R6WIighb4Il2yGzbH6ZTeAfnrdyPQBxEJUS9HaL6.jpg" alt="17"><span class="chapter-label">Chapter 17</span></div></div>
+
+<div class="chapter-item" onclick="window.location.href='chapter18.html'"><div class="chapter-cover-wrapper"><img class="chapter-cover-img" src="https://k7rzspb5flu6zayatfe4mh.my/data/41513555/18/3da7811e803a6f27f997db4437bee373/oIRC5ikViRcKWvbAifu1P5YenGK9Yr3ir9dMdCoa.jpg" alt="18"><span class="chapter-label">Chapter 18</span></div></div>
+
+<div class="chapter-item" onclick="window.location.href='chapter19.html'"><div class="chapter-cover-wrapper"><img class="chapter-cover-img" src="https://k7rzspb5flu6zayatfe4mh.my/data/41513555/19/2e1066709afe161f8f3cd7534f2d3b1d/9W6R8MCaHh8xlqDfq7zplPzBNRRXozOQFxPs4rpM.jpg" alt="19"><span class="chapter-label">Chapter 19</span></div></div>
+
+<div class="chapter-item" onclick="window.location.href='chapter20.html'"><div class="chapter-cover-wrapper"><img class="chapter-cover-img" src="https://k7rzspb5flu6zayatfe4mh.my/data/41513555/20/b8b918be265ede8f887c01cca3455fcc/NKLI6gRz5dWWym5D0dHjHcXyHq4rsDW33O8nIF0g.jpg" alt="20"><span class="chapter-label">Chapter 20</span></div></div>
+
+<div class="chapter-item" onclick="window.location.href='chapter21.html'"><div class="chapter-cover-wrapper"><img class="chapter-cover-img" src="https://k7rzspb5flu6zayatfe4mh.my/data/41513555/21/b62d5747847bba52533be299db48bc13/8gnCi5l7motA6FVJV7Mu30TPPPXWb6MDgjqy04Dx.jpg" alt="21"><span class="chapter-label">Chapter 21</span></div></div>
+
+</div>
+
+<div class="about-card"><p>Mangaka: Korin-san</p><p>Status: <span class="about-status">Releasing [ 21 chapter ]</span></p></div>
+
+<script>async function checkInternetConnection(){try{await fetch("https://www.google.com/favicon.ico",{method:"HEAD",mode:"no-cors"});return true}catch(e){return false}}async function updateConnectionStatus(){const isOnline=navigator.onLine,confirmedOnline=isOnline&&await checkInternetConnection();document.body.classList.toggle("offline",!confirmedOnline)}window.addEventListener("online",updateConnectionStatus);window.addEventListener("offline",updateConnectionStatus);setInterval(updateConnectionStatus,3000);updateConnectionStatus();</script>
+<script>function showUpdateNotice(){const e=document.getElementById('update-notice');e.style.display='block';setTimeout(()=>{e.classList.add('show')},10);setTimeout(()=>{e.classList.remove('show');setTimeout(()=>{location.reload()},500)},1000);}</script>
+</body>
+</html>
