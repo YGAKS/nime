@@ -2,12 +2,15 @@
 <html lang="en">
 <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no"/><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
-  body {
-    margin: 0;
-    font-family: sans-serif;
-    background-color: #F4F4F4;
-    user-select: none;
-  }
+ body {
+  margin: 0;
+  font-family: sans-serif;
+  background: linear-gradient(to bottom, #F4F4F4 75%, #FFFFFF 100%);
+  user-select: none;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
 
   .navbar {
     background-color: #F4F4F4;
@@ -309,8 +312,8 @@
 </style>
 </head><body>
  <div id="update-notice" class="update-notice">Mengecek pembaruan...</div>
- <div id="offline-notice">Jaringan tidak tersedia</div><div class="navbar"><div class="navbar-icons"><i class="fa-solid fa-circle-play icon" onclick="showUpdateNotice()"></i></div><div class="navbar-title" id="navbar-title">Manga List</div><div class="navbar-icons"><i class="fas fa-circle-xmark icon" onclick="history.back()"></i></div></div>
- <form class="search-bar"><input type="text" placeholder="cari manga..." /><div class="search-bar-button"><i class="fas fa-search"></i></div></form>
+ <div id="offline-notice">Jaringan tidak tersedia</div><div class="navbar"><div class="navbar-icons"><i class="fa-solid fa-circle-play icon" onclick="showUpdateNotice()"></i></div><div class="navbar-title" id="navbar-title">PENCARIAN</div><div class="navbar-icons"><i class="fas fa-circle-xmark icon" onclick="history.back()"></i></div></div>
+ <form class="search-bar"><input type="text" placeholder="cari manga manhwa yang kamu cari..." /><div class="search-bar-button"><i class="fas fa-search"></i></div></form>
 <div class="filter-bar">
     <!-- dst... -->
   <div class="select-bar">
